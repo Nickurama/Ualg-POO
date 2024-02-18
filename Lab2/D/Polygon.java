@@ -36,7 +36,7 @@ public class Polygon
         sides[index] = segment;
     }
 
-    private boolean isInterceptedBy(LineSegment that)
+    public boolean isInterceptedBy(LineSegment that)
     {
         for (LineSegment side : sides) // does it work when the rest of the array is empty?
         {
