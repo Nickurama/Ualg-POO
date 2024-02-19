@@ -2,28 +2,28 @@ public class LineSegment
 {
     private static final String ERROR_MESSAGE = "Segmento:vi";
     private Point point1, point2;
+    private Line line;
 
     public LineSegment(Point a, Point b)
     {
+        this.point1 = a.copy();
+        this.point2 = b.copy();
+        this.line = new Line(this.point1, this.point2);
         if (a.equals(b))
             Error.terminateProgram(ERROR_MESSAGE);
-        this.point1 = a;
-        this.point2 = b;
     }
 
     public boolean intersects(LineSegment that)
     {
-        Line a = new Line(this);
-        Line b = new Line(that);
-        if (a.isParalel(b))
+        if (this.line.isParalel(that.line))
         {
-            if (a.equals(b))
+            if (this.line.equals(that.line))
                 return this.containsX(that.point1.getX()) || this.containsX(that.point2.getX()) ||
                     that.containsX(this.point1.getX()) || that.containsX(this.point2.getX());
             else
                 return false;
         }
-        double intersectionX = a.calcIntersectX(b);
+        double intersectionX = this.line.calcIntersectX(that.line);
         return this.containsX(intersectionX) && that.containsX(intersectionX);
     }
 

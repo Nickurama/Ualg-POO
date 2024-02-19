@@ -13,6 +13,19 @@ public class Point
         this.y = y;
     }
 
+    public Point copy()
+    {
+        return new Point(this.x, this.y);
+    }
+
+    public static Point[] copyArray(Point[] array)
+    {
+        Point[] result = new Point[array.length];
+        for (int i = 0; i < array.length; i++)
+            result[i] = array[i].copy();
+        return result;
+    }
+
     public static Point getPointFromInput(Scanner reader)
     {
         return new Point(reader.nextDouble(), reader.nextDouble());

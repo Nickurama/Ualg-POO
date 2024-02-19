@@ -6,10 +6,14 @@ public class Polygon
 
     public Polygon(Point[] points)
     {
-        this.points = points;
         if (points.length < 3)
             Error.terminateProgram(ERROR_MESSAGE);
-        
+        this.points = Point.copyArray(points);
+        generateSides();
+    }
+
+    private void generateSides()
+    {
         sides = new LineSegment[points.length];
 
         for (int i = 1; i < points.length; i++)

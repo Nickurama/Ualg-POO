@@ -1,6 +1,6 @@
 public class Line
 {
-    private final String ERROR_MESSAGE = "Linha:vi";
+    private final String ERROR_MESSAGE = "Reta:vi";
     // private Point point1, point2;
     private double slope;
     private double offset;
