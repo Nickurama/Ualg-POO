@@ -23,7 +23,9 @@ public class Polygon
 
     private void addSide(Point lastPoint, Point newPoint, int index)
     {
-        if (index < 1)
+        if (index < 0)
+            Error.terminateProgram("Polygon.java::addSide() error: index should be > 0 in");
+        if (index == 0)
         {
             sides[index] = new LineSegment(lastPoint, newPoint);
             return;
@@ -42,7 +44,7 @@ public class Polygon
 
     public boolean isInterceptedBy(LineSegment that)
     {
-        for (LineSegment side : sides) // does it work when the rest of the array is empty?
+        for (LineSegment side : sides)
         {
             if (side == null)
                 return false;
