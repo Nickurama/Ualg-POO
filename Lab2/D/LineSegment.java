@@ -13,24 +13,38 @@ public class LineSegment
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    public boolean isCollinear(Point that)
+    {
+        return this.line.contains(that);
+    }
+
     public boolean intersects(LineSegment that)
     {
         if (this.line.isParalel(that.line))
         {
             if (this.line.equals(that.line))
-                return this.containsX(that.point1.getX()) || this.containsX(that.point2.getX()) ||
-                    that.containsX(this.point1.getX()) || that.containsX(this.point2.getX());
-            else
-                return false;
+                return this.containsPointOnSegment(that.point1) || this.containsPointOnSegment(that.point2) ||
+                        that.containsPointOnSegment(this.point1) || that.containsPointOnSegment(this.point2);
+            return false;
         }
-        double intersectionX = this.line.calcIntersectX(that.line);
-        return this.containsX(intersectionX) && that.containsX(intersectionX);
+        VirtualPoint intersection = this.line.calcIntersect(that.line);
+
+        return this.containsPointOnSegment(intersection) && that.containsPointOnSegment(intersection);
     }
 
-    private boolean containsX(double x)
+    private boolean containsPointOnSegment(VirtualPoint pointOnSegment)
     {
-        return x > Math.min(this.point1.getX(), this.point2.getX()) &&
-            x < Math.max(this.point1.getX(), this.point2.getX());
+        double minX = Math.min(this.point1.getX(), this.point2.getX());
+        double maxX = Math.max(this.point1.getX(), this.point2.getX());
+        double minY = Math.min(this.point1.getY(), this.point2.getY());
+        double maxY = Math.max(this.point1.getY(), this.point2.getY());
+        boolean containsX = (pointOnSegment.getX() > minX && pointOnSegment.getX() < maxX) ||
+                            (MathUtil.areEqual(pointOnSegment.getX(), minX) ||
+                            MathUtil.areEqual(pointOnSegment.getX(), maxX));
+        boolean containsY = (pointOnSegment.getY() > minY && pointOnSegment.getY() < maxY) ||
+                            (MathUtil.areEqual(pointOnSegment.getY(), minY) ||
+                            MathUtil.areEqual(pointOnSegment.getY(), maxY));
+        return containsX && containsY;
     }
 
     public double dist()

@@ -8,50 +8,52 @@ public class Polygon
     {
         if (points.length < 3)
             Error.terminateProgram(ERROR_MESSAGE);
-        this.points = Point.copyArray(points);
-        generateSides();
+        
+        Point[] vertices = Point.copyArray(points);  
+        LineSegment[] segments = generateSegments(vertices);
+
+        if (arePointsCollinear(vertices, segments) || doSegmentsCollide(segments))
+            Error.terminateProgram(ERROR_MESSAGE);
+        
+        this.points = vertices;
+        this.sides = segments;
     }
 
-    private void generateSides()
+    private LineSegment[] generateSegments(Point[] points)
     {
-        sides = new LineSegment[points.length];
-
+        LineSegment[] segments = new LineSegment[points.length];
         for (int i = 1; i < points.length; i++)
-            addSide(points[i - 1], points[i], i - 1);
-        addSide(points[points.length - 1], points[0], points.length - 1);
+            segments[i - 1] = new LineSegment(points[i - 1], points[i]);
+        segments[points.length - 1] = new LineSegment(points[points.length - 1], points[0]);
+        return segments;
     }
 
-    private void addSide(Point lastPoint, Point newPoint, int index)
+    private boolean arePointsCollinear(Point[] points, LineSegment[] segments)
     {
-        if (index < 0)
-            Error.terminateProgram("Polygon.java::addSide() error: index should be > 0 in");
-        if (index == 0)
-        {
-            sides[index] = new LineSegment(lastPoint, newPoint);
-            return;
-        }
+        for (int i = 0; i < points.length; i++)
+            if (segments[i].isCollinear(points[(i + 2) % points.length]))
+                return true;
+        return false;        
+    }
 
-        Line lastLine = new Line(sides[index - 1]);
-        if (lastLine.intersects(newPoint))
-            Error.terminateProgram(ERROR_MESSAGE);
+    private boolean doSegmentsCollide(LineSegment[] segments)
+    {
+        for (int i = 2; i < segments.length - 1; i++)
+            for (int j = 0; j < (i - 1); j++)
+                if (segments[i].intersects(segments[j]))
+                    return true;
+        for (int j = 1; j < segments.length - 2; j++)
+            if (segments[segments.length - 1].intersects(segments[j]))
+                return true;
         
-        LineSegment segment = new LineSegment(lastPoint, newPoint);
-        if (this.isInterceptedBy(segment))
-            Error.terminateProgram(ERROR_MESSAGE);
-        
-        sides[index] = segment;
+        return false;
     }
 
     public boolean isInterceptedBy(LineSegment that)
     {
         for (LineSegment side : sides)
-        {
-            if (side == null)
-                return false;
-
             if (side.intersects(that))
                 return true;
-        }
         return false;
     }
 
