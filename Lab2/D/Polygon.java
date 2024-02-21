@@ -1,9 +1,24 @@
+/**
+ * Represents an immutable simple polygon
+ * 
+ * @author Diogo Fonseca a79858
+ * @version 21/02/2024
+ *  
+ * @inv sides are the sides of the polygon
+ * @inv points are the vertices of the polygon
+ */
 public class Polygon
 {
     private static final String ERROR_MESSAGE = "Poligono:vi";
     private LineSegment[] sides;
     private Point[] points;
 
+    /**
+     * Initializes a polygon
+     * @param points the vertices of the polygon
+     * @pre points must contain at least 3 points
+     * @pre points must generate valid sides (that don't collide)
+     */
     public Polygon(Point[] points)
     {
         if (points.length < 3)
@@ -19,6 +34,11 @@ public class Polygon
         this.sides = segments;
     }
 
+    /**
+     * generates the segments from the given points, representing the sides of the polygon
+     * @param points the points that contain the vertices of the polygon
+     * @return segments generated from the order of the given points
+     */
     private LineSegment[] generateSegments(Point[] points)
     {
         LineSegment[] segments = new LineSegment[points.length];
@@ -28,6 +48,12 @@ public class Polygon
         return segments;
     }
 
+    /**
+     * Checks if there are any collinear points in the generated segments
+     * @param points the points that contain the vertices of the polygon
+     * @param segments the segments generated from the vertices
+     * @return if there are any collinear (invalid) points
+     */
     private boolean arePointsCollinear(Point[] points, LineSegment[] segments)
     {
         for (int i = 0; i < points.length; i++)
@@ -36,6 +62,11 @@ public class Polygon
         return false;        
     }
 
+    /**
+     * Checks if any segments are colliding (intersecting eachother)
+     * @param segments the segments to check the intersections of
+     * @return if there is any collision within the segments
+     */
     private boolean doSegmentsCollide(LineSegment[] segments)
     {
         for (int i = 2; i < segments.length - 1; i++)
@@ -49,6 +80,11 @@ public class Polygon
         return false;
     }
 
+    /**
+     * Checks if the polygon is intercected by a segment
+     * @param that the segment to check intercection with
+     * @return if the polygon is intercected by the segment
+     */
     public boolean isInterceptedBy(LineSegment that)
     {
         for (LineSegment side : sides)
@@ -57,15 +93,15 @@ public class Polygon
         return false;
     }
 
+    /**
+     * Calculates the perimeter of the polygon
+     * @return the perimeter of the polygon
+     */
     public double perimeter()
     {
         double result = 0;
         for (LineSegment side : sides)
-            result += side.dist();
+            result += side.length();
         return result;
     }
-
-    public Point[] getPoints() { return this.points; }
-    
-    public LineSegment[] getSides() { return this.sides; }
 }
