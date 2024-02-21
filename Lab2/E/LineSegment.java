@@ -72,12 +72,18 @@ public class LineSegment
         double maxX = Math.max(this.point1.getX(), this.point2.getX());
         double minY = Math.min(this.point1.getY(), this.point2.getY());
         double maxY = Math.max(this.point1.getY(), this.point2.getY());
+        // System.out.println("(" + pointOnSegment.getX() + ", " + pointOnSegment.getY() + ")");
+        // System.out.println("minX: " + minX);
+        // System.out.println("maxX: " + maxX);
+        // System.out.println("minY: " + minY);
+        // System.out.println("maxY: " + maxY);
         boolean containsX = (pointOnSegment.getX() > minX && pointOnSegment.getX() < maxX) ||
                             (MathUtil.areEqual(pointOnSegment.getX(), minX) ||
                             MathUtil.areEqual(pointOnSegment.getX(), maxX));
         boolean containsY = (pointOnSegment.getY() > minY && pointOnSegment.getY() < maxY) ||
                             (MathUtil.areEqual(pointOnSegment.getY(), minY) ||
                             MathUtil.areEqual(pointOnSegment.getY(), maxY));
+        // System.out.println("contains: " + (containsX && containsY));
         return containsX && containsY;
     }
 
