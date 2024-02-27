@@ -15,14 +15,12 @@ public class Client
     public static void main(String[] args)
     {
         Scanner reader = new Scanner(System.in);
-        Point[] trajectoryPoints = getPointsFromInput(reader);
-        Path path = new Path(trajectoryPoints);
-        Polygon[] obstacles = getPolygonsFromInput(reader);
-        reader.close();
-        if (path.intersects(obstacles))
-            System.out.println("1");
-        else
-            System.out.println("0");
+
+        Polygon poly1 = new Polygon(getPointsFromInput(reader));
+        Polygon poly2 = new Polygon(getPointsFromInput(reader));
+
+        String result = poly1.intercepts(poly2) ? "true" : "false";
+        System.out.println(result);
     }
 
     /**

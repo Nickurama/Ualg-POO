@@ -104,4 +104,17 @@ public class Polygon
             result += side.length();
         return result;
     }
+
+    /**
+     * Returns true if a polygon intercepts another one
+     * @param that the polygon to test collision with
+     * @return if the polygon intercepts the other
+     */
+    public boolean intercepts(Polygon that)
+    {
+        for (LineSegment segment : this.sides)
+            if (that.isInterceptedBy(segment))
+                return true;
+        return false;
+    }
 }
