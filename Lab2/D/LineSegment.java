@@ -2,7 +2,7 @@
  * Represents an immutable segment within a two dimensional line
  *
  * @author Diogo Fonseca a79858
- * @version 21/02/2024
+ * @version 23/02/2024
  * 
  * @inv point1 is the first point defining a bound within the line
  * @inv point2 is the second point defining a bound within the line
@@ -49,15 +49,38 @@ public class LineSegment
     public boolean intersects(LineSegment that)
     {
         if (this.line.isParalel(that.line))
-        {
-            if (this.line.equals(that.line))
-                return this.containsPointOnSegment(that.point1) || this.containsPointOnSegment(that.point2) ||
-                        that.containsPointOnSegment(this.point1) || that.containsPointOnSegment(this.point2);
             return false;
-        }
+            // return doParalelSegmentsCollide(that);
         VirtualPoint intersection = this.line.calcIntersect(that.line);
 
+        // checks if a point is exactly on one of the bounds of the segment
+        if (isPointOnBounds(intersection) || that.isPointOnBounds(intersection))
+            return false;
+
         return this.containsPointOnSegment(intersection) && that.containsPointOnSegment(intersection);
+    }
+
+    /**
+     * checks if two paralel segments intersect eachother
+     * @param that the other paralel segment
+     * @return if the two paralel segments intersect
+     */
+    private boolean doParalelSegmentsCollide(LineSegment that)
+    {
+        if (this.line.equals(that.line))
+            return this.containsPointOnSegment(that.point1) || this.containsPointOnSegment(that.point2) ||
+                    that.containsPointOnSegment(this.point1) || that.containsPointOnSegment(this.point2);
+        return false;
+    }
+
+    /**
+     * checks if a point is exactly at the start or end of the segment
+     * @param point the point to check if it is on one of the bounds of the segment
+     * @return if the point is on one of the bounds
+     */
+    private boolean isPointOnBounds(VirtualPoint point)
+    {
+        return point.equals(this.point1) || point.equals(this.point2);
     }
 
     /**

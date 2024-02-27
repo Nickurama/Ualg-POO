@@ -3,11 +3,12 @@
  * Uses the general equation for a line in 2D space: ax + by + c = 0
  * 
  * @author Diogo Fonseca a79858
- * @version 21/02/2024
+ * @version 23/02/2024
  * 
  * @inv coefficientX is immutable and set when line is created (represents the "a" coefficient)
  * @inv coefficientY is immutable and set when line is created (represents the "b" coefficient)
  * @inv constant is immutable and set when line is created (represents the "c" constant)
+ * @inv containedPoint is a point contained in the line
  */
 public class Line
 {
@@ -15,6 +16,7 @@ public class Line
     private double coefficientX;
     private double coefficientY;
     private double constant;
+    private Point containedPoint;
 
     /**
      * Initializes a line 
@@ -31,6 +33,7 @@ public class Line
         this.coefficientX = a.getY() - b.getY();
         this.coefficientY = b.getX() - a.getX();
         this.constant = a.getX() * b.getY() - b.getX() * a.getY();
+        this.containedPoint = a.copy();
     }
 
     /**
@@ -78,13 +81,7 @@ public class Line
      */
     public boolean isParalel(Line that)
     {
-        if (MathUtil.areEqual(this.coefficientX, that.coefficientX) &&
-            MathUtil.areEqual(this.coefficientY, that.coefficientY))
-            return true;
-        else if (MathUtil.areEqual(this.coefficientX, - that.coefficientX) &&
-                MathUtil.areEqual(this.coefficientY, - that.coefficientY))
-            return true;
-        return false;
+        return MathUtil.areEqual(this.coefficientX * that.coefficientY - that.coefficientX * this.coefficientY, 0);
     }
 
     /**
@@ -94,6 +91,6 @@ public class Line
      */
     public boolean equals(Line that)
     {
-        return this.isParalel(that) && MathUtil.areEqual(this.constant, that.constant);
+        return this.isParalel(that) && this.contains(that.containedPoint);
     }
 }

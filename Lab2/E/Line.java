@@ -3,7 +3,7 @@
  * Uses the general equation for a line in 2D space: ax + by + c = 0
  * 
  * @author Diogo Fonseca a79858
- * @version 21/02/2024
+ * @version 23/02/2024
  * 
  * @inv coefficientX is immutable and set when line is created (represents the "a" coefficient)
  * @inv coefficientY is immutable and set when line is created (represents the "b" coefficient)
@@ -81,25 +81,7 @@ public class Line
      */
     public boolean isParalel(Line that)
     {
-        // System.out.println("coefficientX: " + this.coefficientX + " | " + that.coefficientX);
-        // System.out.println("coefficientY: " + this.coefficientY + " | " + that.coefficientY);
-        // System.out.println("isParalel: ");
         return MathUtil.areEqual(this.coefficientX * that.coefficientY - that.coefficientX * this.coefficientY, 0);
-        // if (MathUtil.areEqual(this.coefficientX, that.coefficientX) &&
-        //     MathUtil.areEqual(this.coefficientY, that.coefficientY))
-        //     return true;
-        // else if (MathUtil.areEqual(this.coefficientX, - that.coefficientX) &&
-        //         MathUtil.areEqual(this.coefficientY, - that.coefficientY))
-        //     return true;
-        // else if (MathUtil.areEqual(this.coefficientX, that.coefficientX) &&
-        //         MathUtil.areEqual(this.coefficientX, 0) &&
-        //         MathUtil.areEqual(Math.abs(this.coefficientY), Math.abs(that.coefficientY)))
-        //     return true;
-        // else if (MathUtil.areEqual(this.coefficientY, that.coefficientY) &&
-        //         MathUtil.areEqual(this.coefficientY, 0) &&
-        //         MathUtil.areEqual(Math.abs(this.coefficientX), Math.abs(that.coefficientX)))
-        //     return true;
-        // return false;
     }
 
     /**

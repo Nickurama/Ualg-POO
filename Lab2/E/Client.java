@@ -26,7 +26,7 @@ public class Client
     }
 
     /**
-     * Gets an array of polygons from the input read from the scanner
+     * Gets an array of polygons read from the scanner
      * @param reader the Scanner where the input is gonna be read from
      * @return the array of polygons read
      */
@@ -40,7 +40,7 @@ public class Client
     }
 
     /**
-     * Gets an array of points from the input read from the scanner
+     * Gets an array of points read from the scanner
      * @param reader the Scanner where the input is gonna be read from
      * @return the array of points read
      */
