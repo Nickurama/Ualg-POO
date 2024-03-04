@@ -16,6 +16,7 @@ public class Client
     {
         Scanner reader = new Scanner(System.in);
 
+        BoundingBox bb = new BoundingBox()
         Polygon poly1 = new Polygon(getPointsFromInput(reader));
         Polygon poly2 = new Polygon(getPointsFromInput(reader));
 
