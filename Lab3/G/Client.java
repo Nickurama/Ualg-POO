@@ -16,12 +16,22 @@ public class Client
     {
         Scanner reader = new Scanner(System.in);
 
-        BoundingBox bb = new BoundingBox()
-        Polygon poly1 = new Polygon(getPointsFromInput(reader));
-        Polygon poly2 = new Polygon(getPointsFromInput(reader));
+        Point[] points0 = getPointsFromInput(reader);
+        Point[] points1 = getPointsFromInput(reader);
 
-        String result = poly1.intercepts(poly2) ? "true" : "false";
-        System.out.println(result);
+        BoundingBox bb0 = new BoundingBox(points0);
+        BoundingBox bb1 = new BoundingBox(points1);
+
+        if (!bb0.intercepts(bb1))
+            System.out.println("false");
+        else
+        {
+            Polygon poly1 = new Polygon(points0);
+            Polygon poly2 = new Polygon(points1);
+
+            String result = poly1.intercepts(poly2) ? "true" : "false";
+            System.out.println(result);
+        }
     }
 
     /**

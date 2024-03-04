@@ -18,4 +18,26 @@ public class MathUtil
     {
         return Math.abs(b - a) < CALC_ERROR_MARGIN;
     }
+
+    /**
+     * Checks if a double is greater or equal than another (given the margin of error)
+     * @param a the value left of >=
+     * @param b the value right of >=
+     * @return if a is greater or equal than b
+     */
+    public static boolean isGreaterOrEqualThan(double a, double b)
+    {
+        return a > (b - CALC_ERROR_MARGIN);
+    }
+
+    /**
+     * Checks if a double is less or equal than another (given the margin of error)
+     * @param a the value left of <=
+     * @param b the value right of <=
+     * @return if a is less or equal than b
+     */
+    public static boolean isLessOrEqualThan(double a, double b)
+    {
+        return a < (b + CALC_ERROR_MARGIN);
+    }
 }
