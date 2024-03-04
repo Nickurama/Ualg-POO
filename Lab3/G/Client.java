@@ -19,10 +19,10 @@ public class Client
         Point[] points0 = getPointsFromInput(reader);
         Point[] points1 = getPointsFromInput(reader);
 
-        BoundingBox bb0 = new BoundingBox(points0);
-        BoundingBox bb1 = new BoundingBox(points1);
+        BoundingBox bounds0 = new BoundingBox(points0);
+        BoundingBox bounds1 = new BoundingBox(points1);
 
-        if (!bb0.intercepts(bb1))
+        if (!bounds0.intercepts(bounds1))
             System.out.println("false");
         else
         {
