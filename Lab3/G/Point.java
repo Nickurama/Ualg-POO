@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  * Represents an immutable point in two dimensional space, in the first quadrant only
@@ -53,8 +54,9 @@ public class Point extends VirtualPoint
      * @param reader scanner from where the point is gonna be read
      * @return the initialized point
      */
-    public static Point getPointFromInput(Scanner reader)
+    public static Point getPointFromInput(BufferedReader reader) throws IOException
     {
-        return new Point(reader.nextDouble(), reader.nextDouble());
+        String[] tokens = reader.readLine().split(" ");
+        return new Point(Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1]));
     }
 }

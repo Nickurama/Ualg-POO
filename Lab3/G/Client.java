@@ -1,4 +1,6 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * The class to manage the input and output
@@ -12,9 +14,9 @@ public class Client
      * The main method
      * @param args ignored
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        Scanner reader = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         Point[] points0 = getPointsFromInput(reader);
         Point[] points1 = getPointsFromInput(reader);
@@ -32,16 +34,18 @@ public class Client
             String result = poly1.intercepts(poly2) ? "true" : "false";
             System.out.println(result);
         }
+
+        reader.close();
     }
 
     /**
-     * Gets an array of polygons read from the scanner
-     * @param reader the Scanner where the input is gonna be read from
+     * Gets an array of polygons read from the BufferedReader
+     * @param reader the BufferedReader object where the input is gonna be read from
      * @return the array of polygons read
      */
-    private static Polygon[] getPolygonsFromInput(Scanner reader)
+    private static Polygon[] getPolygonsFromInput(BufferedReader reader) throws IOException
     {
-        int numPolygons = reader.nextInt();
+        int numPolygons = Integer.parseInt(reader.readLine());
         Polygon[] polygons = new Polygon[numPolygons];
         for (int i = 0; i < numPolygons; i++)
             polygons[i] = new Polygon(getPointsFromInput(reader));
@@ -49,15 +53,14 @@ public class Client
     }
 
     /**
-     * Gets an array of points read from the scanner
-     * @param reader the Scanner where the input is gonna be read from
+     * Gets an array of points read from the BufferedReader
+     * @param reader the BufferedReader object where the input is gonna be read from
      * @return the array of points read
      */
-    private static Point[] getPointsFromInput(Scanner reader)
+    private static Point[] getPointsFromInput(BufferedReader reader) throws IOException
     {
-        int n = reader.nextInt();
-        Point[] points = new Point[n];
-        for (int i = 0; i < n; i++)
+        Point[] points = new Point[Integer.parseInt(reader.readLine())];
+        for (int i = 0; i < points.length; i++)
             points[i] = Point.getPointFromInput(reader);
         return points;
     }
