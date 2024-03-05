@@ -48,15 +48,10 @@ public class BoundingBox
         //     this.min = new Point(this.min.getX(), p.getY());
         // else if (p.getY() > max.getY())
         //     this.max = new Point(this.max.getX(), p.getY());
-        if (p.getX() < this.minX)
-            this.minX = p.getX();
-        else if (p.getX() > this.maxX)
-            this.maxX = p.getX();
-        
-        if (p.getY() < this.minY)
-            this.minY = p.getY();
-        else if (p.getY() > maxY)
-            this.maxY = p.getY();
+        this.minX = Math.min(this.minX, p.getX());
+        this.maxX = Math.max(this.maxX, p.getX());
+        this.minY = Math.min(this.minY, p.getY());
+        this.maxY = Math.max(this.maxY, p.getY());
     }
 
     /**
