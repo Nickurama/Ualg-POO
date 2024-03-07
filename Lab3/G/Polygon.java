@@ -85,10 +85,23 @@ public class Polygon
      * @param that the segment to check intercection with
      * @return if the polygon is intercected by the segment
      */
-    public boolean isInterceptedBy(LineSegment that)
+    public boolean intercepts(LineSegment that)
     {
         for (LineSegment side : sides)
             if (side.intersects(that))
+                return true;
+        return false;
+    }
+
+    /**
+     * Returns true if a polygon intercepts another one
+     * @param that the polygon to test collision with
+     * @return if the polygon intercepts the other
+     */
+    public boolean intercepts(Polygon that)
+    {
+        for (LineSegment segment : this.sides)
+            if (that.intercepts(segment))
                 return true;
         return false;
     }
@@ -103,18 +116,5 @@ public class Polygon
         for (LineSegment side : sides)
             result += side.length();
         return result;
-    }
-
-    /**
-     * Returns true if a polygon intercepts another one
-     * @param that the polygon to test collision with
-     * @return if the polygon intercepts the other
-     */
-    public boolean intercepts(Polygon that)
-    {
-        for (LineSegment segment : this.sides)
-            if (that.isInterceptedBy(segment))
-                return true;
-        return false;
     }
 }

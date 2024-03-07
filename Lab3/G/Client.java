@@ -14,7 +14,7 @@ public class Client
      * The main method
      * @param args ignored
      */
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -35,7 +35,14 @@ public class Client
             System.out.println(result);
         }
 
-        reader.close();
+        try
+        {
+            reader.close();
+        }
+        catch (IOException e)
+        {
+            //Log?
+        }
     }
 
     /**
@@ -43,13 +50,21 @@ public class Client
      * @param reader the BufferedReader object where the input is gonna be read from
      * @return the array of polygons read
      */
-    private static Polygon[] getPolygonsFromInput(BufferedReader reader) throws IOException
+    private static Polygon[] getPolygonsFromInput(BufferedReader reader)
     {
-        int numPolygons = Integer.parseInt(reader.readLine());
-        Polygon[] polygons = new Polygon[numPolygons];
-        for (int i = 0; i < numPolygons; i++)
-            polygons[i] = new Polygon(getPointsFromInput(reader));
-        return polygons;
+        try
+        {
+            int numPolygons = Integer.parseInt(reader.readLine());
+            Polygon[] polygons = new Polygon[numPolygons];
+            for (int i = 0; i < numPolygons; i++)
+                polygons[i] = new Polygon(getPointsFromInput(reader));
+            return polygons;
+        }
+        catch (IOException e)
+        {
+            Error.terminateProgram("Client::getPolygonsFromInput error while reading points: " + e.getMessage());
+            return null; //needed because the compiler thinks the program can continue as it doesn't throw an exception
+        }
     }
 
     /**
@@ -57,11 +72,19 @@ public class Client
      * @param reader the BufferedReader object where the input is gonna be read from
      * @return the array of points read
      */
-    private static Point[] getPointsFromInput(BufferedReader reader) throws IOException
+    private static Point[] getPointsFromInput(BufferedReader reader)
     {
-        Point[] points = new Point[Integer.parseInt(reader.readLine())];
-        for (int i = 0; i < points.length; i++)
-            points[i] = Point.getPointFromInput(reader);
-        return points;
+        try
+        {
+            Point[] points = new Point[Integer.parseInt(reader.readLine())];
+            for (int i = 0; i < points.length; i++)
+                points[i] = Point.getPointFromInput(reader);
+            return points;
+        }
+        catch (IOException e)
+        {
+            Error.terminateProgram("Client::getPointsFromInput error while reading points: " + e.getMessage());
+            return null; //needed because the compiler thinks the program can continue as it doesn't throw an exception
+        }
     }
 }

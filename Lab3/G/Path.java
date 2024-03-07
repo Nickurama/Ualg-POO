@@ -72,7 +72,7 @@ public class Path
     public boolean intersects(Polygon poly)
     {
         for (LineSegment segment : segments)
-            if (poly.isInterceptedBy(segment))
+            if (poly.intercepts(segment))
                 return true;
         return false;
     }
