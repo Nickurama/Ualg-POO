@@ -27,7 +27,7 @@ public class Polygon
         Point[] vertices = Point.copyArray(points);  
         LineSegment[] segments = generateSegments(vertices);
 
-        if (arePointsCollinear(vertices, segments) || doSegmentsCollide(segments))
+        if (isAnyGeneratedPointCollinear(vertices, segments) || doSegmentsCollide(segments))
             Error.terminateProgram(ERROR_MESSAGE);
         
         this.points = vertices;
@@ -54,10 +54,10 @@ public class Polygon
      * @param segments the segments generated from the vertices
      * @return if there are any collinear (invalid) points
      */
-    private boolean arePointsCollinear(Point[] points, LineSegment[] segments)
+    private static boolean isAnyGeneratedPointCollinear(Point[] points, LineSegment[] segments)
     {
         for (int i = 0; i < points.length; i++)
-            if (segments[i].isCollinear(points[(i + 2) % points.length]))
+            if (segments[i].line().isCollinear(points[(i + 2) % points.length]))
                 return true;
         return false;        
     }
@@ -67,7 +67,7 @@ public class Polygon
      * @param segments the segments to check the intersections of
      * @return if there is any collision within the segments
      */
-    private boolean doSegmentsCollide(LineSegment[] segments)
+    private static boolean doSegmentsCollide(LineSegment[] segments)
     {
         for (int i = 2; i < segments.length - 1; i++)
             for (int j = 0; j < (i - 1); j++)

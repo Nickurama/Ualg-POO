@@ -32,16 +32,6 @@ public class LineSegment
     }
 
     /**
-     * Checks if a point is collinear with the line segment
-     * @param that the point to check if is collinear with the line segment
-     * @return if the point is collinear with the line segment
-     */
-    public boolean isCollinear(Point that)
-    {
-        return this.line.contains(that);
-    }
-
-    /**
      * Checks if a segment intersects the current segment
      * @param that the segment to check intersection with
      * @return if the segment intersects the current one
@@ -122,4 +112,9 @@ public class LineSegment
      * Accessor method to return the second bound of the segmend
      */
     public Point getSecondPoint() { return this.point2; }
+
+    /**
+     * Accessor method to return the line containing the segment
+     */
+    public Line line() { return this.line; }
 }

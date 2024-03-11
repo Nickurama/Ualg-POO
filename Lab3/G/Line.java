@@ -41,7 +41,7 @@ public class Line
      * @param point the point to be checked if the line contains
      * @return if the point is contained within the line
      */
-    public boolean contains(Point point)
+    public boolean isCollinear(Point point)
     {
         return MathUtil.areEqual(calcExpr(point), 0);
     }
@@ -91,6 +91,6 @@ public class Line
      */
     public boolean equals(Line that)
     {
-        return this.isParalel(that) && this.contains(that.containedPoint);
+        return this.isParalel(that) && this.isCollinear(that.containedPoint);
     }
 }
