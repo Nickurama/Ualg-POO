@@ -25,8 +25,6 @@ public class Point extends VirtualPoint
         super(x, y);
         if (x < 0 || y < 0)
             Error.terminateProgram(ERROR_MESSAGE);
-        this.x = x;
-        this.y = y;
     }
 
     /**
@@ -41,12 +39,22 @@ public class Point extends VirtualPoint
     }
 
     /**
+     * Initializes the point, performing a deep copy
+     * over the other point
+     * @param p the point to copy from
+     */
+    public Point(Point p)
+    {
+        super(p);
+    }
+
+    /**
      * Performs a deep copy of the point
      * @return a copy of the point
      */
     public Point copy()
     {
-        return new Point(this.x, this.y);
+        return new Point(this);
     }
 
     /**
@@ -69,7 +77,6 @@ public class Point extends VirtualPoint
      */
     public static Point getPointFromInput(BufferedReader reader) throws IOException
     {
-        VirtualPoint p = VirtualPoint.getPointFromInput(reader);
-        return new Point(p);
+        return new Point(VirtualPoint.getPointFromInput(reader));
     }
 }

@@ -39,14 +39,21 @@ public class VirtualPointTests
         // Arrange
         VirtualPoint p0 = new VirtualPoint(-3, 5);
         VirtualPoint p1 = p0.copy();
+        VirtualPoint p2 = new VirtualPoint(p0);
 
         // Act
-        boolean areEqual = p0.equals(p1);
-        boolean areSame = p0 == p1;
+        boolean areEqual0 = p0.equals(p1);
+        boolean areSame0 = p0 == p1;
+
+        boolean areEqual1 = p0.equals(p2);
+        boolean areSame1 = p0 == p2;
 
         // Assert
-        assertTrue(areEqual);
-        assertFalse(areSame);
+        assertTrue(areEqual0);
+        assertFalse(areSame0);
+
+        assertTrue(areEqual1);
+        assertFalse(areSame1);
     }
 
     @Test

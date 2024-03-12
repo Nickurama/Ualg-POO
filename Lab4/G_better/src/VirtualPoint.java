@@ -2,7 +2,6 @@ package src;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * Represents an immutable point in two dimensional space
@@ -18,7 +17,7 @@ public class VirtualPoint
     protected double x, y;
 
     /**
-     * Initializes the point
+     * Initializes the virtual point
      * @param x the x coordinate
      * @param y the y coordinate
      */
@@ -29,12 +28,22 @@ public class VirtualPoint
     }
 
     /**
+     * Initializes the virtual point, performing a deep copy
+     * over the other virtual point
+     * @param p the virtual point to copy from
+     */
+    public VirtualPoint(VirtualPoint p)
+    {
+        this(p.x, p.y);
+    }
+
+    /**
      * Performs a deep copy of the point
      * @return a deep copy of the point
      */
     public VirtualPoint copy()
     {
-        return new VirtualPoint(this.x, this.y);
+        return new VirtualPoint(this);
     }
 
     /**
