@@ -221,4 +221,25 @@ public class PolygonTests
         assertTrue(MathUtil.areEqual(obtained3, expected3));
         assertTrue(MathUtil.areEqual(obtained4, expected4));
     }
+
+    @Test
+    public void ShouldBeImmutable()
+    {
+        // Arrange
+        Point p0 = new Point(1, 1);
+        Point p1 = new Point(1, 2);
+        Point p2 = new Point(2, 2);
+        Point p3 = new Point(2, 1);
+        Polygon poly = new Polygon(new Point[] { p0, p1, p2, p3 });
+        LineSegment segment = new LineSegment(new Point(0, 4), new Point(3, 0));
+
+        // Act
+        p0 = new Point(0, 0);
+        p1 = new Point(0, 0);
+        p2 = new Point(0, 0);
+        p3 = new Point(0, 0);
+
+        // Assert
+        assertTrue(poly.intercepts(segment));
+    }
 }

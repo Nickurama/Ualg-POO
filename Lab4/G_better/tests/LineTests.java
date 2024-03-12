@@ -255,4 +255,21 @@ public class LineTests
         // Arrange
         assertFalse(isEqual);
     }
+
+    @Test
+    public void ShouldBeImmutable()
+    {
+        // Arrange
+        Point p0 = new Point(0, 0);
+        Point p1 = new Point(1, 1);
+        Line l0 = new Line(p0, p1);
+        Line l1 = new Line(new Point(0, 0), new Point(1, 1));
+
+        // Act
+        p0 = new Point(1, 0);
+        p1 = new Point(3, 1);
+
+        // Assert
+        assertTrue(l0.equals(l1));
+    }
 }
