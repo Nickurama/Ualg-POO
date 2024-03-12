@@ -58,10 +58,10 @@ public class Path
      * @param polygons the polygons to check for intersection
      * @return if any of the polygons intersect the array
      */
-    public boolean intersects(Polygon[] polygons)
+    public boolean intercepts(Polygon[] polygons)
     {
         for(Polygon poly : polygons)
-            if (this.intersects(poly))
+            if (this.intercepts(poly))
                 return true;
         return false;
     }
@@ -71,7 +71,7 @@ public class Path
      * @param poly the polygon to check intersection with
      * @return if the polygon intersects the path
      */
-    public boolean intersects(Polygon poly)
+    public boolean intercepts(Polygon poly)
     {
         for (LineSegment segment : segments)
             if (poly.intercepts(segment))
