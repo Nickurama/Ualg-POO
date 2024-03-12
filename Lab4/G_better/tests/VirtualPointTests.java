@@ -118,21 +118,12 @@ public class VirtualPointTests
         assertTrue(MathUtil.areEqual(dist6, expected6));
     }
     
-    static private ByteArrayOutputStream setIOstreams(String input)
-    {
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(output);
-        System.setOut(ps);
-        return output;
-    }
-
     @Test
     public void ShouldGetInputFromInput()
     {
         // Arrange
         String input = "3 -1\n-12.5 -4\n";
-        setIOstreams(input);
+        TestUtil.setIOstreams(input);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         VirtualPoint p0 = null;
         VirtualPoint p1 = null;

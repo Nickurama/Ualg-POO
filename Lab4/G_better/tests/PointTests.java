@@ -52,21 +52,13 @@ public class PointTests
         for (int i = 1; i < vpArray.length; i++)
             assertTrue(vpArray[i].equals(vpArrayCopy[i]));
     }
-    static private ByteArrayOutputStream setIOstreams(String input)
-    {
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(output);
-        System.setOut(ps);
-        return output;
-    }
 
     @Test
     public void ShouldGetInputFromInput()
     {
         // Arrange
         String input = "3 1\n12.5 4\n";
-        setIOstreams(input);
+        TestUtil.setIOstreams(input);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Point p0 = null;
         Point p1 = null;
