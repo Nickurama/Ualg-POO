@@ -1,5 +1,7 @@
 package src;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -49,13 +51,14 @@ public class VirtualPoint
     }
 
     /**
-     * Initializes a point from the input of a scanner
+     * Initializes a virtual point from the input of a scanner
      * @param reader the scanner to read the point from
      * @return the initialized point
      */
-    public static VirtualPoint getPointFromInput(Scanner reader)
+    public static VirtualPoint getPointFromInput(BufferedReader reader) throws IOException
     {
-        return new VirtualPoint(reader.nextDouble(), reader.nextDouble());
+        String[] tokens = reader.readLine().split(" ");
+        return new VirtualPoint(Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1]));
     }
 
     /**

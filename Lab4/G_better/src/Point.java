@@ -30,6 +30,17 @@ public class Point extends VirtualPoint
     }
 
     /**
+     * Initializes a point from a virtualPoint
+     * @param p the virtual point to instanciate the point from
+     * @pre p.x >= 0
+     * @pre p.y >= 0
+     */
+    public Point(VirtualPoint p)
+    {
+        this(p.getX(), p.getY());
+    }
+
+    /**
      * Performs a deep copy of the point
      * @return a copy of the point
      */
@@ -58,7 +69,7 @@ public class Point extends VirtualPoint
      */
     public static Point getPointFromInput(BufferedReader reader) throws IOException
     {
-        String[] tokens = reader.readLine().split(" ");
-        return new Point(Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1]));
+        VirtualPoint p = VirtualPoint.getPointFromInput(reader);
+        return new Point(p);
     }
 }
