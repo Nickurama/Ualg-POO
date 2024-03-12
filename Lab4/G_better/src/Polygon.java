@@ -73,10 +73,10 @@ public class Polygon
     {
         for (int i = 2; i < segments.length - 1; i++)
             for (int j = 0; j < (i - 1); j++)
-                if (segments[i].intersects(segments[j]))
+                if (segments[i].intercepts(segments[j]))
                     return true;
         for (int j = 1; j < segments.length - 2; j++)
-            if (segments[segments.length - 1].intersects(segments[j]))
+            if (segments[segments.length - 1].intercepts(segments[j]))
                 return true;
         
         return false;
@@ -90,7 +90,7 @@ public class Polygon
     public boolean intercepts(LineSegment that)
     {
         for (LineSegment side : sides)
-            if (side.intersects(that))
+            if (side.intercepts(that))
                 return true;
         return false;
     }
