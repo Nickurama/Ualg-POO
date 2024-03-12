@@ -7,18 +7,18 @@ import org.junit.jupiter.api.Test;
 
 public class MathUtilTests
 {
+    private final double d0 = 0;
+    private final double d1 = (9f/10f) * MathUtil.CALC_ERROR_MARGIN;
+    private final double d2 = -(9f/10f) * MathUtil.CALC_ERROR_MARGIN;
+    private final double d3 = MathUtil.CALC_ERROR_MARGIN;
+    private final double d4 = -MathUtil.CALC_ERROR_MARGIN;
+    private final double d5 = (5f/10f) * MathUtil.CALC_ERROR_MARGIN;
+    private final double d6 = MathUtil.CALC_ERROR_MARGIN;
+
     @Test
     public void areEqualShouldReturnTrueWithinErrorLimit()
     {
         // Arrange
-        double d0 = 0.0000000000;
-        double d1 = 0.0000000009;
-        double d2 = -0.0000000009;
-        double d3 = 0.0000000010;
-        double d4 = -0.0000000010;
-        double d5 = 0.000000000501;
-        double d6 = 0.0000000001001;
-
         // Act
         boolean shouldBeEqualsIfGreaterButWithinErrorLimit = MathUtil.areEqual(d0, d1);
         boolean shouldBeEqualsIfLesserButWithinErrorLimit = MathUtil.areEqual(d0, d2);
@@ -31,20 +31,14 @@ public class MathUtilTests
         assertTrue(shouldBeEqualsIfLesserButWithinErrorLimit);
         assertFalse(shouldNotBeEqualsIfGreaterButOutsideErrorLimit);
         assertFalse(shouldNotBeEqualsIfLesserButOutsideErrorLimit);
+        System.out.println(d5);
         assertTrue(shouldBeEqualsIfWithinErrorLimit);
     }
 
     @Test
     public void ShouldBeGreaterOrEqualIfGreaterOrWithinErrorLimit()
     {
-        double d0 = 0.0000000000;
-        double d1 = 0.0000000009;
-        double d2 = -0.0000000009;
-        double d3 = 0.0000000010;
-        double d4 = -0.0000000010;
-        double d5 = 0.000000000501;
-        double d6 = 0.0000000001001;
-
+        // Arrange
         // Act
         boolean shouldBeTrueIfGreater = MathUtil.isGreaterOrEqualThan(d1, d0);
         boolean shouldBeTrueIfLesserButWithinErrorLimit = MathUtil.isGreaterOrEqualThan(d2, d0);
@@ -63,14 +57,7 @@ public class MathUtilTests
     @Test
     public void ShouldBeLessOrEqualIfLessOrWithinErrorLimit()
     {
-        double d0 = 0.0000000000;
-        double d1 = 0.0000000009;
-        double d2 = -0.0000000009;
-        double d3 = 0.0000000010;
-        double d4 = -0.0000000010;
-        double d5 = 0.000000000501;
-        double d6 = 0.0000000001001;
-
+        // Arrange
         // Act
         boolean shouldBeTrueIfGreaterButWithinErrorLimit = MathUtil.isLessOrEqualThan(d1, d0);
         boolean shouldBeTrueIfLesser = MathUtil.isLessOrEqualThan(d2, d0);
