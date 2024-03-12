@@ -52,6 +52,19 @@ public class Path
             result += points[i - 1].dist(points[i]);
         return result;
     }
+    
+    /**
+     * checks if a polygon intersects the path
+     * @param poly the polygon to check intersection with
+     * @return if the polygon intersects the path
+     */
+    public boolean intercepts(Polygon poly)
+    {
+        for (LineSegment segment : segments)
+            if (poly.intercepts(segment))
+                return true;
+        return false;
+    }
 
     /**
      * checks if any of the polygons intersects the array
@@ -66,16 +79,4 @@ public class Path
         return false;
     }
 
-    /**
-     * checks if a polygon intersects the path
-     * @param poly the polygon to check intersection with
-     * @return if the polygon intersects the path
-     */
-    public boolean intercepts(Polygon poly)
-    {
-        for (LineSegment segment : segments)
-            if (poly.intercepts(segment))
-                return true;
-        return false;
-    }
 }
