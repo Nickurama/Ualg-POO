@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class VirtualPointTests
 {
     @Test
-    public void EqualsShouldBeTrueWhenCoordinatesAreSame()
+    public void ShouldBeEqualsWhenCoordinatesAreSame()
     {
         // Arrange
         VirtualPoint p0 = new VirtualPoint(5, -12);
@@ -34,7 +34,7 @@ public class VirtualPointTests
     }
 
     @Test
-    public void CopyShouldMakeDeepCopy()
+    public void ShouldMakeDeepCopyWhenCopying()
     {
         // Arrange
         VirtualPoint p0 = new VirtualPoint(-3, 5);
@@ -57,7 +57,7 @@ public class VirtualPointTests
     }
 
     @Test
-    public void CopyArrayShouldMakeDeepCopy()
+    public void ShouldMakeDeepCopyWhenCopyingArray()
     {
         // Arrange
         VirtualPoint[] vpArray = {
@@ -79,7 +79,7 @@ public class VirtualPointTests
     }
 
     @Test
-    public void DistanceShouldReturnCorrectDistance()
+    public void ShouldReturnCorrectDistance()
     {
         // Arrange
         VirtualPoint p0 = new VirtualPoint(0, 1);
@@ -128,7 +128,7 @@ public class VirtualPointTests
     }
 
     @Test
-    public void GetPointFromInputShouldGetInputFromSTDIN()
+    public void ShouldGetInputFromInput()
     {
         // Arrange
         String input = "3 -1\n-12.5 -4\n";

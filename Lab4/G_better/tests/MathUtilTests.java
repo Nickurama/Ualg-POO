@@ -16,7 +16,7 @@ public class MathUtilTests
     private final double d6 = MathUtil.CALC_ERROR_MARGIN;
 
     @Test
-    public void areEqualShouldReturnTrueWithinErrorLimit()
+    public void ShouldBeEqualWithinErrorLimit()
     {
         // Arrange
         // Act

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class PointTests
 {
     @Test
-    public void CopyShouldMakeDeepCopy()
+    public void ShouldMakeDeepCopyWhenCopying()
     {
         // Arrange
         Point p0 = new Point(3, 5);
@@ -32,7 +32,7 @@ public class PointTests
     }
 
     @Test
-    public void CopyArrayShouldMakeDeepCopy()
+    public void ShouldMakeDeepCopyWhenCopyingArray()
     {
         // Arrange
         Point[] vpArray = {
@@ -62,7 +62,7 @@ public class PointTests
     }
 
     @Test
-    public void GetPointFromInputShouldGetInputFromSTDIN()
+    public void ShouldGetInputFromInput()
     {
         // Arrange
         String input = "3 1\n12.5 4\n";

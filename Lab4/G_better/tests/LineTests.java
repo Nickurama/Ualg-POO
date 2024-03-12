@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class LineTests
 {
     @Test
-    public void isCollinearShouldBeTrueWithHorizontalCollinearity()
+    public void ShouldBeCollinearWithHorizontalCollinearity()
     {
         // Arrange
         Line horizontal = new Line(new Point(1, 1), new Point(2, 1));
@@ -22,7 +22,7 @@ public class LineTests
     }
 
     @Test
-    public void isCollinearShouldBeTrueWithVerticalCollinearity()
+    public void ShouldBeCollinearWithVerticalCollinearity()
     {
         // Arrange
         Line vertical = new Line(new Point(1, 1), new Point(1, 2));
@@ -36,7 +36,7 @@ public class LineTests
     }
 
     @Test
-    public void isCollinearShouldBeTrueWithDiagonalCollinearity()
+    public void ShouldBeCollinearWithDiagonalCollinearity()
     {
         // Arrange
         Line diagonal = new Line(new Point(1, 1), new Point(2, 2));
@@ -49,7 +49,7 @@ public class LineTests
         assertTrue(diagonalIsCollinear);
     }
 
-    @Test void isCollinearShouldBeFalseWhenPointIsntCollinear()
+    @Test void ShouldNotBeCollinearWhenPointIsntCollinear()
     {
        // Arrange
         Line vertical = new Line(new Point(1, 1), new Point(1, 2));
@@ -67,7 +67,7 @@ public class LineTests
     }
 
     @Test
-    public void calcIntersectShouldWorkForHorizontalIntersection()
+    public void ShouldCalculateIntersectionForHorizontalIntersections()
     {
         // Assert
         Line l0 = new Line(new Point(1, 1), new Point(2, 1));
@@ -82,7 +82,7 @@ public class LineTests
     }
 
     @Test
-    public void calcIntersectShouldWorkForVerticalIntersection()
+    public void ShouldCalculateIntersectionsForVerticalIntersections()
     {
         // Assert
         Line l0 = new Line(new Point(1, 1), new Point(1, 2));
@@ -97,7 +97,7 @@ public class LineTests
     }
 
     @Test
-    public void calcIntersectShouldWorkForNonIntegerIntersections()
+    public void ShouldCalculateIntersectionsForNonIntegerIntersections()
     {
         // Arrange
         Line l0 = new Line(new Point(0, 5), new Point(1, 0));
@@ -112,7 +112,7 @@ public class LineTests
     }
 
     @Test
-    public void calcIntersectShouldWorkWhenIntersectionIsNegative()
+    public void ShouldCalculateIntersectionWhenIntersectionIsNegative()
     {
         // Arrange
         Line l0 = new Line(new Point(0, 6), new Point(1, 8));
@@ -127,7 +127,7 @@ public class LineTests
     }
 
     @Test
-    public void isParalelShouldBeTrueWhenHorizontalParalelism()
+    public void ShouldBeParalelWhenHorizontalParalelism()
     {
         // Arrange
         Line l0 = new Line(new Point(1, 1), new Point(2, 1));
@@ -141,7 +141,7 @@ public class LineTests
     }
 
     @Test
-    public void isParalelShouldBeTrueWhenVerticalParalelism()
+    public void ShouldBeParalelWhenVerticalParalelism()
     {
         // Arrange
         Line l0 = new Line(new Point(1, 1), new Point(1, 2));
@@ -155,7 +155,7 @@ public class LineTests
     }
 
     @Test
-    public void isParalelShouldBeTrueWhenDiagonalParalelism()
+    public void ShouldBeParalelWhenDiagonalParalelism()
     {
         // Arrange
         Line l0 = new Line(new Point(4, 0), new Point(14, 2));
@@ -169,7 +169,7 @@ public class LineTests
     }
 
     @Test
-    public void isParalelShouldBeFalseWhenNotParalel()
+    public void ShouldNotBeParalel()
     {
         // Arrange
         Line l0 = new Line(new Point(4, 0), new Point(14, 2));
@@ -183,7 +183,7 @@ public class LineTests
     }
 
     @Test
-    public void equalsShouldBeTrueWithExactSameLine()
+    public void ShouldBeEqualsWithExactSameLine()
     {
         // Arrange
         Line l = new Line(new Point(0, 0), new Point(1, 1));
@@ -196,7 +196,7 @@ public class LineTests
     }
 
     @Test
-    public void equalsShouldBeTrueWithEqualLines()
+    public void ShouldBeEqualsWithEqualLines()
     {
         // Arrange
         Line l0 = new Line(new Point(0, 0), new Point(1, 1));
@@ -210,7 +210,7 @@ public class LineTests
     }
 
     @Test
-    public void equalsShouldBeTrueWithEquivalentLines()
+    public void ShouldBeEqualsWithEquivalentLines()
     {
         // Arrange
         Line l0 = new Line(new Point(2, 2), new Point(3, 3));
@@ -229,7 +229,7 @@ public class LineTests
     }
 
     @Test
-    public void equalsShouldBeFalseWhenLinesAreParalel()
+    public void ShouldNotBeEqualsWhenLinesAreParalel()
     {
         // Arrange
         Line l0 = new Line(new Point(0, 0), new Point(1, 0));
@@ -243,7 +243,7 @@ public class LineTests
     }
 
     @Test
-    public void equalsShouldBeFalseWhenLinesAreNotEqual()
+    public void ShouldNotBeEqualsWhenLinesAreNotEqual()
     {
         // Arrange
         Line l0 = new Line(new Point(0, 0), new Point(1, 1));
