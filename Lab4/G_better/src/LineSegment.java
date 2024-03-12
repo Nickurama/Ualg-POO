@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Represents an immutable segment within a two dimensional line
  *

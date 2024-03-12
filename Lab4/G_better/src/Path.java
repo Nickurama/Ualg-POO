@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Represents a path on two dimensions
  * 

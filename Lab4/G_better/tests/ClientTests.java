@@ -1,9 +1,9 @@
+package tests;
+
+import src.*;
+import java.io.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 public class ClientTests
 {
