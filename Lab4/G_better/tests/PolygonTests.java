@@ -23,10 +23,10 @@ public class PolygonTests
                 new Point(1, 2),
         });
 
-        //Act
+        // Act
         boolean intercepts = poly1.intercepts(poly2);
 
-        //Assert
+        // Assert
         assertFalse(intercepts);
     }
 
@@ -46,10 +46,10 @@ public class PolygonTests
                 new Point(3, 3),
         });
 
-        //Act
+        // Act
         boolean intercepts = poly1.intercepts(poly2);
 
-        //Assert
+        // Assert
         assertFalse(intercepts);
     }
 
@@ -68,10 +68,10 @@ public class PolygonTests
                 new Point(3, 3),
         });
 
-        //Act
+        // Act
         boolean intercepts = poly1.intercepts(poly2);
 
-        //Assert
+        // Assert
         assertFalse(intercepts);
     }
 
@@ -92,17 +92,17 @@ public class PolygonTests
                 new Point(3, 5),
         });
 
-        //Act
+        // Act
         boolean intercepts = poly1.intercepts(poly2);
 
-        //Assert
+        // Assert
         assertTrue(intercepts);
     }
 
     @Test
     public void ShouldInterceptWhenSegmentIntercepts()
     {
-        //Arrange
+        // Arrange
         Polygon poly = new Polygon(new Point[] {
             new Point(1, 1),
             new Point(3, 1),
@@ -110,17 +110,17 @@ public class PolygonTests
         });
         LineSegment segment = new LineSegment(new Point(2, 2), new Point(3, 3));
 
-        //Act
+        // Act
         boolean intercepts = poly.intercepts(segment);
 
-        //Assert
+        // Assert
         assertTrue(intercepts);
     }
 
     @Test
     public void ShouldNotInterceptWhenSegmentOverlaps()
     {
-        //Arrange
+        // Arrange
         Polygon poly = new Polygon(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
@@ -129,17 +129,17 @@ public class PolygonTests
         });
         LineSegment segment = new LineSegment(new Point(1, 3), new Point(5, 3));
 
-        //Act
+        // Act
         boolean intercepts = poly.intercepts(segment);
 
-        //Assert
+        // Assert
         assertFalse(intercepts);
     }
 
     @Test
     public void ShouldNotInterceptWhenPointsOnSegmentOverlap()
     {
-        //Arrange
+        // Arrange
         Polygon poly = new Polygon(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
@@ -148,17 +148,35 @@ public class PolygonTests
         });
         LineSegment segment = new LineSegment(new Point(5, 4), new Point(4, 3));
 
-        //Act
+        // Act
         boolean intercepts = poly.intercepts(segment);
 
-        //Assert
+        // Assert
         assertFalse(intercepts);
+    }
+
+    @Test
+    public void ShouldInterceptOnLastSide()
+    {
+        // Arrange
+        Polygon poly = new Polygon(new Point[] {
+            new Point(2, 4),
+            new Point(2, 1),
+            new Point(5, 1),
+        });
+        LineSegment segment = new LineSegment(new Point(3, 0), new Point(3, 2));
+
+        // Act
+        boolean intercepts = poly.intercepts(segment);
+
+        // Assert
+        assertTrue(intercepts);
     }
 
     @Test
     public void ShouldCalculatePerimeter()
     {
-        //Arrange
+        // Arrange
         Polygon poly0 = new Polygon(new Point[] {
             new Point(0, 0),
             new Point(0, 1),
@@ -207,14 +225,14 @@ public class PolygonTests
         });
         double expected4 = 6.65028153987;
 
-        //Act
+        // Act
         double obtained0 = poly0.perimeter();
         double obtained1 = poly1.perimeter();
         double obtained2 = poly2.perimeter();
         double obtained3 = poly3.perimeter();
         double obtained4 = poly4.perimeter();
 
-        //Assert
+        // Assert
         assertTrue(MathUtil.areEqual(obtained0, expected0));
         assertTrue(MathUtil.areEqual(obtained1, expected1));
         assertTrue(MathUtil.areEqual(obtained2, expected2));
