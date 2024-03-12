@@ -8,7 +8,7 @@ package src;
  */
 public class MathUtil
 {
-    private static final double CALC_ERROR_MARGIN = 0.000000001;
+    public static final double CALC_ERROR_MARGIN = 0.000000001;
 
     /**
      * Checks if two doubles are equal within a constant margin of error
