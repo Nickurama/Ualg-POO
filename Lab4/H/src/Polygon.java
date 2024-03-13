@@ -12,8 +12,8 @@ package src;
 public class Polygon
 {
     private static final String ERROR_MESSAGE = "Poligono:vi";
-    private LineSegment[] sides;
-    private Point[] points;
+    protected LineSegment[] sides;
+    protected Point[] points;
 
     /**
      * Initializes a polygon

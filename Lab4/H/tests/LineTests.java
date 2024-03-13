@@ -272,4 +272,24 @@ public class LineTests
         // Assert
         assertTrue(l0.equals(l1));
     }
+
+    @Test
+    public void ShouldCalculateIfIsPerpendicular()
+    {
+        // Arrange
+        Line l0 = new Line(new Point(1, 1), new Point(1, 2));
+        Line l1 = new Line(new Point(2, 2), new Point(3, 2));
+        Line l2 = new Line(new Point(0, 1), new Point(1, 3));
+        Line l3 = new Line(new Point(0, 1), new Point(2, 0));
+
+        // Act
+        boolean isPerpendicular0 = l0.isPerpendicular(l1);
+        boolean isPerpendicular1 = l2.isPerpendicular(l3);
+        boolean isPerpendicular2 = l0.isPerpendicular(l3);
+
+        // Arrange
+        assertTrue(isPerpendicular0);
+        assertTrue(isPerpendicular1);
+        assertFalse(isPerpendicular2);
+    }
 }
