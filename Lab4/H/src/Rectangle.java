@@ -1,9 +1,24 @@
 package src;
 
+/**
+ * Represents a rectangle
+ * A rectangle is a polygon with 4 sides and every side has
+ * an inner angle of 90 degrees
+ * 
+ * @author Diogo Fonseca a79858
+ * @version 13/03/2024
+ */
 public class Rectangle extends Polygon
 {
     private static final String ERROR_MESSAGE = "Poligono:vi";
 
+    /**
+     * Initializes a rectangle
+     * @param points the points that make the rectangle
+     * 
+     * @pre points.length = 4
+     * @pre all angles are right angles
+     */
     public Rectangle(Point[] points)
     {
         super(points);
@@ -15,6 +30,10 @@ public class Rectangle extends Polygon
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    /**
+     * Checks if all inner angles of the rectangle are right angles
+     * @return if all the inner angles of the rectangle are right angles
+     */
     private boolean allAnglesAreRightAngles()
     {
         if (this.sides[0].line().isPerpendicular(this.sides[1].line()) &&
