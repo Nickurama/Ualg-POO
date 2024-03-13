@@ -86,6 +86,11 @@ public class Line
         return MathUtil.areEqual(this.coefficientX * that.coefficientY - that.coefficientX * this.coefficientY, 0);
     }
 
+    /**
+     * Checks if the lines are perpendicular
+     * @param that the other line to check if is perpendicular with the current one
+     * @return if the lines are perpendicular
+     */
     public boolean isPerpendicular(Line that)
     {
         return MathUtil.areEqual(this.coefficientX * that.coefficientX + this.coefficientY * that.coefficientY, 0);
