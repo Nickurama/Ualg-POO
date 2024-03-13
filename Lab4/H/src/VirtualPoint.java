@@ -95,10 +95,10 @@ public class VirtualPoint
     /**
      * Acessor method to return the x coordinate
      */
-    public double getX() { return this.x; }
+    public double X() { return this.x; }
 
     /**
      * Accessor method to return the y coordinate
      */
-    public double getY() { return this.y; }
+    public double Y() { return this.y; }
 }
