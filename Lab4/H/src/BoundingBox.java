@@ -24,10 +24,10 @@ public class BoundingBox
         if (points.length == 0)
             Error.terminateProgram("BoundingBox::BoundingBox error: points should be greater than 0");
         
-        this.minX = points[0].getX();
-        this.maxX = points[0].getX();
-        this.minY = points[0].getY();
-        this.maxY = points[0].getY();
+        this.minX = points[0].X();
+        this.maxX = points[0].X();
+        this.minY = points[0].Y();
+        this.maxY = points[0].Y();
 
         for (Point p : points)
             addPoint(p);
@@ -39,10 +39,10 @@ public class BoundingBox
      */
     private void addPoint(Point p)
     {
-        this.minX = Math.min(this.minX, p.getX());
-        this.maxX = Math.max(this.maxX, p.getX());
-        this.minY = Math.min(this.minY, p.getY());
-        this.maxY = Math.max(this.maxY, p.getY());
+        this.minX = Math.min(this.minX, p.X());
+        this.maxX = Math.max(this.maxX, p.X());
+        this.minY = Math.min(this.minY, p.Y());
+        this.maxY = Math.max(this.maxY, p.Y());
     }
 
     /**

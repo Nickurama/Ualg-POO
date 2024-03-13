@@ -35,7 +35,7 @@ public class Point extends VirtualPoint
      */
     public Point(VirtualPoint p)
     {
-        this(p.getX(), p.getY());
+        this(p.X(), p.Y());
     }
 
     /**

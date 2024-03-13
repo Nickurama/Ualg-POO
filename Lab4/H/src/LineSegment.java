@@ -83,16 +83,16 @@ public class LineSegment
      */
     private boolean containsPointOnSegment(VirtualPoint pointOnSegment)
     {
-        double minX = Math.min(this.point1.getX(), this.point2.getX());
-        double maxX = Math.max(this.point1.getX(), this.point2.getX());
-        double minY = Math.min(this.point1.getY(), this.point2.getY());
-        double maxY = Math.max(this.point1.getY(), this.point2.getY());
-        boolean containsX = (pointOnSegment.getX() > minX && pointOnSegment.getX() < maxX) ||
-                            (MathUtil.areEqual(pointOnSegment.getX(), minX) ||
-                            MathUtil.areEqual(pointOnSegment.getX(), maxX));
-        boolean containsY = (pointOnSegment.getY() > minY && pointOnSegment.getY() < maxY) ||
-                            (MathUtil.areEqual(pointOnSegment.getY(), minY) ||
-                            MathUtil.areEqual(pointOnSegment.getY(), maxY));
+        double minX = Math.min(this.point1.X(), this.point2.X());
+        double maxX = Math.max(this.point1.X(), this.point2.X());
+        double minY = Math.min(this.point1.Y(), this.point2.Y());
+        double maxY = Math.max(this.point1.Y(), this.point2.Y());
+        boolean containsX = (pointOnSegment.X() > minX && pointOnSegment.X() < maxX) ||
+                            (MathUtil.areEqual(pointOnSegment.X(), minX) ||
+                            MathUtil.areEqual(pointOnSegment.X(), maxX));
+        boolean containsY = (pointOnSegment.Y() > minY && pointOnSegment.Y() < maxY) ||
+                            (MathUtil.areEqual(pointOnSegment.Y(), minY) ||
+                            MathUtil.areEqual(pointOnSegment.Y(), maxY));
         return containsX && containsY;
     }
 

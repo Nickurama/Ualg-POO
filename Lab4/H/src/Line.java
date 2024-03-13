@@ -32,9 +32,9 @@ public class Line
         if (a.equals(b))
             Error.terminateProgram(ERROR_MESSAGE);
         
-        this.coefficientX = a.getY() - b.getY();
-        this.coefficientY = b.getX() - a.getX();
-        this.constant = a.getX() * b.getY() - b.getX() * a.getY();
+        this.coefficientX = a.Y() - b.Y();
+        this.coefficientY = b.X() - a.X();
+        this.constant = a.X() * b.Y() - b.X() * a.Y();
         this.containedPoint = a.copy();
     }
 
@@ -55,7 +55,7 @@ public class Line
      */
     private double calcExpr(Point point)
     {
-        return point.getX() * this.coefficientX + point.getY() * this.coefficientY + constant;
+        return point.X() * this.coefficientX + point.Y() * this.coefficientY + constant;
     }
 
     /**
