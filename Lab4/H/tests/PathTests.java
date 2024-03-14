@@ -130,13 +130,11 @@ public class PathTests
             new Point(1, 2),
             new Point(1, 4),
             new Point(3, 4),
-            new Point(1, 2),
         });
         Polygon poly1 = new Polygon(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
             new Point(4, 3),
-            new Point(2, 1),
         });
         Polygon[] polys = new Polygon[] { poly0, poly1 };
         Path path0 = new Path(new Point[] {
@@ -150,7 +148,7 @@ public class PathTests
 
         // Act
         boolean intercepts0 = path0.intercepts(polys);
-        boolean intercepts1 = path0.intercepts(polys);
+        boolean intercepts1 = path1.intercepts(polys);
 
         // Assert
         assertTrue(intercepts0);
@@ -165,13 +163,11 @@ public class PathTests
             new Point(1, 2),
             new Point(1, 4),
             new Point(3, 4),
-            new Point(1, 2),
         });
         Polygon poly1 = new Polygon(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
             new Point(4, 3),
-            new Point(2, 1),
         });
         Polygon[] polys = new Polygon[] { poly0, poly1 };
         Path path = new Path(new Point[] {
