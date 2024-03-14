@@ -35,7 +35,7 @@ public class Line
         this.coefficientX = a.Y() - b.Y();
         this.coefficientY = b.X() - a.X();
         this.constant = a.X() * b.Y() - b.X() * a.Y();
-        this.containedPoint = a.copy();
+        this.containedPoint = new Point(a);
     }
 
     /**
@@ -101,8 +101,13 @@ public class Line
      * @param that the other line to compare with the current one
      * @return if the two lines are equivalent
      */
-    public boolean equals(Line that)
+    @Override
+    public boolean equals(Object other)
     {
+        if (other == this) return true;
+        if (other == null) return false;
+        if (getClass() != other.getClass()) return false;
+        Line that = (Line) other;
         return this.isParalel(that) && this.isCollinear(that.containedPoint);
     }
 }

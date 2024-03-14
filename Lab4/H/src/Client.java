@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
+import java.util.Scanner;
 
 /**
  * The class to manage the input and output
  * 
  * @author Diogo Fonseca a79858
- * @version 21/02/2024
+ * @version 14/03/2024
  */
 public class Client
 {
@@ -20,18 +21,17 @@ public class Client
      */
     public static void main(String[] args) throws Exception
     {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String input;
-
+        Scanner sc = new Scanner(System.in);
         Constructor<?> constructor;
         Class<?> cl;
         Polygon poly;
+        String input;
         String[] tokens;
-        while ((input = reader.readLine()) != null)
+        while (sc.hasNextLine())
         {
+            input = sc.nextLine();
             if (input.isEmpty())
                 break;
-
             tokens = input.split(" ", 2);
 
             try
@@ -49,15 +49,7 @@ public class Client
                 e.printStackTrace();
             }
         }
-
-        try
-        {
-            reader.close();
-        }
-        catch (IOException e)
-        {
-            //Log?
-        }
+        sc.close();
     }
 
     /**
@@ -70,48 +62,5 @@ public class Client
         if (s == null || s.isEmpty())
             return s;
         return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
-    }
-
-    /**
-     * Gets an array of polygons read from the BufferedReader
-     * @param reader the BufferedReader object where the input is gonna be read from
-     * @return the array of polygons read
-     */
-    private static Polygon[] getPolygonsFromInput(BufferedReader reader)
-    {
-        try
-        {
-            int numPolygons = Integer.parseInt(reader.readLine());
-            Polygon[] polygons = new Polygon[numPolygons];
-            for (int i = 0; i < numPolygons; i++)
-                polygons[i] = new Polygon(getPointsFromInput(reader));
-            return polygons;
-        }
-        catch (IOException e)
-        {
-            Error.terminateProgram("Client::getPolygonsFromInput error while reading points: " + e.getMessage());
-            return null; //needed because the compiler thinks the program can continue as it doesn't throw an exception
-        }
-    }
-
-    /**
-     * Gets an array of points read from the BufferedReader
-     * @param reader the BufferedReader object where the input is gonna be read from
-     * @return the array of points read
-     */
-    private static Point[] getPointsFromInput(BufferedReader reader)
-    {
-        try
-        {
-            Point[] points = new Point[Integer.parseInt(reader.readLine())];
-            for (int i = 0; i < points.length; i++)
-                points[i] = Point.getPointFromInput(reader);
-            return points;
-        }
-        catch (IOException e)
-        {
-            Error.terminateProgram("Client::getPointsFromInput error while reading points: " + e.getMessage());
-            return null; //needed because the compiler thinks the program can continue as it doesn't throw an exception
-        }
     }
 }

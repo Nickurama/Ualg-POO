@@ -280,4 +280,152 @@ public class PolygonTests
         // Arrange
         assertTrue(str.equals(expected));
     }
+
+    @Test
+    public void ShouldTakeConstructorWithString()
+    {
+        // Arrange
+        Polygon poly = new Polygon("5 1 1 1 3 2 5 7 2 5 1");
+        String expected = "Polígono de 5 vértices: [(1,1), (1,3), (2,5), (7,2), (5,1)]";
+
+        // Act
+        String polyString = poly.toString();
+
+        // Assert
+        assertTrue(polyString.equals(expected));
+    }
+
+    @Test
+    public void ShouldEquals()
+    {
+        // Arrange
+        Polygon p0 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 12),
+            new Point(16, 16),
+            new Point(16, 0),
+        });
+        Polygon p1 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 12),
+            new Point(16, 16),
+            new Point(16, 0),
+        });
+        System.out.println(-1 % 5);
+
+        // Act
+        boolean equals = p0.equals(p1);
+
+        // Arrange
+        assertTrue(equals);
+    }
+
+    @Test
+    public void ShouldEqualsWhenSamePolygonButInvertedOrderOfVertices()
+    {
+        // Arrange
+        Polygon p0 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 12),
+            new Point(16, 16),
+            new Point(16, 0),
+        });
+        Polygon p1 = new Polygon(new Point[] {
+            new Point(16, 0),
+            new Point(16, 16),
+            new Point(10, 12),
+            new Point(7, 8),
+            new Point(4, 5),
+        });
+        System.out.println(-1 % 5);
+
+        // Act
+        boolean equals = p0.equals(p1);
+
+        // Arrange
+        assertTrue(equals);
+
+    }
+
+    @Test
+    public void ShouldEqualsWhenSamePolygonButOffset()
+    {
+        // Arrange
+        Polygon p0 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 12),
+            new Point(16, 16),
+            new Point(16, 0),
+        });
+        Polygon p1 = new Polygon(new Point[] {
+            new Point(7, 8),
+            new Point(4, 5),
+            new Point(16, 0),
+            new Point(16, 16),
+            new Point(10, 12),
+        });
+        System.out.println(-1 % 5);
+
+        // Act
+        boolean equals = p0.equals(p1);
+
+        // Arrange
+        assertTrue(equals);
+
+    }
+
+    @Test
+    public void ShouldNotEqualsWhenDifferentValues()
+    {
+        // Arrange
+        Polygon p0 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 16),
+            new Point(16, 16),
+            new Point(16, 0),
+        });
+        Polygon p1 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 12),
+            new Point(16, 12),
+            new Point(16, 0),
+        });
+
+        // Act
+        boolean equals = p0.equals(p1);
+
+        // Arrange
+        assertFalse(equals);
+    }
+
+    @Test
+    public void ShouldNotEqualsWhenDifferentNumberOfVertices()
+    {
+        // Arrange
+        Polygon p0 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 12),
+            new Point(16, 16),
+            new Point(16, 0),
+        });
+        Polygon p1 = new Polygon(new Point[] {
+            new Point(4, 5),
+            new Point(7, 8),
+            new Point(10, 12),
+            new Point(16, 16),
+        });
+
+        // Act
+        boolean equals = p0.equals(p1);
+
+        // Arrange
+        assertFalse(equals);
+    }
 }

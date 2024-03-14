@@ -36,6 +36,11 @@ public class Polygon
         this.sides = segments;
     }
 
+    // public Polygon(String str)
+    // {
+    //     this(VirtualPoint.stringToArray(str));
+    // }
+
     /**
      * generates the segments from the given points, representing the sides of the polygon
      * @param points the points that contain the vertices of the polygon
@@ -124,5 +129,44 @@ public class Polygon
     public String toString()
     {
         return "Polígono de " + this.vertices.length + " vértices: " + VirtualPoint.arrayToString(this.vertices);
+    }
+
+    @Override
+    public final boolean equals(Object other)
+    {
+        if (other == this) return true;
+        if (other == null) return false;
+        if (!Polygon.class.isInstance(other)) return false; // if not Polygon or child of Polygon
+        Polygon that = (Polygon) other;
+        return this.isPolygonEqual(that);
+    }
+    
+    private boolean isPolygonEqual(Polygon that)
+    {
+        // linear Algorithm that checks if two polygons are equal
+        if (this.vertices.length != that.vertices.length) return false;
+        int startInd = that.findPoint(this.vertices[0]);
+        if (startInd < 0) return false;
+
+        int direction = 1;
+        Point next = that.vertices[Math.floorMod((startInd + 1), that.vertices.length)];
+        Point previous = that.vertices[Math.floorMod((startInd - 1), that.vertices.length)];
+
+        if (this.vertices[1].equals(next)) direction = 1;
+        else if (this.vertices[1].equals(previous)) direction = -1;
+        else return false;
+
+        for (int i = 2; i < this.vertices.length; i++)
+            if (!this.vertices[i].equals(that.vertices[Math.floorMod((startInd + (i * direction)), that.vertices.length)]))
+                return false;
+        return true;
+    }
+
+    private int findPoint(Point p)
+    {
+        for (int i = 0; i < this.sides.length; i++)
+            if (p.equals(this.vertices[i]))
+                return i;
+        return -1;
     }
 }

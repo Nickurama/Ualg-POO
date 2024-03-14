@@ -16,7 +16,7 @@ public class VirtualPointTests
         VirtualPoint p1 = new VirtualPoint(5, 4);
         VirtualPoint p2 = new VirtualPoint(2, -12);
         VirtualPoint p3 = new VirtualPoint(5, -12);
-        VirtualPoint p4 = p0.copy();
+        VirtualPoint p4 = new VirtualPoint(p0);
 
         // Act
         boolean isEqualsIfXisEquals = p0.equals(p1);
@@ -38,7 +38,7 @@ public class VirtualPointTests
     {
         // Arrange
         VirtualPoint p0 = new VirtualPoint(-3, 5);
-        VirtualPoint p1 = p0.copy();
+        VirtualPoint p1 = new VirtualPoint(p0);
         VirtualPoint p2 = new VirtualPoint(p0);
 
         // Act
@@ -186,5 +186,19 @@ public class VirtualPointTests
 
         // Arrange
         assertTrue(str.equals(expected));
+    }
+    
+    @Test
+    public void ShouldTurnStringToPoints()
+    {
+        // Arrange
+        String str = "4 1 1 1 2 2 2 2 1";
+        String expected = "[(1,1), (1,2), (2,2), (2,1)]";
+
+        // Act
+        VirtualPoint[] points = VirtualPoint.stringToArray(str);
+
+        // Assert
+        assertTrue(VirtualPoint.arrayToString(points).equals(expected));
     }
 }

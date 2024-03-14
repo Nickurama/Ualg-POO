@@ -1,8 +1,5 @@
 package src;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 /**
  * Represents an immutable point in two dimensional space, in the first quadrant only
  * 
@@ -28,17 +25,6 @@ public class Point extends VirtualPoint
     }
 
     /**
-     * Initializes a point from a virtualPoint
-     * @param p the virtual point to instanciate the point from
-     * @pre p.x >= 0
-     * @pre p.y >= 0
-     */
-    public Point(VirtualPoint p)
-    {
-        this(p.X(), p.Y());
-    }
-
-    /**
      * Initializes the point, performing a deep copy
      * over the other point
      * @param p the point to copy from
@@ -49,34 +35,15 @@ public class Point extends VirtualPoint
     }
 
     /**
-     * Performs a deep copy of the point
-     * @return a copy of the point
-     */
-    public Point copy()
-    {
-        return new Point(this);
-    }
-
-    /**
      * Performs a deep copy of an array of points
-     * @param array
-     * @return
+     * @param array the array to copy
+     * @return the copy of the array
      */
-    public static Point[] copyArray(Point[] array)
+    public static Point[] copyArray(Point[] array) //! Issue: if not implemented, could use the parent class's implementation which will break
     {
         Point[] result = new Point[array.length];
         for (int i = 0; i < array.length; i++)
-            result[i] = array[i].copy();
+            result[i] = new Point(array[i]);
         return result;
-    }
-
-    /**
-     * Initializes a point from a scanner input
-     * @param reader scanner from where the point is gonna be read
-     * @return the initialized point
-     */
-    public static Point getPointFromInput(BufferedReader reader) throws IOException
-    {
-        return new Point(VirtualPoint.getPointFromInput(reader));
     }
 }

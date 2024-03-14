@@ -38,24 +38,15 @@ public class VirtualPoint
     }
 
     /**
-     * Performs a deep copy of the point
-     * @return a deep copy of the point
-     */
-    public VirtualPoint copy()
-    {
-        return new VirtualPoint(this);
-    }
-
-    /**
      * Performs a deep copy of an array of points
      * @param array the array to copy
      * @return a deep copy of the array
      */
-    public static VirtualPoint[] copyArray(VirtualPoint[] array)
+    public static VirtualPoint[] copyArray(VirtualPoint[] array) //! Can cause errors
     {
         VirtualPoint[] result = new VirtualPoint[array.length];
         for (int i = 0; i < array.length; i++)
-            result[i] = array[i].copy();
+            result[i] = new VirtualPoint(array[i]);
         return result;
     }
 
@@ -87,8 +78,13 @@ public class VirtualPoint
      * @param that the point to compare to
      * @return if the two points are equivalent
      */
-    public boolean equals(VirtualPoint that)
+    @Override
+    public boolean equals(Object other)
     {
+        if (other == this) return true;
+        if (other == null) return false;
+        if (!VirtualPoint.class.isInstance(other)) return false; // if not VirtualPoint or child of VirtualPoint
+        VirtualPoint that = (VirtualPoint) other;
         return MathUtil.areEqual(this.x, that.x) && MathUtil.areEqual(this.y, that.y);
     }
 
@@ -110,6 +106,25 @@ public class VirtualPoint
         str.append("]");
 
         return str.toString();
+    }
+
+    public static VirtualPoint[] stringToArray(String str)
+    {
+        //! unhandled exception
+        String[] tokens = str.split(" ");
+        if (tokens.length < 3)
+            return null;
+        
+        int numVertices = Integer.parseInt(tokens[0]);
+        VirtualPoint[] result = new VirtualPoint[numVertices];
+        for (int i = 1; i < tokens.length; i += 2)
+        {
+            double x = Double.parseDouble(tokens[i]);
+            double y = Double.parseDouble(tokens[i + 1]);
+            result[i / 2] = new VirtualPoint(x, y);
+        }
+
+        return result;
     }
 
     /**

@@ -26,8 +26,8 @@ public class LineSegment
      */
     public LineSegment(Point a, Point b)
     {
-        this.point1 = a.copy();
-        this.point2 = b.copy();
+        this.point1 = new Point(a);
+        this.point2 = new Point(b);
         this.line = new Line(this.point1, this.point2);
         if (a.equals(b))
             Error.terminateProgram(ERROR_MESSAGE);
