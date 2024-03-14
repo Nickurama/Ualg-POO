@@ -29,7 +29,7 @@ public class Poligono
         Point[] verticesGen = Point.copyArray(points);  
         LineSegment[] segments = generateSegments(verticesGen);
 
-        if (isAnyGeneratedPointCollinear(verticesGen, segments) || doSegmentsCollide(segments))
+        if (isAnyGeneratedPointCollinear(verticesGen, segments) || doSidesIntersect(segments))
             Error.terminateProgram(ERROR_MESSAGE);
         
         this.vertices = verticesGen;
@@ -74,14 +74,14 @@ public class Poligono
      * @param segments the segments to check the intersections of
      * @return if there is any collision within the segments
      */
-    private static boolean doSegmentsCollide(LineSegment[] segments)
+    private static boolean doSidesIntersect(LineSegment[] segments)
     {
         for (int i = 2; i < segments.length - 1; i++)
             for (int j = 0; j < (i - 1); j++)
-                if (segments[i].intercepts(segments[j]))
+                if (segments[i].intersects(segments[j]))
                     return true;
         for (int j = 1; j < segments.length - 2; j++)
-            if (segments[segments.length - 1].intercepts(segments[j]))
+            if (segments[segments.length - 1].intersects(segments[j]))
                 return true;
         
         return false;
@@ -92,10 +92,10 @@ public class Poligono
      * @param that the segment to check intercection with
      * @return if the polygon is intercected by the segment
      */
-    public boolean intercepts(LineSegment that)
+    public boolean intersects(LineSegment that)
     {
         for (LineSegment side : sides)
-            if (side.intercepts(that))
+            if (side.intersects(that))
                 return true;
         return false;
     }
@@ -108,7 +108,7 @@ public class Poligono
     public boolean intercepts(Poligono that)
     {
         for (LineSegment segment : this.sides)
-            if (that.intercepts(segment))
+            if (that.intersects(segment))
                 return true;
         return false;
     }

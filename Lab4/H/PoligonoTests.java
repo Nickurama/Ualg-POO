@@ -108,7 +108,7 @@ public class PoligonoTests
         LineSegment segment = new LineSegment(new Point(2, 2), new Point(3, 3));
 
         // Act
-        boolean intercepts = poly.intercepts(segment);
+        boolean intercepts = poly.intersects(segment);
 
         // Assert
         assertTrue(intercepts);
@@ -127,7 +127,7 @@ public class PoligonoTests
         LineSegment segment = new LineSegment(new Point(1, 3), new Point(5, 3));
 
         // Act
-        boolean intercepts = poly.intercepts(segment);
+        boolean intercepts = poly.intersects(segment);
 
         // Assert
         assertFalse(intercepts);
@@ -146,7 +146,7 @@ public class PoligonoTests
         LineSegment segment = new LineSegment(new Point(5, 4), new Point(4, 3));
 
         // Act
-        boolean intercepts = poly.intercepts(segment);
+        boolean intercepts = poly.intersects(segment);
 
         // Assert
         assertFalse(intercepts);
@@ -164,7 +164,7 @@ public class PoligonoTests
         LineSegment segment = new LineSegment(new Point(3, 0), new Point(3, 2));
 
         // Act
-        boolean intercepts = poly.intercepts(segment);
+        boolean intercepts = poly.intersects(segment);
 
         // Assert
         assertTrue(intercepts);
@@ -255,7 +255,7 @@ public class PoligonoTests
         p3 = new Point(0, 0);
 
         // Assert
-        assertTrue(poly.intercepts(segment));
+        assertTrue(poly.intersects(segment));
     }
 
     @Test

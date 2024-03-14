@@ -36,7 +36,7 @@ public class LineSegment
      * @param that the segment to check intersection with
      * @return if the segment intersects the current one
      */
-    public boolean intercepts(LineSegment that)
+    public boolean intersects(LineSegment that)
     {
         if (this.line.isParalel(that.line))
             return false;

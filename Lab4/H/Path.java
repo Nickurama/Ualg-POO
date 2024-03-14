@@ -59,7 +59,7 @@ public class Path
     public boolean intercepts(Poligono poly)
     {
         for (LineSegment segment : segments)
-            if (poly.intercepts(segment))
+            if (poly.intersects(segment))
                 return true;
         return false;
     }

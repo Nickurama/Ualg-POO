@@ -12,7 +12,7 @@ public class LineSegmentTests
         LineSegment s1 = new LineSegment(new Point(1, 3), new Point(2, 0));
         
         // Act
-        boolean intercepts = s0.intercepts(s1);
+        boolean intercepts = s0.intersects(s1);
 
         // Assert
         assertTrue(intercepts);
@@ -26,7 +26,7 @@ public class LineSegmentTests
         LineSegment s1 = new LineSegment(new Point(4, 1), new Point(3, 2));
         
         // Act
-        boolean intercepts = s0.intercepts(s1);
+        boolean intercepts = s0.intersects(s1);
 
         // Assert
         assertFalse(intercepts);
@@ -40,7 +40,7 @@ public class LineSegmentTests
         LineSegment s1 = new LineSegment(new Point(1, 1), new Point(4, 1));
         
         // Act
-        boolean intercepts = s0.intercepts(s1);
+        boolean intercepts = s0.intersects(s1);
 
         // Assert
         assertFalse(intercepts);
@@ -55,8 +55,8 @@ public class LineSegmentTests
         LineSegment s2 = new LineSegment(new Point(1, 1), new Point(1, 3));
         
         // Act
-        boolean intercepts0 = s0.intercepts(s1);
-        boolean intercepts1 = s0.intercepts(s2);
+        boolean intercepts0 = s0.intersects(s1);
+        boolean intercepts1 = s0.intersects(s2);
 
         // Assert
         assertFalse(intercepts0);
@@ -71,7 +71,7 @@ public class LineSegmentTests
         LineSegment s1 = new LineSegment(new Point(1, 2), new Point(3, 2));
         
         // Act
-        boolean intercepts = s0.intercepts(s1);
+        boolean intercepts = s0.intersects(s1);
 
         // Assert
         assertFalse(intercepts);
