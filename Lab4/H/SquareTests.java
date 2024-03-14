@@ -1,22 +1,19 @@
-package tests;
-
-import src.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class RectangleTests
+public class SquareTests
 {
     @Test
     public void ShouldIncludeNameInString()
     {
         // Arrange
-        Rectangle s = new Rectangle(new Point[] {
+        Quadrado s = new Quadrado(new Point[] {
             new Point(1, 1),
             new Point(1, 2),
-            new Point(5, 2),
-            new Point(5, 1),
+            new Point(2, 2),
+            new Point(2, 1),
         });
-        String expected = "Retângulo: [(1,1), (1,2), (5,2), (5,1)]";
+        String expected = "Quadrado: [(1,1), (1,2), (2,2), (2,1)]";
 
         // Act
         String str = s.toString();

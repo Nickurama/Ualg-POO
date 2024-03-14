@@ -1,4 +1,4 @@
-package src;
+
 
 /**
  * Represents a square
@@ -8,7 +8,7 @@ package src;
  * @author Diogo Fonseca a79858
  * @version 13/03/2024
  */
-public class Square extends Rectangle
+public class Quadrado extends Retangulo
 {
     private final String ERROR_MESSAGE = "Quadrado:vi";
 
@@ -18,7 +18,7 @@ public class Square extends Rectangle
      * 
      * @pre all sides must have equal length
      */
-    public Square(Point[] points)
+    public Quadrado(Point[] points)
     {
         super(points);
 

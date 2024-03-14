@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Represents an immutable point in two dimensional space, in the first quadrant only
  * 

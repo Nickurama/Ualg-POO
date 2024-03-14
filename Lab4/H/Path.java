@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Represents a path on two dimensions
  * 
@@ -58,7 +56,7 @@ public class Path
      * @param poly the polygon to check intersection with
      * @return if the polygon intersects the path
      */
-    public boolean intercepts(Polygon poly)
+    public boolean intercepts(Poligono poly)
     {
         for (LineSegment segment : segments)
             if (poly.intercepts(segment))
@@ -71,9 +69,9 @@ public class Path
      * @param polygons the polygons to check for intersection
      * @return if any of the polygons intersect the array
      */
-    public boolean intercepts(Polygon[] polygons)
+    public boolean intercepts(Poligono[] polygons)
     {
-        for(Polygon poly : polygons)
+        for(Poligono poly : polygons)
             if (this.intercepts(poly))
                 return true;
         return false;

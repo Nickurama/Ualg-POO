@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Represents an immutable line described in euclidean space.
  * Uses the general equation for a line in 2D space: ax + by + c = 0

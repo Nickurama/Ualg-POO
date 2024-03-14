@@ -1,4 +1,4 @@
-package src;
+
 
 /**
  * Represents an immutable simple polygon
@@ -9,7 +9,7 @@ package src;
  * @inv sides are the sides of the polygon
  * @inv points are the vertices of the polygon
  */
-public class Polygon
+public class Poligono
 {
     private static final String ERROR_MESSAGE = "Poligono:vi";
     protected LineSegment[] sides;
@@ -21,7 +21,7 @@ public class Polygon
      * @pre points must contain at least 3 points
      * @pre points must generate valid sides (that don't collide)
      */
-    public Polygon(Point[] points)
+    public Poligono(Point[] points)
     {
         if (points.length < 3)
             Error.terminateProgram(ERROR_MESSAGE);
@@ -105,7 +105,7 @@ public class Polygon
      * @param that the polygon to test collision with
      * @return if the polygon intercepts the other
      */
-    public boolean intercepts(Polygon that)
+    public boolean intercepts(Poligono that)
     {
         for (LineSegment segment : this.sides)
             if (that.intercepts(segment))
@@ -136,12 +136,12 @@ public class Polygon
     {
         if (other == this) return true;
         if (other == null) return false;
-        if (!Polygon.class.isInstance(other)) return false; // if not Polygon or child of Polygon
-        Polygon that = (Polygon) other;
+        if (!Poligono.class.isInstance(other)) return false; // if not Polygon or child of Polygon
+        Poligono that = (Poligono) other;
         return this.isPolygonEqual(that);
     }
     
-    private boolean isPolygonEqual(Polygon that)
+    private boolean isPolygonEqual(Poligono that)
     {
         // linear Algorithm that checks if two polygons are equal
         if (this.vertices.length != that.vertices.length) return false;

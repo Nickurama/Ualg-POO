@@ -1,5 +1,3 @@
-package src;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,7 +22,7 @@ public class Client
         Scanner sc = new Scanner(System.in);
         Constructor<?> constructor;
         Class<?> cl;
-        Polygon poly;
+        Poligono poly;
         String input;
         String[] tokens;
         while (sc.hasNextLine())
@@ -38,7 +36,7 @@ public class Client
             {
                 cl = Class.forName(capital(tokens[0]));
                 constructor = cl.getConstructor(String.class);
-                poly = (Polygon) constructor.newInstance(tokens[1]);
+                poly = (Poligono) constructor.newInstance(tokens[1]);
             }
             catch (ClassNotFoundException cnfe)
             {

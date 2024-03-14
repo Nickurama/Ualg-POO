@@ -1,4 +1,4 @@
-package src;
+
 
 /**
  * Represents a triangle
@@ -7,7 +7,7 @@ package src;
  * @author Diogo Fonseca a79858
  * @version 13/03/2024
  */
-public class Triangle extends Polygon
+public class Triangulo extends Poligono
 {
     private final String ERROR_MESSAGE = "Triângulo:vi";
 
@@ -17,7 +17,7 @@ public class Triangle extends Polygon
      * 
      * @pre points.length = 3
      */
-    public Triangle(Point[] points)
+    public Triangulo(Point[] points)
     {
         super(points);
 

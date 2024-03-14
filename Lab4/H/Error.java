@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Hold error handling utility for other classes to use
  * 

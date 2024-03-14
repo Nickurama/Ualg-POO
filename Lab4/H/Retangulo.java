@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Represents a rectangle
  * A rectangle is a polygon with 4 sides and every side has
@@ -8,7 +6,7 @@ package src;
  * @author Diogo Fonseca a79858
  * @version 13/03/2024
  */
-public class Rectangle extends Polygon
+public class Retangulo extends Poligono
 {
     private static final String ERROR_MESSAGE = "Poligono:vi";
 
@@ -19,7 +17,7 @@ public class Rectangle extends Polygon
      * @pre points.length = 4
      * @pre all angles are right angles
      */
-    public Rectangle(Point[] points)
+    public Retangulo(Point[] points)
     {
         super(points);
 

@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Creates a box of bounds, useful for knowing the bounds of a bunch of points
  * 

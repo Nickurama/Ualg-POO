@@ -1,6 +1,3 @@
-package tests;
-
-import src.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +34,7 @@ public class PathTests
             new Point(3, 4),
             new Point(4, 4),
         });
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 3),
             new Point(2, 1),
             new Point(4, 1),
@@ -61,7 +58,7 @@ public class PathTests
             new Point(1, 4),
             new Point(4, 4),
         });
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 3),
             new Point(2, 1),
             new Point(4, 1),
@@ -85,7 +82,7 @@ public class PathTests
             new Point(3, 5),
             new Point(4, 4),
         });
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 3),
             new Point(2, 1),
             new Point(4, 1),
@@ -109,7 +106,7 @@ public class PathTests
             new Point(2, 4),
             new Point(4, 4),
         });
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 3),
             new Point(2, 1),
             new Point(4, 1),
@@ -126,17 +123,17 @@ public class PathTests
     public void ShouldInterceptPolygons()
     {
         // Arrange
-        Polygon poly0 = new Polygon(new Point[] {
+        Poligono poly0 = new Poligono(new Point[] {
             new Point(1, 2),
             new Point(1, 4),
             new Point(3, 4),
         });
-        Polygon poly1 = new Polygon(new Point[] {
+        Poligono poly1 = new Poligono(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
             new Point(4, 3),
         });
-        Polygon[] polys = new Polygon[] { poly0, poly1 };
+        Poligono[] polys = new Poligono[] { poly0, poly1 };
         Path path0 = new Path(new Point[] {
             new Point(1, 1),
             new Point(5, 3),
@@ -159,17 +156,17 @@ public class PathTests
     public void ShouldNotInterceptPolygons()
     {
         // Arrange
-        Polygon poly0 = new Polygon(new Point[] {
+        Poligono poly0 = new Poligono(new Point[] {
             new Point(1, 2),
             new Point(1, 4),
             new Point(3, 4),
         });
-        Polygon poly1 = new Polygon(new Point[] {
+        Poligono poly1 = new Poligono(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
             new Point(4, 3),
         });
-        Polygon[] polys = new Polygon[] { poly0, poly1 };
+        Poligono[] polys = new Poligono[] { poly0, poly1 };
         Path path = new Path(new Point[] {
             new Point(1, 1),
             new Point(4, 4),
@@ -189,7 +186,7 @@ public class PathTests
         Point p0 = new Point(1, 1);
         Point p1 = new Point(4, 4);
         Path path = new Path(new Point[] { p0, p1 });
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 3),
             new Point(2, 1),
             new Point(4, 1),

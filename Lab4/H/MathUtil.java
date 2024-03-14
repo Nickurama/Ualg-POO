@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Holds math related tools for the other classes to use
  * 

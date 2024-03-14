@@ -1,6 +1,3 @@
-package tests;
-
-import src.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -10,13 +7,13 @@ public class PolygonTests
     public void ShouldNotInterceptWhenPolygonsAreSeparated()
     {
         // Arrange
-        Polygon poly1 = new Polygon(new Point[] {
+        Poligono poly1 = new Poligono(new Point[] {
                 new Point(3, 1),
                 new Point(4, 1),
                 new Point(4, 2),
                 new Point(3, 2),
         });
-        Polygon poly2 = new Polygon(new Point[] {
+        Poligono poly2 = new Poligono(new Point[] {
                 new Point(1, 1),
                 new Point(2, 1),
                 new Point(2, 2),
@@ -34,13 +31,13 @@ public class PolygonTests
     public void ShouldNotInterceptWhenPointsInPolygonsOverlap()
     {
         // Arrange
-        Polygon poly1 = new Polygon(new Point[] {
+        Poligono poly1 = new Poligono(new Point[] {
                 new Point(1, 1),
                 new Point(2, 1),
                 new Point(2, 2),
                 new Point(1, 2),
         });
-        Polygon poly2 = new Polygon(new Point[] {
+        Poligono poly2 = new Poligono(new Point[] {
                 new Point(1, 3),
                 new Point(3, 1),
                 new Point(3, 3),
@@ -57,12 +54,12 @@ public class PolygonTests
     public void ShouldNotInterceptWhenPolygonSegmentsOverlap()
     {
         // Arrange
-        Polygon poly1 = new Polygon(new Point[] {
+        Poligono poly1 = new Poligono(new Point[] {
                 new Point(1, 1),
                 new Point(3, 1),
                 new Point(1, 3),
         });
-        Polygon poly2 = new Polygon(new Point[] {
+        Poligono poly2 = new Poligono(new Point[] {
                 new Point(1, 3),
                 new Point(3, 1),
                 new Point(3, 3),
@@ -79,13 +76,13 @@ public class PolygonTests
     public void ShouldInterceptWhenSegmentOfPolygonIntercepts()
     {
         // Arrange
-        Polygon poly1 = new Polygon(new Point[] {
+        Poligono poly1 = new Poligono(new Point[] {
                 new Point(1, 1),
                 new Point(4, 1),
                 new Point(4, 4),
                 new Point(1, 4),
         });
-        Polygon poly2 = new Polygon(new Point[] {
+        Poligono poly2 = new Poligono(new Point[] {
                 new Point(3, 3),
                 new Point(5, 3),
                 new Point(5, 5),
@@ -103,7 +100,7 @@ public class PolygonTests
     public void ShouldInterceptWhenSegmentIntercepts()
     {
         // Arrange
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(1, 1),
             new Point(3, 1),
             new Point(2, 3),
@@ -121,7 +118,7 @@ public class PolygonTests
     public void ShouldNotInterceptWhenSegmentOverlaps()
     {
         // Arrange
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
             new Point(4, 3),
@@ -140,7 +137,7 @@ public class PolygonTests
     public void ShouldNotInterceptWhenPointsOnSegmentOverlap()
     {
         // Arrange
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 1),
             new Point(4, 1),
             new Point(4, 3),
@@ -159,7 +156,7 @@ public class PolygonTests
     public void ShouldInterceptOnLastSide()
     {
         // Arrange
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(2, 4),
             new Point(2, 1),
             new Point(5, 1),
@@ -177,7 +174,7 @@ public class PolygonTests
     public void ShouldCalculatePerimeter()
     {
         // Arrange
-        Polygon poly0 = new Polygon(new Point[] {
+        Poligono poly0 = new Poligono(new Point[] {
             new Point(0, 0),
             new Point(0, 1),
             new Point(1, 1),
@@ -185,7 +182,7 @@ public class PolygonTests
         });
         double expected0 = 4;
 
-        Polygon poly1 = new Polygon(new Point[] {
+        Poligono poly1 = new Poligono(new Point[] {
             new Point(0, 0),
             new Point(2, 2),
             new Point(0, 4),
@@ -195,7 +192,7 @@ public class PolygonTests
         });
         double expected1 = 10.4852813742;
 
-        Polygon poly2 = new Polygon(new Point[] {
+        Poligono poly2 = new Poligono(new Point[] {
             new Point(0, 2),
             new Point(2, 2),
             new Point(6, 6),
@@ -205,7 +202,7 @@ public class PolygonTests
         });
         double expected2 = 23.7989898732;
 
-        Polygon poly3 = new Polygon(new Point[] {
+        Poligono poly3 = new Poligono(new Point[] {
             new Point(0, 0),
             new Point(2, 0),
             new Point(1, 1),
@@ -217,7 +214,7 @@ public class PolygonTests
         });
         double expected3 = 15.1529824451;
 
-        Polygon poly4 = new Polygon(new Point[] {
+        Poligono poly4 = new Poligono(new Point[] {
             new Point(0, 0),
             new Point(1, 1),
             new Point(2, 1),
@@ -248,7 +245,7 @@ public class PolygonTests
         Point p1 = new Point(1, 2);
         Point p2 = new Point(2, 2);
         Point p3 = new Point(2, 1);
-        Polygon poly = new Polygon(new Point[] { p0, p1, p2, p3 });
+        Poligono poly = new Poligono(new Point[] { p0, p1, p2, p3 });
         LineSegment segment = new LineSegment(new Point(0, 4), new Point(3, 0));
 
         // Act
@@ -264,7 +261,7 @@ public class PolygonTests
     @Test
     public void ShouldIncludeAllVerticesInString()
     {
-        Polygon poly = new Polygon(new Point[] {
+        Poligono poly = new Poligono(new Point[] {
             new Point(3, 5),
             new Point(9, 312),
             new Point(512, 1024),
@@ -285,7 +282,7 @@ public class PolygonTests
     public void ShouldTakeConstructorWithString()
     {
         // Arrange
-        Polygon poly = new Polygon("5 1 1 1 3 2 5 7 2 5 1");
+        Poligono poly = new Poligono("5 1 1 1 3 2 5 7 2 5 1");
         String expected = "Polígono de 5 vértices: [(1,1), (1,3), (2,5), (7,2), (5,1)]";
 
         // Act
@@ -299,14 +296,14 @@ public class PolygonTests
     public void ShouldEquals()
     {
         // Arrange
-        Polygon p0 = new Polygon(new Point[] {
+        Poligono p0 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 12),
             new Point(16, 16),
             new Point(16, 0),
         });
-        Polygon p1 = new Polygon(new Point[] {
+        Poligono p1 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 12),
@@ -326,14 +323,14 @@ public class PolygonTests
     public void ShouldEqualsWhenSamePolygonButInvertedOrderOfVertices()
     {
         // Arrange
-        Polygon p0 = new Polygon(new Point[] {
+        Poligono p0 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 12),
             new Point(16, 16),
             new Point(16, 0),
         });
-        Polygon p1 = new Polygon(new Point[] {
+        Poligono p1 = new Poligono(new Point[] {
             new Point(16, 0),
             new Point(16, 16),
             new Point(10, 12),
@@ -354,14 +351,14 @@ public class PolygonTests
     public void ShouldEqualsWhenSamePolygonButOffset()
     {
         // Arrange
-        Polygon p0 = new Polygon(new Point[] {
+        Poligono p0 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 12),
             new Point(16, 16),
             new Point(16, 0),
         });
-        Polygon p1 = new Polygon(new Point[] {
+        Poligono p1 = new Poligono(new Point[] {
             new Point(7, 8),
             new Point(4, 5),
             new Point(16, 0),
@@ -382,14 +379,14 @@ public class PolygonTests
     public void ShouldNotEqualsWhenDifferentValues()
     {
         // Arrange
-        Polygon p0 = new Polygon(new Point[] {
+        Poligono p0 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 16),
             new Point(16, 16),
             new Point(16, 0),
         });
-        Polygon p1 = new Polygon(new Point[] {
+        Poligono p1 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 12),
@@ -408,14 +405,14 @@ public class PolygonTests
     public void ShouldNotEqualsWhenDifferentNumberOfVertices()
     {
         // Arrange
-        Polygon p0 = new Polygon(new Point[] {
+        Poligono p0 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 12),
             new Point(16, 16),
             new Point(16, 0),
         });
-        Polygon p1 = new Polygon(new Point[] {
+        Poligono p1 = new Poligono(new Point[] {
             new Point(4, 5),
             new Point(7, 8),
             new Point(10, 12),
