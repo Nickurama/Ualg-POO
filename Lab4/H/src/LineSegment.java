@@ -53,11 +53,12 @@ public class LineSegment
     }
 
     /**
-     * checks if two paralel segments intersect eachother
+     * checks if two paralel segments overlap
      * @param that the other paralel segment
-     * @return if the two paralel segments intersect
+     * @return if the two paralel segments overlap
      */
-    private boolean doParalelSegmentsCollide(LineSegment that)
+    @SuppressWarnings("unused")
+    private boolean doParalelSegmentsOverlap(LineSegment that)
     {
         if (this.line.equals(that.line))
             return this.containsPointOnSegment(that.point1) || this.containsPointOnSegment(that.point2) ||
