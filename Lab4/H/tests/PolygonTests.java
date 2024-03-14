@@ -260,4 +260,24 @@ public class PolygonTests
         // Assert
         assertTrue(poly.intercepts(segment));
     }
+
+    @Test
+    public void ShouldIncludeAllVerticesInString()
+    {
+        Polygon poly = new Polygon(new Point[] {
+            new Point(3, 5),
+            new Point(9, 312),
+            new Point(512, 1024),
+            new Point(7, 1.5),
+            new Point(0, 0),
+            new Point(0, 12),
+        });
+        String expected = "Polígono de 6 vértices: [(3,5), (9,312), (512,1024), (7,1), (0,0), (0,12)]";
+
+        // Act
+        String str = poly.toString();
+
+        // Arrange
+        assertTrue(str.equals(expected));
+    }
 }

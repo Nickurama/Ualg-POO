@@ -92,6 +92,26 @@ public class VirtualPoint
         return MathUtil.areEqual(this.x, that.x) && MathUtil.areEqual(this.y, that.y);
     }
 
+    @Override
+    public String toString()
+    {
+        return "(" + (int)this.x + "," + (int)this.y + ")";
+    }
+
+    public static String arrayToString(VirtualPoint[] points)
+    {
+        StringBuilder str = new StringBuilder("[");
+        for (int i = 0; i < points.length - 1; i++)
+        {
+            str.append(points[i].toString());
+            str.append(", ");
+        }
+        str.append(points[points.length - 1].toString());
+        str.append("]");
+
+        return str.toString();
+    }
+
     /**
      * Acessor method to return the x coordinate
      */

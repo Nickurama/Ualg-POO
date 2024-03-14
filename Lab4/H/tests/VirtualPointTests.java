@@ -143,5 +143,48 @@ public class VirtualPointTests
         assertFalse(p1 == null);
         assertTrue(p0.equals(expected0));
         assertTrue(p1.equals(expected1));
+    } 
+
+    @Test
+    public void ShouldIncludeIntegersInStringInsteadOfDoubles()
+    {
+        // Arrange
+        VirtualPoint p0 = new VirtualPoint(5, -3);
+        String expected0 = "(5,-3)";
+        VirtualPoint p1 = new VirtualPoint(-13, 47);
+        String expected1 = "(-13,47)";
+        VirtualPoint p2 = new VirtualPoint(14.7, 3512);
+        String expected2 = "(14,3512)";
+
+        // Act
+        String s0 = p0.toString();
+        String s1 = p1.toString();
+        String s2 = p2.toString();
+
+        // Arrange
+        assertTrue(s0.equals(expected0));
+        assertTrue(s1.equals(expected1));
+        assertTrue(s2.equals(expected2));
+    }
+
+    @Test
+    public void ShouldTurnArrayOfPointsToString()
+    {
+        // Arrange
+        VirtualPoint[] vps = new VirtualPoint[] {
+            new VirtualPoint(3, -5),
+            new VirtualPoint(-9, 312),
+            new VirtualPoint(512, -1024),
+            new VirtualPoint(7, -1.5),
+            new VirtualPoint(0, 0),
+            new VirtualPoint(0, 12),
+        };
+        String expected = "[(3,-5), (-9,312), (512,-1024), (7,-1), (0,0), (0,12)]";
+
+        // Act
+        String str = VirtualPoint.arrayToString(vps);
+
+        // Arrange
+        assertTrue(str.equals(expected));
     }
 }

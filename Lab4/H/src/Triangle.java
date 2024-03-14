@@ -24,4 +24,10 @@ public class Triangle extends Polygon
         if (this.sides.length != 3)
             Error.terminateProgram(ERROR_MESSAGE);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Triângulo: " + VirtualPoint.arrayToString(this.vertices);
+    }
 }

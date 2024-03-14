@@ -42,4 +42,10 @@ public class Rectangle extends Polygon
             return true;
         return false;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Retângulo: " + VirtualPoint.arrayToString(this.vertices);
+    }
 }

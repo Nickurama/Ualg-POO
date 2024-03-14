@@ -13,11 +13,11 @@ public class Polygon
 {
     private static final String ERROR_MESSAGE = "Poligono:vi";
     protected LineSegment[] sides;
-    protected Point[] points;
+    protected Point[] vertices;
 
     /**
      * Initializes a polygon
-     * @param points the vertices of the polygon
+     * @param vertices the vertices of the polygon
      * @pre points must contain at least 3 points
      * @pre points must generate valid sides (that don't collide)
      */
@@ -26,13 +26,13 @@ public class Polygon
         if (points.length < 3)
             Error.terminateProgram(ERROR_MESSAGE);
         
-        Point[] vertices = Point.copyArray(points);  
-        LineSegment[] segments = generateSegments(vertices);
+        Point[] verticesGen = Point.copyArray(points);  
+        LineSegment[] segments = generateSegments(verticesGen);
 
-        if (isAnyGeneratedPointCollinear(vertices, segments) || doSegmentsCollide(segments))
+        if (isAnyGeneratedPointCollinear(verticesGen, segments) || doSegmentsCollide(segments))
             Error.terminateProgram(ERROR_MESSAGE);
         
-        this.points = vertices;
+        this.vertices = verticesGen;
         this.sides = segments;
     }
 
@@ -118,5 +118,11 @@ public class Polygon
         for (LineSegment side : sides)
             result += side.length();
         return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Polígono de " + this.vertices.length + " vértices: " + VirtualPoint.arrayToString(this.vertices);
     }
 }

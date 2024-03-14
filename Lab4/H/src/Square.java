@@ -38,4 +38,10 @@ public class Square extends Rectangle
                 return false;
         return true;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Quadrado: " + VirtualPoint.arrayToString(this.vertices);
+    }
 }
