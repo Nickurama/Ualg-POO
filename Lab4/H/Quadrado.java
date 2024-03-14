@@ -26,6 +26,11 @@ public class Quadrado extends Retangulo
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    public Quadrado(String str)
+    {
+        this(Point.stringToArray(str));
+    }
+
     /**
      * Checks if all the sides have the same length
      * @return if all the sides have the same length

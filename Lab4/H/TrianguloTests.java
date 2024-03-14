@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class TriangleTests
+public class TrianguloTests
 {
     @Test
     public void ShouldIncludeNameInString()
@@ -19,5 +19,21 @@ public class TriangleTests
 
         // Assert
         assertTrue(str.equals(expected));
+    }
+
+    @Test
+    public void ShouldTakeStringInConstructor()
+    {
+        // Arrange
+        String str = "3 7 1 9 1 9 3";
+        String expected = "Triângulo: [(7,1), (9,1), (9,3)]";
+
+        // Act
+        Triangulo t = new Triangulo(str);
+        String gen = t.toString();
+
+        // Assert
+        assertTrue(gen.equals(expected));
+
     }
 }

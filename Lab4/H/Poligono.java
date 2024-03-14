@@ -36,10 +36,10 @@ public class Poligono
         this.sides = segments;
     }
 
-    // public Polygon(String str)
-    // {
-    //     this(VirtualPoint.stringToArray(str));
-    // }
+    public Poligono(String str)
+    {
+        this(Point.stringToArray(str));
+    }
 
     /**
      * generates the segments from the given points, representing the sides of the polygon

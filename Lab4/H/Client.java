@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.util.Scanner;
 
@@ -37,6 +34,9 @@ public class Client
                 cl = Class.forName(capital(tokens[0]));
                 constructor = cl.getConstructor(String.class);
                 poly = (Poligono) constructor.newInstance(tokens[1]);
+
+                // logic goes here
+                System.out.println(poly.toString());
             }
             catch (ClassNotFoundException cnfe)
             {

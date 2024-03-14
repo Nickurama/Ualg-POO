@@ -44,4 +44,23 @@ public class Point extends VirtualPoint
             result[i] = new Point(array[i]);
         return result;
     }
+
+    public static Point[] stringToArray(String str)
+    {
+        //! unhandled exception
+        String[] tokens = str.split(" ");
+        if (tokens.length < 3)
+            return null;
+        
+        int numVertices = Integer.parseInt(tokens[0]);
+        Point[] result = new Point[numVertices];
+        for (int i = 1; i < tokens.length; i += 2)
+        {
+            double x = Double.parseDouble(tokens[i]);
+            double y = Double.parseDouble(tokens[i + 1]);
+            result[i / 2] = new Point(x, y);
+        }
+
+        return result;
+    }
 }

@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class SquareTests
+public class QuadradoTests
 {
     @Test
     public void ShouldIncludeNameInString()
@@ -20,5 +20,20 @@ public class SquareTests
 
         // Assert
         assertTrue(str.equals(expected));
+    }
+
+    @Test
+    public void ShouldTakeStringInConstructor()
+    {
+        // Arrange
+        String str = "4 1 1 1 2 2 2 2 1";
+        String expected = "Quadrado: [(1,1), (1,2), (2,2), (2,1)]";
+
+        // Act
+        Quadrado s = new Quadrado(str);
+        String gen = s.toString();
+
+        // Assert
+        assertTrue(gen.equals(expected));
     }
 }

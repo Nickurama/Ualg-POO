@@ -28,6 +28,11 @@ public class Retangulo extends Poligono
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    public Retangulo(String str)
+    {
+        this(Point.stringToArray(str));
+    }
+
     /**
      * Checks if all inner angles of the rectangle are right angles
      * @return if all the inner angles of the rectangle are right angles

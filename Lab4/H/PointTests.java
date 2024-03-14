@@ -1,5 +1,4 @@
 import static org.junit.jupiter.api.Assertions.*;
-import java.io.*;
 import org.junit.jupiter.api.Test;
 
 
@@ -48,6 +47,41 @@ public class PointTests
         assertFalse(vpArray[0].equals(vpArrayCopy[1]));
         for (int i = 1; i < vpArray.length; i++)
             assertTrue(vpArray[i].equals(vpArrayCopy[i]));
+    }
+
+    @Test
+    public void ShouldTurnArrayOfPointsToString()
+    {
+        // Arrange
+        Point[] vps = new Point[] {
+            new Point(3, 5),
+            new Point(9, 312),
+            new Point(512, 1024),
+            new Point(7, 1.5),
+            new Point(0, 0),
+            new Point(0, 12),
+        };
+        String expected = "[(3,5), (9,312), (512,1024), (7,1), (0,0), (0,12)]";
+
+        // Act
+        String str = Point.arrayToString(vps);
+
+        // Arrange
+        assertTrue(str.equals(expected));
+    }
+    
+    @Test
+    public void ShouldTurnStringToPoints()
+    {
+        // Arrange
+        String str = "4 1 1 1 2 2 2 2 1";
+        String expected = "[(1,1), (1,2), (2,2), (2,1)]";
+
+        // Act
+        Point[] points = Point.stringToArray(str);
+
+        // Assert
+        assertTrue(Point.arrayToString(points).equals(expected));
     }
 
     // @Test

@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class PolygonTests
+public class PoligonoTests
 {
     @Test
     public void ShouldNotInterceptWhenPolygonsAreSeparated()

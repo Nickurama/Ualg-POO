@@ -25,6 +25,11 @@ public class Triangulo extends Poligono
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    public Triangulo(String str)
+    {
+        this(Point.stringToArray(str));
+    }
+
     @Override
     public String toString()
     {
