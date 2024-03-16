@@ -25,7 +25,7 @@ public class TrianguloTests
     public void ShouldTakeStringInConstructor()
     {
         // Arrange
-        String str = "3 7 1 9 1 9 3";
+        String str = "7 1 9 1 9 3";
         String expected = "Triângulo: [(7,1), (9,1), (9,3)]";
 
         // Act

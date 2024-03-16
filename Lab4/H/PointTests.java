@@ -74,14 +74,17 @@ public class PointTests
     public void ShouldTurnStringToPoints()
     {
         // Arrange
-        String str = "4 1 1 1 2 2 2 2 1";
+        String str0 = "4 1 1 1 2 2 2 2 1";
+        String str1 = "1 1 1 2 2 2 2 1";
         String expected = "[(1,1), (1,2), (2,2), (2,1)]";
 
         // Act
-        Point[] points = Point.stringToArray(str);
+        Point[] points0 = Point.stringToArray(str0);
+        Point[] points1 = Point.stringToArray(str1, 4);
 
         // Assert
-        assertTrue(Point.arrayToString(points).equals(expected));
+        assertTrue(Point.arrayToString(points0).equals(expected));
+        assertTrue(Point.arrayToString(points1).equals(expected));
     }
 
     // @Test

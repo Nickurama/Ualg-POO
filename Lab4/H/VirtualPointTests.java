@@ -189,13 +189,16 @@ public class VirtualPointTests
     public void ShouldTurnStringToPoints()
     {
         // Arrange
-        String str = "4 1 1 1 2 2 2 2 1";
+        String str0 = "4 1 1 1 2 2 2 2 1";
+        String str1 = "1 1 1 2 2 2 2 1";
         String expected = "[(1,1), (1,2), (2,2), (2,1)]";
 
         // Act
-        VirtualPoint[] points = VirtualPoint.stringToArray(str);
+        VirtualPoint[] points0 = VirtualPoint.stringToArray(str0);
+        VirtualPoint[] points1 = VirtualPoint.stringToArray(str1, 4);
 
         // Assert
-        assertTrue(VirtualPoint.arrayToString(points).equals(expected));
+        assertTrue(VirtualPoint.arrayToString(points0).equals(expected));
+        assertTrue(VirtualPoint.arrayToString(points1).equals(expected));
     }
 }

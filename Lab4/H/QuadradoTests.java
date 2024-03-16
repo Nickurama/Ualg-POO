@@ -26,7 +26,7 @@ public class QuadradoTests
     public void ShouldTakeStringInConstructor()
     {
         // Arrange
-        String str = "4 1 1 1 2 2 2 2 1";
+        String str = "1 1 1 2 2 2 2 1";
         String expected = "Quadrado: [(1,1), (1,2), (2,2), (2,1)]";
 
         // Act

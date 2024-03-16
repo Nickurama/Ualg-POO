@@ -63,4 +63,9 @@ public class Point extends VirtualPoint
 
         return result;
     }
+
+    public static Point[] stringToArray(String str, int numPoints)
+    {
+        return stringToArray(String.valueOf(numPoints) + " " + str);
+    }
 }

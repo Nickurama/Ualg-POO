@@ -8,7 +8,8 @@
  */
 public class Retangulo extends Poligono
 {
-    private static final String ERROR_MESSAGE = "Poligono:vi";
+    private static final String ERROR_MESSAGE = "Retangulo:vi";
+    public static final int NUM_SIDES = 4;
 
     /**
      * Initializes a rectangle
@@ -21,7 +22,7 @@ public class Retangulo extends Poligono
     {
         super(points);
 
-        if (points.length != 4)
+        if (points.length != NUM_SIDES)
             Error.terminateProgram(ERROR_MESSAGE);
         
         if (!allAnglesAreRightAngles())
@@ -30,7 +31,7 @@ public class Retangulo extends Poligono
 
     public Retangulo(String str)
     {
-        this(Point.stringToArray(str));
+        this(Point.stringToArray(str, NUM_SIDES));
     }
 
     /**

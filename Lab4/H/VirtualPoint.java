@@ -125,6 +125,11 @@ public class VirtualPoint
         return result;
     }
 
+    public static VirtualPoint[] stringToArray(String str, int numPoints)
+    {
+        return stringToArray(String.valueOf(numPoints) + " " + str);
+    }
+
     /**
      * Acessor method to return the x coordinate
      */

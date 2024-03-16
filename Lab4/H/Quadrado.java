@@ -28,7 +28,7 @@ public class Quadrado extends Retangulo
 
     public Quadrado(String str)
     {
-        this(Point.stringToArray(str));
+        this(Point.stringToArray(str, NUM_SIDES));
     }
 
     /**

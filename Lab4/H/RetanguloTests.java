@@ -26,7 +26,7 @@ public class RetanguloTests
     public void ShouldTakeStringInConstructor()
     {
         // Arrange
-        String str = "4 1 1 1 2 4 2 4 1";
+        String str = "1 1 1 2 4 2 4 1";
         String expected = "Retângulo: [(1,1), (1,2), (4,2), (4,1)]";
 
         // Act

@@ -1,4 +1,5 @@
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,8 @@ public class Client
         Scanner sc = new Scanner(System.in);
         Constructor<?> constructor;
         Class<?> cl;
-        Poligono poly;
+        UniquePolygons polys = new UniquePolygons();
+        Poligono currPoly;
         String input;
         String[] tokens;
         while (sc.hasNextLine())
@@ -33,10 +35,8 @@ public class Client
             {
                 cl = Class.forName(capital(tokens[0]));
                 constructor = cl.getConstructor(String.class);
-                poly = (Poligono) constructor.newInstance(tokens[1]);
-
-                // logic goes here
-                System.out.println(poly.toString());
+                currPoly = (Poligono) constructor.newInstance(tokens[1]);
+                polys.add(currPoly);
             }
             catch (ClassNotFoundException cnfe)
             {
@@ -48,6 +48,10 @@ public class Client
             }
         }
         sc.close();
+
+        String[] strings = polys.toStrings();
+        for (String s : strings)
+            System.out.println(s);
     }
 
     /**

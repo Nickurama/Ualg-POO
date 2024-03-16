@@ -9,7 +9,8 @@
  */
 public class Triangulo extends Poligono
 {
-    private final String ERROR_MESSAGE = "Triângulo:vi";
+    private static final String ERROR_MESSAGE = "Triangulo:vi";
+    public static final int NUM_SIDES = 3;
 
     /**
      * Initializes a triangle
@@ -21,13 +22,13 @@ public class Triangulo extends Poligono
     {
         super(points);
 
-        if (this.sides.length != 3)
+        if (this.sides.length != NUM_SIDES)
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
     public Triangulo(String str)
     {
-        this(Point.stringToArray(str));
+        this(Point.stringToArray(str, NUM_SIDES));
     }
 
     @Override
