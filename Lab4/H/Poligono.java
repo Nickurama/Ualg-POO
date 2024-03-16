@@ -137,6 +137,12 @@ public class Poligono
     }
 
     @Override
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public final boolean equals(Object other)
     {
         if (other == this) return true;

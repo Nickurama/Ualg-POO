@@ -87,6 +87,12 @@ public class VirtualPoint
     }
 
     @Override
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public String toString()
     {
         return "(" + (int)this.x + "," + (int)this.y + ")";

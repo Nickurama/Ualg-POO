@@ -40,7 +40,7 @@ public class PointTests
         };
 
         // Act
-        Point[] vpArrayCopy = (Point[]) Point.copyArray(vpArray);
+        Point[] vpArrayCopy = Point.copyArray(vpArray);
         vpArrayCopy[0] = new Point(0, 1);
 
         // Assert

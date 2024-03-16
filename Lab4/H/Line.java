@@ -108,4 +108,10 @@ public class Line
         Line that = (Line) other;
         return this.isParalel(that) && this.isCollinear(that.containedPoint);
     }
+
+    @Override
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException();
+    }
 }
