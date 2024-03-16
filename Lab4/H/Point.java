@@ -2,7 +2,7 @@
  * Represents an immutable point in two dimensional space, in the first quadrant only
  * 
  * @author Diogo Fonseca a79858
- * @version 21/02/2024
+ * @version 16/03/2024
  */
 public class Point extends VirtualPoint
 {
@@ -31,7 +31,7 @@ public class Point extends VirtualPoint
     {
         super(p);
     }
-
+    
     /**
      * Performs a deep copy of an array of points
      * @param array the array to copy
@@ -45,7 +45,13 @@ public class Point extends VirtualPoint
         return result;
     }
 
-    public static Point[] stringToArray(String str)
+    /**
+     * Creates array of points from a string with the format:
+     * num_points x0 y0 x1 y1 x2 y2 ...
+     * @param str the string to read the points from
+     * @return the points extracted form the string
+     */
+    public static Point[] parseToArray(String str)
     {
         //! unhandled exception
         String[] tokens = str.split(" ");
@@ -64,8 +70,15 @@ public class Point extends VirtualPoint
         return result;
     }
 
-    public static Point[] stringToArray(String str, int numPoints)
+    /**
+     * Creates array of points from a string with the format:
+     * x0 y0 x1 y1 x2 y2 ...
+     * @param str the string to read the points from
+     * @param numPoints how many points are to be read from the string
+     * @return the points extracted from the string
+     */
+    public static Point[] parseToArray(String str, int numPoints)
     {
-        return stringToArray(String.valueOf(numPoints) + " " + str);
+        return parseToArray(String.valueOf(numPoints) + " " + str);
     }
 }

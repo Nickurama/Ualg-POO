@@ -1,12 +1,10 @@
-
-
 /**
  * Represents a square
  * A square is a rectangle whose sides are
  * all the same length
  * 
  * @author Diogo Fonseca a79858
- * @version 13/03/2024
+ * @version 16/03/2024
  */
 public class Quadrado extends Retangulo
 {
@@ -15,7 +13,6 @@ public class Quadrado extends Retangulo
     /**
      * Initializes a square
      * @param points the points that make the square
-     * 
      * @pre all sides must have equal length
      */
     public Quadrado(Point[] points)
@@ -26,9 +23,15 @@ public class Quadrado extends Retangulo
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    /**
+     * Initializes a square
+     * parses a string to a square
+     * @param str the string to parse into a square
+     * @pre all sides must have equal length
+     */
     public Quadrado(String str)
     {
-        this(Point.stringToArray(str, NUM_SIDES));
+        this(Point.parseToArray(str, NUM_SIDES));
     }
 
     /**

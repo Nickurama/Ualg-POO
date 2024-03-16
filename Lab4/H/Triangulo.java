@@ -1,11 +1,9 @@
-
-
 /**
  * Represents a triangle
  * A triangle is a polygon with 3 sides
  * 
  * @author Diogo Fonseca a79858
- * @version 13/03/2024
+ * @version 16/03/2024
  */
 public class Triangulo extends Poligono
 {
@@ -26,9 +24,16 @@ public class Triangulo extends Poligono
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    /**
+     * Initializes a triangle
+     * Parses a string into a triangle
+     * @param str the string to turn into a triangle
+     * 
+     * @pre must have 3 points
+     */
     public Triangulo(String str)
     {
-        this(Point.stringToArray(str, NUM_SIDES));
+        this(Point.parseToArray(str, NUM_SIDES));
     }
 
     @Override

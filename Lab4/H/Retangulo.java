@@ -4,7 +4,7 @@
  * an inner angle of 90 degrees
  * 
  * @author Diogo Fonseca a79858
- * @version 13/03/2024
+ * @version 16/03/2024
  */
 public class Retangulo extends Poligono
 {
@@ -29,9 +29,17 @@ public class Retangulo extends Poligono
             Error.terminateProgram(ERROR_MESSAGE);
     }
 
+    /**
+     * Initializes a rectangle
+     * parses a string into a rectangle
+     * @param str the string to parse into a rectangle
+     * 
+     * @pre must have 4 points
+     * @pre all angles are right angles
+     */
     public Retangulo(String str)
     {
-        this(Point.stringToArray(str, NUM_SIDES));
+        this(Point.parseToArray(str, NUM_SIDES));
     }
 
     /**

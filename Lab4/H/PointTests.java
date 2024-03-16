@@ -79,8 +79,8 @@ public class PointTests
         String expected = "[(1,1), (1,2), (2,2), (2,1)]";
 
         // Act
-        Point[] points0 = Point.stringToArray(str0);
-        Point[] points1 = Point.stringToArray(str1, 4);
+        Point[] points0 = Point.parseToArray(str0);
+        Point[] points1 = Point.parseToArray(str1, 4);
 
         // Assert
         assertTrue(Point.arrayToString(points0).equals(expected));

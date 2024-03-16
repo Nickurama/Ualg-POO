@@ -4,7 +4,7 @@
  * Represents an immutable simple polygon
  * 
  * @author Diogo Fonseca a79858
- * @version 21/02/2024
+ * @version 16/03/2024
  *  
  * @inv sides are the sides of the polygon
  * @inv points are the vertices of the polygon
@@ -36,9 +36,14 @@ public class Poligono
         this.sides = segments;
     }
 
+    /**
+     * Initializes a polygon
+     * Parses a string into a polygon
+     * @param str the string to parse
+     */
     public Poligono(String str)
     {
-        this(Point.stringToArray(str));
+        this(Point.parseToArray(str));
     }
 
     /**
@@ -141,11 +146,16 @@ public class Poligono
         return this.isPolygonEqual(that);
     }
     
+    /**
+     * Tests if two polygons are equal or equivalent to eachother
+     * @param that the polygon to test with
+     * @return if the two polygons are equal
+     */
     private boolean isPolygonEqual(Poligono that)
     {
         // linear Algorithm that checks if two polygons are equal
         if (this.vertices.length != that.vertices.length) return false;
-        int startInd = that.findPoint(this.vertices[0]);
+        int startInd = that.findVertice(this.vertices[0]);
         if (startInd < 0) return false;
 
         int direction = 1;
@@ -162,10 +172,17 @@ public class Poligono
         return true;
     }
 
-    private int findPoint(Point p)
+    /**
+     * Finds a polygon's vertice and returns it's index on
+     * polygon's array of vertices
+     * returns -1 if the vertice wasn't found
+     * @param vertice the vertice to find within the polygon
+     * @return the index of the vertice or -1 if it wasn't found
+     */
+    private int findVertice(Point vertice)
     {
         for (int i = 0; i < this.sides.length; i++)
-            if (p.equals(this.vertices[i]))
+            if (vertice.equals(this.vertices[i]))
                 return i;
         return -1;
     }

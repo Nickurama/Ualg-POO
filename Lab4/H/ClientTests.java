@@ -103,25 +103,4 @@ public class ClientTests
         // Assert
         assertTrue(output.equals(expected));
     }
-
-    // @Test
-    // public void ShouldDetectDuplicates()
-    // {
-    //     // Arrange
-    //     String input0 = "Poligono 4 5 5 8 6 8 7 5 7\n";
-    //     String input1 = "Poligono 4 5 5 8 6 8 7 5 7\n";
-    //     ByteArrayOutputStream os = TestUtil.setIOstreams(input0 + input1);
-    //     String expected = "Duplicado";
-
-    //     // Act
-    //     try
-    //     {
-    //         Client.main(null);
-    //     }
-    //     catch (Exception e) { }
-    //     String output = os.toString();
-
-    //     // Assert
-    //     assertTrue(output.equals(expected));
-    // }
 }

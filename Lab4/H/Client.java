@@ -5,7 +5,7 @@ import java.util.Scanner;
  * The class to manage the input and output
  * 
  * @author Diogo Fonseca a79858
- * @version 14/03/2024
+ * @version 16/03/2024
  */
 public class Client
 {

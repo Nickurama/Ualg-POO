@@ -194,8 +194,8 @@ public class VirtualPointTests
         String expected = "[(1,1), (1,2), (2,2), (2,1)]";
 
         // Act
-        VirtualPoint[] points0 = VirtualPoint.stringToArray(str0);
-        VirtualPoint[] points1 = VirtualPoint.stringToArray(str1, 4);
+        VirtualPoint[] points0 = VirtualPoint.parseToArray(str0);
+        VirtualPoint[] points1 = VirtualPoint.parseToArray(str1, 4);
 
         // Assert
         assertTrue(VirtualPoint.arrayToString(points0).equals(expected));
