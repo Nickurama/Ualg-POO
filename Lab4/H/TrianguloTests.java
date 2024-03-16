@@ -12,7 +12,7 @@ public class TrianguloTests
             new Point(3, 1),
             new Point(2, 2),
         });
-        String expected = "Triângulo: [(1,1), (3,1), (2,2)]";
+        String expected = "Triangulo: [(1,1), (3,1), (2,2)]";
 
         // Act
         String str = s.toString();
@@ -26,7 +26,7 @@ public class TrianguloTests
     {
         // Arrange
         String str = "7 1 9 1 9 3";
-        String expected = "Triângulo: [(7,1), (9,1), (9,3)]";
+        String expected = "Triangulo: [(7,1), (9,1), (9,3)]";
 
         // Act
         Triangulo t = new Triangulo(str);

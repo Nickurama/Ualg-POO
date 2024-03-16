@@ -58,6 +58,6 @@ public class Retangulo extends Poligono
     @Override
     public String toString()
     {
-        return "Retângulo: " + VirtualPoint.arrayToString(this.vertices);
+        return "Retangulo: " + VirtualPoint.arrayToString(this.vertices);
     }
 }

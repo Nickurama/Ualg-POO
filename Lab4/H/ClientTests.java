@@ -10,7 +10,7 @@ public class ClientTests
         // Arrange
         String input = "Poligono 4 5 5 8 6 8 7 5 7\n";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input);
-        String expected = "Polígono de 4 vértices: [(5,5), (8,6), (8,7), (5,7)]\r\n";
+        String expected = "Poligono de 4 vertices: [(5,5), (8,6), (8,7), (5,7)]\r\n";
 
         // Act
         try
@@ -30,7 +30,7 @@ public class ClientTests
         // Arrange
         String input = "Triangulo 7 1 9 1 9 3\n";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input);
-        String expected = "Triângulo: [(7,1), (9,1), (9,3)]\r\n";
+        String expected = "Triangulo: [(7,1), (9,1), (9,3)]\r\n";
 
         // Act
         try
@@ -50,7 +50,7 @@ public class ClientTests
         // Arrange
         String input = "Retangulo 1 1 1 2 4 2 4 1\n";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input);
-        String expected = "Retângulo: [(1,1), (1,2), (4,2), (4,1)]\r\n";
+        String expected = "Retangulo: [(1,1), (1,2), (4,2), (4,1)]\r\n";
 
         // Act
         try

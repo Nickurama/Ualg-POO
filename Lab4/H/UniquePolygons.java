@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class UniquePolygons
 {
-    private final String ERROR_MESSAGE = "Duplicado";
+    private final String ERROR_MESSAGE = "Duplicados";
     ArrayList<Poligono> polygons;
 
     /**
@@ -31,7 +31,7 @@ public class UniquePolygons
     public void add(Poligono poly)
     {
         if (contains(poly))
-            Error.terminateProgram(ERROR_MESSAGE);
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
         polygons.add(poly);
     }
 

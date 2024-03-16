@@ -39,6 +39,6 @@ public class Triangulo extends Poligono
     @Override
     public String toString()
     {
-        return "Triângulo: " + VirtualPoint.arrayToString(this.vertices);
+        return "Triangulo: " + VirtualPoint.arrayToString(this.vertices);
     }
 }

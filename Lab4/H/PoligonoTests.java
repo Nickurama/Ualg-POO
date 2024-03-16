@@ -269,7 +269,7 @@ public class PoligonoTests
             new Point(0, 0),
             new Point(0, 12),
         });
-        String expected = "Polígono de 6 vértices: [(3,5), (9,312), (512,1024), (7,1), (0,0), (0,12)]";
+        String expected = "Poligono de 6 vertices: [(3,5), (9,312), (512,1024), (7,1), (0,0), (0,12)]";
 
         // Act
         String str = poly.toString();
@@ -283,7 +283,7 @@ public class PoligonoTests
     {
         // Arrange
         Poligono poly = new Poligono("5 1 1 1 3 2 5 7 2 5 1");
-        String expected = "Polígono de 5 vértices: [(1,1), (1,3), (2,5), (7,2), (5,1)]";
+        String expected = "Poligono de 5 vertices: [(1,1), (1,3), (2,5), (7,2), (5,1)]";
 
         // Act
         String polyString = poly.toString();

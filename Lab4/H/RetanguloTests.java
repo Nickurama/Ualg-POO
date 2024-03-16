@@ -13,7 +13,7 @@ public class RetanguloTests
             new Point(5, 2),
             new Point(5, 1),
         });
-        String expected = "Retângulo: [(1,1), (1,2), (5,2), (5,1)]";
+        String expected = "Retangulo: [(1,1), (1,2), (5,2), (5,1)]";
 
         // Act
         String str = s.toString();
@@ -27,7 +27,7 @@ public class RetanguloTests
     {
         // Arrange
         String str = "1 1 1 2 4 2 4 1";
-        String expected = "Retângulo: [(1,1), (1,2), (4,2), (4,1)]";
+        String expected = "Retangulo: [(1,1), (1,2), (4,2), (4,1)]";
 
         // Act
         Retangulo r = new Retangulo(str);

@@ -133,7 +133,7 @@ public class Poligono
     @Override
     public String toString()
     {
-        return "Polígono de " + this.vertices.length + " vértices: " + VirtualPoint.arrayToString(this.vertices);
+        return "Poligono de " + this.vertices.length + " vertices: " + VirtualPoint.arrayToString(this.vertices);
     }
 
     @Override
