@@ -4,7 +4,7 @@
  * Represents an immutable simple polygon
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 17/03/2024
  *  
  * @inv sides are the sides of the polygon
  * @inv points are the vertices of the polygon
@@ -198,6 +198,12 @@ public class Poligono
         return -1;
     }
 
+    /**
+     * Rotates a polygon around a fixed point (anchor)
+     * @param angle the angle (in radians) to rotate the polygon by
+     * @param anchor the fixed point to rotate the polygon around
+     * @return a polygon with the rotation applied to it
+     */
     public Poligono rotate(double angle, VirtualPoint anchor)
     {
         Point[] newVertices = new Point[this.vertices.length];
@@ -206,21 +212,41 @@ public class Poligono
         return new Poligono(newVertices);
     }
 
+    /**
+     * Rotates a polygon around a fixed point(anchor)
+     * @param angle the angle in degrees to rotate the polygon by
+     * @param anchor the fixed point to rotate the polygon around
+     * @return a polygon with the rotation applied to it
+     */
     public Poligono rotateDegrees(double angle, VirtualPoint anchor)
     {
         return this.rotate(Math.toRadians(angle), anchor);
     }
-
+    
+    /**
+     * Rotates a polygon around it's centroid
+     * @param angle the angle (in radians) to rotate the polygon by
+     * @return a polygon with the rotation applied to it
+     */
     public Poligono rotate(double angle)
     {
         return this.rotate(angle, getCentroid());
     }
 
+    /**
+     * Rotates a polygon around it's centroid
+     * @param angle the angle in degrees to rotate the polygon by
+     * @return a polygon with the rotation applied to it
+     */
     public Poligono rotateDegrees(double angle)
     {
         return this.rotate(Math.toRadians(angle));
     }
 
+    /**
+     * Calculates the centroid of the polygon
+     * @return the centroid of the polygon
+     */
     private Point getCentroid()
     {
         double x = 0;
@@ -238,6 +264,10 @@ public class Poligono
         return new Point(x, y);
     }
 
+    /**
+     * Acessor method to get the number of sides the polygon has
+     * @return the number of sides the polygon has
+     */
     public int getNumSides()
     {
         return this.vertices.length;

@@ -4,7 +4,7 @@
  * all the same length
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 17/03/2024
  */
 public class Quadrado extends Retangulo
 {
@@ -21,12 +21,21 @@ public class Quadrado extends Retangulo
         validateSquare();
     }
 
+    /**
+     * Initializes a square from a polygon
+     * @param poly the polygon to initialize from
+     */
     public Quadrado(Poligono poly)
     {
         super(poly);
         validateSquare();
     }
 
+    /**
+     * Validates the preconditions for the
+     * class to work. terminates the program if
+     * they aren't met
+     */
     public void validateSquare()
     {
         if (!areAllSidesSameLength())

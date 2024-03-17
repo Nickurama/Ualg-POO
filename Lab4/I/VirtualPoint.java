@@ -5,7 +5,7 @@ import java.io.IOException;
  * Represents an immutable point in two dimensional space
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 17/03/2024
  * 
  * @inv x the x coordinate
  * @inv y the y coordinate
@@ -71,11 +71,6 @@ public class VirtualPoint
         return Math.sqrt(dx * dx + dy * dy);
     }
 
-    /**
-     * Checks if the two points are equivalent (occupy the same coordinates)
-     * @param that the point to compare to
-     * @return if the two points are equivalent
-     */
     @Override
     public boolean equals(Object other)
     {
@@ -167,6 +162,12 @@ public class VirtualPoint
         return parseToArray(String.valueOf(numPoints) + " " + str);
     }
 
+    /**
+     * Rotates a point around a fixed point (anchor)
+     * @param angle the angle (in radians) to rotate the point by
+     * @param anchor the fixed point to rotate the point around
+     * @return a point with the rotation applied to it
+     */
     public VirtualPoint rotate(double angle, VirtualPoint anchor)
     {
         double newX = (this.x - anchor.x) * Math.cos(angle) - (this.y - anchor.y) * Math.sin(angle) + anchor.x;

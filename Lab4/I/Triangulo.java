@@ -3,7 +3,7 @@
  * A triangle is a polygon with 3 sides
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 17/03/2024
  */
 public class Triangulo extends Poligono
 {
@@ -22,12 +22,21 @@ public class Triangulo extends Poligono
         validateTriangle(this.sides.length);
     }
 
+    /**
+     * Initializes a triangle from a polygon
+     * @param poly the polygon to initialize from
+     */
     public Triangulo(Poligono poly)
     {
         super(poly);
         validateTriangle(poly.getNumSides());
     }
 
+    /**
+     * Validates the preconditions for the
+     * class to work. terminates the program if
+     * they aren't met
+     */
     private void validateTriangle(int numSides)
     {
         if (this.sides.length != NUM_SIDES)

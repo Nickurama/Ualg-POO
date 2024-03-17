@@ -2,7 +2,7 @@
  * Represents an immutable point in two dimensional space, in the first quadrant only
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 17/03/2024
  */
 public class Point extends VirtualPoint
 {
@@ -22,7 +22,7 @@ public class Point extends VirtualPoint
     }
 
     /**
-     * Initializes the point, performing a deep copy
+     * Initializes a point, performing a deep copy
      * over the other point
      * @param p the point to copy from
      */
@@ -32,12 +32,21 @@ public class Point extends VirtualPoint
         validatePoint();
     }
 
+    /**
+     * Initializes a point from a VirtualPoint
+     * @param p the VirtualPoint to initialize from
+     */
     public Point(VirtualPoint p)
     {
         super(p);
         validatePoint();
     }
 
+    /**
+     * Validates the preconditions for the
+     * class to work. terminates the program if
+     * they aren't met
+     */
     private void validatePoint()
     {
         if (x < 0 || y < 0)
@@ -49,7 +58,7 @@ public class Point extends VirtualPoint
      * @param array the array to copy
      * @return the copy of the array
      */
-    public static Point[] copyArray(Point[] array) //! Makes two arrays, optimal?
+    public static Point[] copyArray(Point[] array) //! Makes two arrays, good practice?
     {
         VirtualPoint[] vps = VirtualPoint.copyArray(array);
         Point[] result = new Point[vps.length];
@@ -78,21 +87,6 @@ public class Point extends VirtualPoint
         for (int i = 0; i < vps.length; i++)
             result[i] = new Point(vps[i]);
         return result;
-
-        // String[] tokens = str.split(" ");
-        // if (tokens.length < 3)
-        //     return null;
-        
-        // int numVertices = Integer.parseInt(tokens[0]);
-        // Point[] result = new Point[numVertices];
-        // for (int i = 1; i < tokens.length; i += 2)
-        // {
-        //     double x = Double.parseDouble(tokens[i]);
-        //     double y = Double.parseDouble(tokens[i + 1]);
-        //     result[i / 2] = new Point(x, y);
-        // }
-
-        // return result;
     }
 
     /**

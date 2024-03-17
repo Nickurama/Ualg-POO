@@ -4,7 +4,7 @@
  * an inner angle of 90 degrees
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 17/03/2024
  */
 public class Retangulo extends Poligono
 {
@@ -24,12 +24,21 @@ public class Retangulo extends Poligono
         validateRectangle(points.length);
     }
 
+    /**
+     * Initializes a rectangle from a polygon
+     * @param poly the polygon to initialize from
+     */
     public Retangulo(Poligono poly)
     {
         super(poly);
         validateRectangle(poly.getNumSides());
     }
 
+    /**
+     * Validates the preconditions for the
+     * class to work. terminates the program if
+     * they aren't met
+     */
     private void validateRectangle(int numSides)
     {
         if (numSides != NUM_SIDES)
