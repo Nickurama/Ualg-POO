@@ -154,6 +154,13 @@ public class VirtualPoint
         return parseToArray(String.valueOf(numPoints) + " " + str);
     }
 
+    public VirtualPoint rotate(double angle, VirtualPoint anchor)
+    {
+        double newX = (this.x - anchor.x) * Math.cos(angle) - (this.y - anchor.y) * Math.sin(angle) + anchor.x;
+        double newY = (this.x - anchor.x) * Math.sin(angle) + (this.y - anchor.y) * Math.cos(angle) + anchor.y;
+        return new VirtualPoint(newX, newY);
+    }
+
     /**
      * Acessor method to return the x coordinate
      */

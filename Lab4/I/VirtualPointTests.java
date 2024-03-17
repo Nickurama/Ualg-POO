@@ -201,4 +201,52 @@ public class VirtualPointTests
         assertTrue(VirtualPoint.arrayToString(points0).equals(expected));
         assertTrue(VirtualPoint.arrayToString(points1).equals(expected));
     }
+
+    @Test
+    public void ShouldRotateAroundAnchor()
+    {
+        // Arrange
+        VirtualPoint vp0 = new VirtualPoint(-2, -2);
+        VirtualPoint vp1 = new VirtualPoint(3, 5);
+        VirtualPoint anchor = new VirtualPoint(0, 0);
+        VirtualPoint expected0 = new VirtualPoint(vp0);
+        VirtualPoint expected1 = new VirtualPoint(2, -2);
+        VirtualPoint expected2 = new VirtualPoint(-2, 2);
+        VirtualPoint expected3 = new VirtualPoint(2, 2);
+        VirtualPoint expected4 = new VirtualPoint(-2.459697694, -1.158529015);
+        VirtualPoint expected5 = new VirtualPoint(vp0);
+        VirtualPoint expected6 = new VirtualPoint(1.96972375, 4.57306188);
+
+        // Act
+        VirtualPoint rotation0 = vp0.rotate(0, anchor);
+        VirtualPoint rotation1 = vp0.rotate(Math.PI / 2f, anchor);
+        VirtualPoint rotation2 = vp0.rotate(-Math.PI / 2f, anchor);
+        VirtualPoint rotation3 = vp0.rotate(Math.PI, anchor);
+        VirtualPoint rotation4 = vp0.rotate(1f, new VirtualPoint(-3, -2));
+        VirtualPoint rotation5 = vp0.rotate(Math.PI, vp0);
+        VirtualPoint rotation6 = vp1.rotate(3f, new VirtualPoint(2.5, 4.75));
+
+        // Assert
+        assertTrue(rotation0.equals(expected0));
+        assertTrue(rotation1.equals(expected1));
+        assertTrue(rotation2.equals(expected2));
+        assertTrue(rotation3.equals(expected3));
+        assertTrue(rotation4.equals(expected4));
+        assertTrue(rotation5.equals(expected5));
+        assertTrue(rotation6.equals(expected6));
+    }
+
+    @Test
+    public void ShouldBeImmutableWhenRotating()
+    {
+        // Assert
+        VirtualPoint point = new VirtualPoint(2, 3);
+        VirtualPoint replica = new VirtualPoint(2, 3);
+
+        // Act
+        point.rotate(Math.PI / 2f, new VirtualPoint(0, 0));
+
+        // Arrange
+        assertTrue(point.equals(replica));
+    }
 }
