@@ -507,6 +507,33 @@ public class PoligonoTests
     }
 
     @Test
+    public void ShouldTakeDegrees()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(4, 3),
+            new Point(5, 6),
+            new Point(6, 6),
+            new Point(5, 5),
+            new Point(6, 2),
+        });
+        Poligono expected = new Poligono(new Point [] {
+            new Point(3.36152236891, 4.25857864376),
+            new Point(6.18994949366, 5.67279220614),
+            new Point(6.89705627485, 4.96568542495),
+            new Point(5.48284271247, 4.96568542495),
+            new Point(4.0686291501, 2.1372583002),
+        });
+
+        // Act
+        Poligono rotated = poly.rotateDegrees(-45);
+
+        // Arrange
+        assertTrue(rotated.equals(expected));
+
+    }
+
+    @Test
     public void ShouldBeImmutableWhenRotating()
     {
         // Arrange

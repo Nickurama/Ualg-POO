@@ -28,7 +28,7 @@ public class Line
     public Line(Point a, Point b)
     {
         if (a.equals(b))
-            Error.terminateProgram(ERROR_MESSAGE);
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
         
         this.coefficientX = a.Y() - b.Y();
         this.coefficientY = b.X() - a.X();

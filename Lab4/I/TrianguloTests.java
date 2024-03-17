@@ -36,4 +36,28 @@ public class TrianguloTests
         assertTrue(gen.equals(expected));
 
     }
+
+    @Test
+    public void ShouldRotateAndStayATriangle()
+    {
+        // Arrange
+        Triangulo tri = new Triangulo(new Point[] {
+            new Point(2, 1),
+            new Point(4, 1),
+            new Point(3, 4),
+        });
+        Triangulo expected = new Triangulo(new Point[] {
+            new Point(4, 3),
+            new Point(2, 3),
+            new Point(3, 0),
+        });
+
+        // Act
+        Triangulo rotated0 = tri.rotate(Math.PI);
+        Triangulo rotated1 = tri.rotateDegrees(180);
+
+        // Assert
+        assertTrue(rotated0.equals(expected));
+        assertTrue(rotated1.equals(expected));
+    }
 }

@@ -17,40 +17,36 @@ public class Client
     public static void main(String[] args) throws Exception
     {
         Scanner sc = new Scanner(System.in);
-        Constructor<?> constructor;
-        Class<?> cl;
-        UniquePolygons polys = new UniquePolygons();
-        Poligono currPoly;
-        String input;
-        String[] tokens;
-        while (sc.hasNextLine())
+        String polyStr = sc.nextLine();
+        String rotationStr = sc.nextLine();
+        String[] polyTokens = polyStr.split(" ", 2);
+        String[] rotationTokens = rotationStr.split(" ");
+        
+        try
         {
-            input = sc.nextLine();
-            if (input.isEmpty())
-                break;
-            tokens = input.split(" ", 2);
-
-            try
+            Class<?> cl = Class.forName(capital(polyTokens[0]));
+            Constructor<?> constructor = cl.getConstructor(String.class);
+            Poligono poly = (Poligono) constructor.newInstance(polyTokens[1]);
+            double angle = Double.parseDouble(rotationTokens[0]);
+            if (rotationTokens.length == 1)
             {
-                cl = Class.forName(capital(tokens[0]));
-                constructor = cl.getConstructor(String.class);
-                currPoly = (Poligono) constructor.newInstance(tokens[1]);
-                polys.add(currPoly);
+                System.out.print(poly.rotateDegrees(angle).toString());
             }
-            catch (ClassNotFoundException cnfe)
+            else
             {
-                System.out.println("Não foi encontrada a classe: " + cnfe.getMessage());
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
+                VirtualPoint anchor = new VirtualPoint(Double.parseDouble(rotationTokens[1]), Double.parseDouble(rotationTokens[2]));
+                System.out.print(poly.rotateDegrees(angle, anchor).toString());
             }
         }
+        catch (ClassNotFoundException cnfe)
+        {
+            System.out.println("Não foi encontrada a classe: " + cnfe.getMessage());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         sc.close();
-
-        String[] strings = polys.toStrings();
-        for (String s : strings)
-            System.out.println(s);
     }
 
     /**

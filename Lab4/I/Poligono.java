@@ -24,13 +24,13 @@ public class Poligono
     public Poligono(Point[] points)
     {
         if (points.length < 3)
-            Error.terminateProgram(ERROR_MESSAGE);
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
         
         Point[] verticesGen = Point.copyArray(points);  
         LineSegment[] segments = generateSegments(verticesGen);
 
         if (isAnyGeneratedPointCollinear(verticesGen, segments) || doSidesIntersect(segments))
-            Error.terminateProgram(ERROR_MESSAGE);
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
         
         this.vertices = verticesGen;
         this.sides = segments;
@@ -44,6 +44,11 @@ public class Poligono
     public Poligono(String str)
     {
         this(Point.parseToArray(str));
+    }
+
+    public Poligono(Poligono poly)
+    {
+        this(poly.vertices);
     }
 
     /**
@@ -201,9 +206,19 @@ public class Poligono
         return new Poligono(newVertices);
     }
 
+    public Poligono rotateDegrees(double angle, VirtualPoint anchor)
+    {
+        return this.rotate(Math.toRadians(angle), anchor);
+    }
+
     public Poligono rotate(double angle)
     {
         return this.rotate(angle, getCentroid());
+    }
+
+    public Poligono rotateDegrees(double angle)
+    {
+        return this.rotate(Math.toRadians(angle));
     }
 
     private Point getCentroid()
@@ -221,5 +236,10 @@ public class Poligono
         y /= this.vertices.length;
         
         return new Point(x, y);
+    }
+
+    public int getNumSides()
+    {
+        return this.vertices.length;
     }
 }

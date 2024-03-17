@@ -36,4 +36,30 @@ public class QuadradoTests
         // Assert
         assertTrue(gen.equals(expected));
     }
+
+    @Test
+    public void ShouldRotateAndStayASquare()
+    {
+        // Arrange
+        Quadrado sq = new Quadrado(new Point[] {
+            new Point(1, 1),
+            new Point(1, 2),
+            new Point(2, 2),
+            new Point(2, 1),
+        });
+        Quadrado expected = new Quadrado(new Point[] {
+            new Point(2, 1),
+            new Point(1, 1),
+            new Point(1, 2),
+            new Point(2, 2),
+        });
+
+        // Act
+        Quadrado rotated0 = sq.rotate(Math.PI / 2);
+        Quadrado rotated1 = sq.rotateDegrees(90);
+
+        // Assert
+        assertTrue(rotated0.equals(expected));
+        assertTrue(rotated1.equals(expected));
+    }
 }

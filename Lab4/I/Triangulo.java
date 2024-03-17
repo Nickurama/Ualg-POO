@@ -19,9 +19,19 @@ public class Triangulo extends Poligono
     public Triangulo(Point[] points)
     {
         super(points);
+        validateTriangle(this.sides.length);
+    }
 
+    public Triangulo(Poligono poly)
+    {
+        super(poly);
+        validateTriangle(poly.getNumSides());
+    }
+
+    private void validateTriangle(int numSides)
+    {
         if (this.sides.length != NUM_SIDES)
-            Error.terminateProgram(ERROR_MESSAGE);
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
     }
 
     /**
@@ -40,5 +50,29 @@ public class Triangulo extends Poligono
     public String toString()
     {
         return "Triangulo: " + VirtualPoint.arrayToString(this.vertices);
+    }
+
+    @Override
+    public Triangulo rotate(double angle, VirtualPoint anchor)
+    {
+        return new Triangulo(super.rotate(angle, anchor));
+    }
+
+    @Override
+    public Triangulo rotate(double angle)
+    {
+        return new Triangulo(super.rotate(angle));
+    }
+
+    @Override
+    public Triangulo rotateDegrees(double angle, VirtualPoint anchor)
+    {
+        return new Triangulo(super.rotateDegrees(angle, anchor));
+    }
+
+    @Override
+    public Triangulo rotateDegrees(double angle)
+    {
+        return new Triangulo(super.rotateDegrees(angle));
     }
 }

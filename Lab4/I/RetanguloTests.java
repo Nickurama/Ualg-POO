@@ -36,4 +36,30 @@ public class RetanguloTests
         // Assert
         assertTrue(gen.equals(expected));
     }
+
+    @Test
+    public void ShouldRotateAndStayARectangle()
+    {
+        // Arrange
+        Retangulo rect = new Retangulo(new Point[] {
+            new Point(1, 1),
+            new Point(3, 1),
+            new Point(3, 5),
+            new Point(1, 5),
+        });
+        Retangulo expected = new Retangulo(new Point[] {
+            new Point(4, 2),
+            new Point(4, 4),
+            new Point(0, 4),
+            new Point(0, 2),
+        });
+
+        // Act
+        Retangulo rotated0 = rect.rotate(Math.PI / 2);
+        Retangulo rotated1 = rect.rotateDegrees(90);
+
+        // Assert
+        assertTrue(rotated0.equals(expected));
+        assertTrue(rotated1.equals(expected));
+    }
 }

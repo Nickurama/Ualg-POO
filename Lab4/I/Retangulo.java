@@ -21,12 +21,22 @@ public class Retangulo extends Poligono
     public Retangulo(Point[] points)
     {
         super(points);
+        validateRectangle(points.length);
+    }
 
-        if (points.length != NUM_SIDES)
-            Error.terminateProgram(ERROR_MESSAGE);
+    public Retangulo(Poligono poly)
+    {
+        super(poly);
+        validateRectangle(poly.getNumSides());
+    }
+
+    private void validateRectangle(int numSides)
+    {
+        if (numSides != NUM_SIDES)
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
         
         if (!allAnglesAreRightAngles())
-            Error.terminateProgram(ERROR_MESSAGE);
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
     }
 
     /**
@@ -59,5 +69,29 @@ public class Retangulo extends Poligono
     public String toString()
     {
         return "Retangulo: " + VirtualPoint.arrayToString(this.vertices);
+    }
+
+    @Override
+    public Retangulo rotate(double angle, VirtualPoint anchor)
+    {
+        return new Retangulo(super.rotate(angle, anchor));
+    }
+
+    @Override
+    public Retangulo rotate(double angle)
+    {
+        return new Retangulo(super.rotate(angle));
+    }
+
+    @Override
+    public Retangulo rotateDegrees(double angle, VirtualPoint anchor)
+    {
+        return new Retangulo(super.rotateDegrees(angle, anchor));
+    }
+
+    @Override
+    public Retangulo rotateDegrees(double angle)
+    {
+        return new Retangulo(super.rotateDegrees(angle));
     }
 }

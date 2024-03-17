@@ -95,7 +95,20 @@ public class VirtualPoint
     @Override
     public String toString()
     {
-        return "(" + (int)this.x + "," + (int)this.y + ")";
+        // this is done because the expected behaviour is to
+        // truncate the number, but sometimes the number will be
+        // a small infitesimal below the actual number which
+        // makes the truncation to be 1 below the actual
+        // number, which is unexpected behaviour
+        int printableX = (int)this.x;
+        int printableY = (int)this.y;
+        int roundedX = (int)Math.round(this.x);
+        int roundedY = (int)Math.round(this.y);
+        if (MathUtil.areEqual(this.x, roundedX))
+            printableX = roundedX;
+        if (MathUtil.areEqual(this.y, roundedY))
+            printableY = roundedY;
+        return "(" + printableX + "," + printableY + ")";
     }
 
     /**

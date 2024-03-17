@@ -18,8 +18,7 @@ public class Point extends VirtualPoint
     public Point(double x, double y)
     {
         super(x, y);
-        if (x < 0 || y < 0)
-            Error.terminateProgram(ERROR_MESSAGE);
+        validatePoint();
     }
 
     /**
@@ -30,11 +29,19 @@ public class Point extends VirtualPoint
     public Point(Point p)
     {
         super(p);
+        validatePoint();
     }
 
     public Point(VirtualPoint p)
     {
         super(p);
+        validatePoint();
+    }
+
+    private void validatePoint()
+    {
+        if (x < 0 || y < 0)
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
     }
     
     /**

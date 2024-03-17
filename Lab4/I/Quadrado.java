@@ -18,9 +18,19 @@ public class Quadrado extends Retangulo
     public Quadrado(Point[] points)
     {
         super(points);
+        validateSquare();
+    }
 
+    public Quadrado(Poligono poly)
+    {
+        super(poly);
+        validateSquare();
+    }
+
+    public void validateSquare()
+    {
         if (!areAllSidesSameLength())
-            Error.terminateProgram(ERROR_MESSAGE);
+            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
     }
 
     /**
@@ -51,5 +61,29 @@ public class Quadrado extends Retangulo
     public String toString()
     {
         return "Quadrado: " + VirtualPoint.arrayToString(this.vertices);
+    }
+
+    @Override
+    public Quadrado rotate(double angle, VirtualPoint anchor)
+    {
+        return new Quadrado(super.rotate(angle, anchor));
+    }
+
+    @Override
+    public Quadrado rotate(double angle)
+    {
+        return new Quadrado(super.rotate(angle));
+    }
+
+    @Override
+    public Quadrado rotateDegrees(double angle, VirtualPoint anchor)
+    {
+        return new Quadrado(super.rotateDegrees(angle, anchor));
+    }
+
+    @Override
+    public Quadrado rotateDegrees(double angle)
+    {
+        return new Quadrado(super.rotateDegrees(angle));
     }
 }
