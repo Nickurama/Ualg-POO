@@ -192,4 +192,34 @@ public class Poligono
                 return i;
         return -1;
     }
+
+    public Poligono rotate(double angle, VirtualPoint anchor)
+    {
+        Point[] newVertices = new Point[this.vertices.length];
+        for (int i = 0; i < this.vertices.length; i++)
+            newVertices[i] = new Point(this.vertices[i].rotate(angle, anchor));
+        return new Poligono(newVertices);
+    }
+
+    public Poligono rotate(double angle)
+    {
+        return this.rotate(angle, getCentroid());
+    }
+
+    private Point getCentroid()
+    {
+        double x = 0;
+        double y = 0;
+
+        for (Point vertice : this.vertices)
+        {
+            x += vertice.X();
+            y += vertice.Y();
+        }
+
+        x /= this.vertices.length;
+        y /= this.vertices.length;
+        
+        return new Point(x, y);
+    }
 }

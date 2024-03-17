@@ -425,4 +425,110 @@ public class PoligonoTests
         // Arrange
         assertFalse(equals);
     }
+
+    @Test
+    public void ShouldRotateAroundAnchor()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(4, 3),
+            new Point(5, 6),
+            new Point(6, 6),
+            new Point(5, 5),
+            new Point(6, 2),
+        });
+        Point anchor = new Point(8, 12);
+        Poligono expected = new Poligono(new Point [] {
+            new Point(13.7942286341, 4.03589838486),
+            new Point(11.6961524227, 6.40192378865),
+            new Point(12.1961524227, 7.26794919243),
+            new Point(12.5621778265, 5.90192378865),
+            new Point(15.6602540378, 5.26794919243),
+        });
+
+        // Act
+        Poligono rotated = poly.rotate(Math.PI / 3, anchor);
+
+        // Arrange
+        assertTrue(rotated.equals(expected));
+    }
+
+    @Test
+    public void ShouldRotateAroundNegativeAnchor()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(4, 3),
+            new Point(5, 6),
+            new Point(6, 6),
+            new Point(5, 5),
+            new Point(6, 2),
+        });
+        VirtualPoint anchor = new VirtualPoint(10, -12);
+        Poligono expected = new Poligono(new Point [] {
+            new Point(5.60079557681, 3.54499921013),
+            new Point(6.90890286198, 6.42403643297),
+            new Point(7.90342475734, 6.3195079697),
+            new Point(6.80437439871, 5.4295145376),
+            new Point(7.48531090427, 2.34142038823),
+        });
+
+        // Act
+        Poligono rotated = poly.rotate(-Math.PI / 30, anchor);
+
+        // Arrange
+        assertTrue(rotated.equals(expected));
+    }
+
+    @Test
+    public void ShouldRotateAroundCentroid()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(4, 3),
+            new Point(5, 6),
+            new Point(6, 6),
+            new Point(5, 5),
+            new Point(6, 2),
+        });
+        Poligono expected = new Poligono(new Point [] {
+            new Point(3.36152236891, 4.25857864376),
+            new Point(6.18994949366, 5.67279220614),
+            new Point(6.89705627485, 4.96568542495),
+            new Point(5.48284271247, 4.96568542495),
+            new Point(4.0686291501, 2.1372583002),
+        });
+
+        // Act
+        Poligono rotated = poly.rotate(-Math.PI / 4);
+
+        // Arrange
+        assertTrue(rotated.equals(expected));
+    }
+
+    @Test
+    public void ShouldBeImmutableWhenRotating()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(4, 3),
+            new Point(5, 6),
+            new Point(6, 6),
+            new Point(5, 5),
+            new Point(6, 2),
+        });
+        Poligono replica = new Poligono(new Point[] {
+            new Point(4, 3),
+            new Point(5, 6),
+            new Point(6, 6),
+            new Point(5, 5),
+            new Point(6, 2),
+        });
+
+        // Act
+        poly.rotate(Math.PI / 2);
+
+        // Arrange
+        assertTrue(poly.equals(replica));
+    }
 }

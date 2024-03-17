@@ -31,18 +31,30 @@ public class Point extends VirtualPoint
     {
         super(p);
     }
+
+    public Point(VirtualPoint p)
+    {
+        super(p);
+    }
     
     /**
      * Performs a deep copy of an array of points
      * @param array the array to copy
      * @return the copy of the array
      */
-    public static Point[] copyArray(Point[] array) //! Issue: if not implemented, could use the parent class's implementation which will break
+    public static Point[] copyArray(Point[] array) //! Makes two arrays, optimal?
     {
-        Point[] result = new Point[array.length];
-        for (int i = 0; i < array.length; i++)
-            result[i] = new Point(array[i]);
+        VirtualPoint[] vps = VirtualPoint.copyArray(array);
+        Point[] result = new Point[vps.length];
+
+        for (int i = 0; i < vps.length; i++)
+            result[i] = new Point(vps[i]);
         return result;
+
+        // Point[] result = new Point[array.length]; //! Issue: if not implemented, could use the parent class's implementation which will break
+        // for (int i = 0; i < array.length; i++)
+        //     result[i] = new Point(array[i]);
+        // return result;
     }
 
     /**
@@ -53,21 +65,27 @@ public class Point extends VirtualPoint
      */
     public static Point[] parseToArray(String str)
     {
-        //! unhandled exception
-        String[] tokens = str.split(" ");
-        if (tokens.length < 3)
-            return null;
-        
-        int numVertices = Integer.parseInt(tokens[0]);
-        Point[] result = new Point[numVertices];
-        for (int i = 1; i < tokens.length; i += 2)
-        {
-            double x = Double.parseDouble(tokens[i]);
-            double y = Double.parseDouble(tokens[i + 1]);
-            result[i / 2] = new Point(x, y);
-        }
+        VirtualPoint[] vps = VirtualPoint.parseToArray(str);
+        Point[] result = new Point[vps.length];
 
+        for (int i = 0; i < vps.length; i++)
+            result[i] = new Point(vps[i]);
         return result;
+
+        // String[] tokens = str.split(" ");
+        // if (tokens.length < 3)
+        //     return null;
+        
+        // int numVertices = Integer.parseInt(tokens[0]);
+        // Point[] result = new Point[numVertices];
+        // for (int i = 1; i < tokens.length; i += 2)
+        // {
+        //     double x = Double.parseDouble(tokens[i]);
+        //     double y = Double.parseDouble(tokens[i + 1]);
+        //     result[i / 2] = new Point(x, y);
+        // }
+
+        // return result;
     }
 
     /**
@@ -79,6 +97,12 @@ public class Point extends VirtualPoint
      */
     public static Point[] parseToArray(String str, int numPoints)
     {
-        return parseToArray(String.valueOf(numPoints) + " " + str);
+        VirtualPoint[] vps = VirtualPoint.parseToArray(str, numPoints);
+        Point[] result = new Point[vps.length];
+
+        for (int i = 0; i < vps.length; i++)
+            result[i] = new Point(vps[i]);
+        return result;
+        // return parseToArray(String.valueOf(numPoints) + " " + str);
     }
 }
