@@ -249,4 +249,49 @@ public class VirtualPointTests
         // Arrange
         assertTrue(point.equals(replica));
     }
+
+    @Test
+    public void ShouldApplyTranslation()
+    {
+        // Arrange
+        VirtualPoint point = new VirtualPoint(1, 2);
+        Vector v0 = new Vector(3, 4);
+        Vector v1 = new Vector(-3, -7);
+        Vector v2 = new Vector(-1, 5);
+        Vector v3 = new Vector(9, -2);
+        Vector v4 = new Vector(0, 0);
+        VirtualPoint expected0 = new VirtualPoint(4, 6);
+        VirtualPoint expected1 = new VirtualPoint(-2, -5);
+        VirtualPoint expected2 = new VirtualPoint(0, 7);
+        VirtualPoint expected3 = new VirtualPoint(10, 0);
+        VirtualPoint expected4 = new VirtualPoint(1, 2);
+
+        // Act
+        VirtualPoint p0 = point.translate(v0);
+        VirtualPoint p1 = point.translate(v1);
+        VirtualPoint p2 = point.translate(v2);
+        VirtualPoint p3 = point.translate(v3);
+        VirtualPoint p4 = point.translate(v4);
+
+        // Assert
+        assertTrue(p0.equals(expected0));
+        assertTrue(p1.equals(expected1));
+        assertTrue(p2.equals(expected2));
+        assertTrue(p3.equals(expected3));
+        assertTrue(p4.equals(expected4));
+    }
+
+    @Test
+    public void ShouldBeImmutableOnTranslation()
+    {
+        // Arrange
+        VirtualPoint point = new Point(1, 2);
+        VirtualPoint replica = new Point(1, 2);
+
+        // Act
+        point.translate(new Vector(4, 6));
+
+        // Assert
+        assertTrue(point.equals(replica));
+    }
 }
