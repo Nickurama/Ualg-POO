@@ -9,7 +9,6 @@ import java.util.Scanner;
  */
 public class Client
 {
-
     /**
      * The main method
      * @param args ignored
@@ -18,25 +17,17 @@ public class Client
     {
         Scanner sc = new Scanner(System.in);
         String polyStr = sc.nextLine();
-        String rotationStr = sc.nextLine();
+        String vectorStr = sc.nextLine();
         String[] polyTokens = polyStr.split(" ", 2);
-        String[] rotationTokens = rotationStr.split(" ");
+        String[] vectorTokens = vectorStr.split(" ");
         
         try
         {
             Class<?> cl = Class.forName(capital(polyTokens[0]));
             Constructor<?> constructor = cl.getConstructor(String.class);
             Poligono poly = (Poligono) constructor.newInstance(polyTokens[1]);
-            double angle = Double.parseDouble(rotationTokens[0]);
-            if (rotationTokens.length == 1)
-            {
-                System.out.print(poly.rotateDegrees(angle).toString());
-            }
-            else
-            {
-                VirtualPoint anchor = new VirtualPoint(Double.parseDouble(rotationTokens[1]), Double.parseDouble(rotationTokens[2]));
-                System.out.print(poly.rotateDegrees(angle, anchor).toString());
-            }
+            Vector v = new Vector(Double.parseDouble(vectorTokens[0]), Double.parseDouble(vectorTokens[1]));
+            System.out.print(poly.translate(v).toString());
         }
         catch (ClassNotFoundException cnfe)
         {
