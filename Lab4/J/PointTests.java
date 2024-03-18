@@ -87,30 +87,49 @@ public class PointTests
         assertTrue(Point.arrayToString(points1).equals(expected));
     }
 
-    // @Test
-    // public void ShouldGetInput()
-    // {
-    //     // Arrange
-    //     String input = "3 1\n12.5 4\n";
-    //     TestUtil.setIOstreams(input);
-    //     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    //     Point p0 = null;
-    //     Point p1 = null;
-    //     Point expected0 = new Point(3, 1);
-    //     Point expected1 = new Point(12.5, 4);
+    @Test
+    public void ShouldApplyTranslation()
+    {
+        // Arrange
+        Point point = new Point(11, 12);
+        Vector v0 = new Vector(3, 4);
+        Vector v1 = new Vector(-3, -7);
+        Vector v2 = new Vector(-1, 5);
+        Vector v3 = new Vector(9, -2);
+        Vector v4 = new Vector(0, 0);
+        Point expected0 = new Point(14, 16);
+        Point expected1 = new Point(8, 5);
+        Point expected2 = new Point(10, 17);
+        Point expected3 = new Point(20, 10);
+        Point expected4 = new Point(11, 12);
 
-    //     // Act
-    //     try
-    //     {
-    //         p0 = Point.getPointFromInput(reader);
-    //         p1 = Point.getPointFromInput(reader);
-    //     }
-    //     catch (IOException e) { }
+        // Act
+        Point p0 = point.translate(v0);
+        Point p1 = point.translate(v1);
+        Point p2 = point.translate(v2);
+        Point p3 = point.translate(v3);
+        Point p4 = point.translate(v4);
 
-    //     // Assert
-    //     assertFalse(p0 == null);
-    //     assertFalse(p1 == null);
-    //     assertTrue(p0.equals(expected0));
-    //     assertTrue(p1.equals(expected1));
-    // }
+        // Assert
+        assertTrue(p0.equals(expected0));
+        assertTrue(p1.equals(expected1));
+        assertTrue(p2.equals(expected2));
+        assertTrue(p3.equals(expected3));
+        assertTrue(p4.equals(expected4));
+    }
+
+
+    @Test
+    public void ShouldBeImmutableOnTranslation()
+    {
+        // Arrange
+        Point point = new Point(1, 2);
+        Point replica = new Point(1, 2);
+
+        // Act
+        point.translate(new Vector(4, 6));
+
+        // Assert
+        assertTrue(point.equals(replica));
+    }
 }
