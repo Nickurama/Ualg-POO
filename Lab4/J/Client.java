@@ -37,7 +37,10 @@ public class Client
         {
             e.printStackTrace();
         }
-        sc.close();
+        finally
+        {
+            sc.close();
+        }
     }
 
     /**
