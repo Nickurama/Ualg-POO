@@ -175,6 +175,11 @@ public class VirtualPoint
         return new VirtualPoint(newX, newY);
     }
 
+    public VirtualPoint translate(Vector vector)
+    {
+        return new VirtualPoint(this.X() + vector.X(), this.Y() + vector.Y());
+    }
+
     /**
      * Acessor method to return the x coordinate
      */
