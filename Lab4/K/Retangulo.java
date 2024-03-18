@@ -67,11 +67,9 @@ public class Retangulo extends Poligono
      */
     private boolean allAnglesAreRightAngles()
     {
-        if (this.sides[0].line().isPerpendicular(this.sides[1].line()) &&
+        return (this.sides[0].line().isPerpendicular(this.sides[1].line()) &&
             this.sides[0].line().isPerpendicular(this.sides[3].line()) &&
-            this.sides[1].line().isPerpendicular(this.sides[2].line()))
-            return true;
-        return false;
+            this.sides[1].line().isPerpendicular(this.sides[2].line()));
     }
 
     @Override

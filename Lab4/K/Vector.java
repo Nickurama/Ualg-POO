@@ -6,7 +6,7 @@
  */
 public class Vector
 {
-    private static final VirtualPoint origin = new VirtualPoint(0, 0);
+    private static final VirtualPoint ORIGIN = new VirtualPoint(0, 0);
     private VirtualPoint point;
     private double length;
     
@@ -17,7 +17,7 @@ public class Vector
     public Vector(VirtualPoint p)
     {
         this.point = p;
-        this.length = (origin.dist(p));
+        this.length = (ORIGIN.dist(p));
     }
 
     /**
