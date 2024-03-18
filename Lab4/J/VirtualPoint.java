@@ -5,7 +5,7 @@ import java.io.IOException;
  * Represents an immutable point in two dimensional space
  * 
  * @author Diogo Fonseca a79858
- * @version 17/03/2024
+ * @version 18/03/2024
  * 
  * @inv x the x coordinate
  * @inv y the y coordinate
@@ -175,6 +175,11 @@ public class VirtualPoint
         return new VirtualPoint(newX, newY);
     }
 
+    /**
+     * Translates a point by a vector
+     * @param vector the vector to translate the point
+     * @return the translated point
+     */
     public VirtualPoint translate(Vector vector)
     {
         return new VirtualPoint(this.X() + vector.X(), this.Y() + vector.Y());

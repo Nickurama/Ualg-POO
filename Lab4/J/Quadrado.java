@@ -4,7 +4,7 @@
  * all the same length
  * 
  * @author Diogo Fonseca a79858
- * @version 17/03/2024
+ * @version 18/03/2024
  */
 public class Quadrado extends Retangulo
 {

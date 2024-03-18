@@ -1,13 +1,11 @@
-
-
 /**
  * Represents an immutable simple polygon
  * 
  * @author Diogo Fonseca a79858
- * @version 17/03/2024
+ * @version 18/03/2024
  *  
  * @inv sides are the sides of the polygon
- * @inv points are the vertices of the polygon
+ * @inv vertices are the vertices of the polygon
  */
 public class Poligono
 {
@@ -273,6 +271,11 @@ public class Poligono
         return this.vertices.length;
     }
 
+    /**
+     * Translates a polygon by a vector
+     * @param vector the vector to translate the polygon
+     * @return the translated polygon
+     */
     public Poligono translate(Vector vector)
     {
         Point[] newPoints = new Point[this.vertices.length];
