@@ -62,4 +62,28 @@ public class QuadradoTests
         assertTrue(rotated0.equals(expected));
         assertTrue(rotated1.equals(expected));
     }
+
+    @Test
+    public void ShouldTranslateAsSquare()
+    {
+        // Assert
+        Quadrado sq = new Quadrado(new Point[] {
+            new Point(1, 1),
+            new Point(1, 2),
+            new Point(2, 2),
+            new Point(2, 1),
+        });
+        Quadrado expected = new Quadrado(new Point[] {
+            new Point(0, 0),
+            new Point(0, 1),
+            new Point(1, 1),
+            new Point(1, 0),
+        });
+
+        // Act
+        Quadrado translated = sq.translate(new Vector(-1, -1));
+
+        // Arrange
+        assertTrue(translated.equals(expected));
+    }
 }

@@ -272,4 +272,12 @@ public class Poligono
     {
         return this.vertices.length;
     }
+
+    public Poligono translate(Vector vector)
+    {
+        Point[] newPoints = new Point[this.vertices.length];
+        for (int i = 0; i < this.vertices.length; i++)
+            newPoints[i] = this.vertices[i].translate(vector);
+        return new Poligono(newPoints);
+    }
 }

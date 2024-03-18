@@ -558,4 +558,54 @@ public class PoligonoTests
         // Arrange
         assertTrue(poly.equals(replica));
     }
+
+    @Test
+    public void ShouldTranslatePositionWithPositiveVector()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(3, 3),
+            new Point(3, 4),
+            new Point(4, 4),
+            new Point(4, 3),
+        });
+        Vector v = new Vector(1, 3);
+        Poligono expected = new Poligono(new Point[] {
+            new Point(4, 6),
+            new Point(4, 7),
+            new Point(5, 7),
+            new Point(5, 6),
+        });
+
+        // Act
+        Poligono translated = poly.translate(v);
+
+        // assert
+        assertTrue(translated.equals(expected));
+    }
+
+    @Test
+    public void ShouldTranslatePositionWithNegativeVector()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(3, 3),
+            new Point(3, 4),
+            new Point(4, 4),
+            new Point(4, 3),
+        });
+        Vector v = new Vector(-2, -1);
+        Poligono expected = new Poligono(new Point[] {
+            new Point(1,2),
+            new Point(1,3),
+            new Point(2,3),
+            new Point(2,2),
+        });
+
+        // Act
+        Poligono translated = poly.translate(v);
+
+        // assert
+        assertTrue(translated.equals(expected));
+    }
 }

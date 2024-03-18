@@ -84,4 +84,10 @@ public class Triangulo extends Poligono
     {
         return new Triangulo(super.rotateDegrees(angle));
     }
+
+    @Override
+    public Triangulo translate(Vector vector)
+    {
+        return new Triangulo(super.translate(vector));
+    }
 }

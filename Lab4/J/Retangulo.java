@@ -103,4 +103,10 @@ public class Retangulo extends Poligono
     {
         return new Retangulo(super.rotateDegrees(angle));
     }
+
+    @Override
+    public Retangulo translate(Vector vector)
+    {
+        return new Retangulo(super.translate(vector));
+    }
 }

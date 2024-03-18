@@ -62,4 +62,28 @@ public class RetanguloTests
         assertTrue(rotated0.equals(expected));
         assertTrue(rotated1.equals(expected));
     }
+
+    @Test
+    public void ShouldTranslateAsRectangle()
+    {
+        // Assert
+        Retangulo rect = new Retangulo(new Point[] {
+            new Point(1, 1),
+            new Point(1, 3),
+            new Point(2, 3),
+            new Point(2, 1),
+        });
+        Retangulo expected = new Retangulo(new Point[] {
+            new Point(0, 0),
+            new Point(0, 2),
+            new Point(1, 2),
+            new Point(1, 0),
+        });
+
+        // Act
+        Retangulo translated = rect.translate(new Vector(-1, -1));
+
+        // Arrange
+        assertTrue(translated.equals(expected));
+    }
 }

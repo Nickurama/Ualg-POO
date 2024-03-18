@@ -95,4 +95,10 @@ public class Quadrado extends Retangulo
     {
         return new Quadrado(super.rotateDegrees(angle));
     }
+
+    @Override
+    public Quadrado translate(Vector vector)
+    {
+        return new Quadrado(super.translate(vector));
+    }
 }

@@ -60,4 +60,26 @@ public class TrianguloTests
         assertTrue(rotated0.equals(expected));
         assertTrue(rotated1.equals(expected));
     }
+
+    @Test
+    public void ShouldTranslateAsRectangle()
+    {
+        // Assert
+        Triangulo tri = new Triangulo(new Point[] {
+            new Point(1, 1),
+            new Point(2, 2),
+            new Point(3, 1),
+        });
+        Triangulo expected = new Triangulo(new Point[] {
+            new Point(0, 0),
+            new Point(1, 1),
+            new Point(2, 0),
+        });
+
+        // Act
+        Triangulo translated = tri.translate(new Vector(-1, -1));
+
+        // Arrange
+        assertTrue(translated.equals(expected));
+    }
 }
