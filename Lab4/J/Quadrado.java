@@ -101,4 +101,10 @@ public class Quadrado extends Retangulo
     {
         return new Quadrado(super.translate(vector));
     }
+
+    @Override
+    public Quadrado moveCentroid(Point newCentroid)
+    {
+        return new Quadrado(super.moveCentroid(newCentroid));
+    }
 }
