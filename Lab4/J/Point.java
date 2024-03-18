@@ -106,4 +106,9 @@ public class Point extends VirtualPoint
         return result;
         // return parseToArray(String.valueOf(numPoints) + " " + str);
     }
+
+    public Point translate(Vector vector)
+    {
+        return new Point(super.translate(vector));
+    }
 }
