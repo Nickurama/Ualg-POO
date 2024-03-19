@@ -5,7 +5,7 @@ import java.io.IOException;
  * Represents an immutable point in two dimensional space
  * 
  * @author Diogo Fonseca a79858
- * @version 17/03/2024
+ * @version 18/03/2024
  * 
  * @inv x the x coordinate
  * @inv y the y coordinate
@@ -76,7 +76,7 @@ public class VirtualPoint
     {
         if (other == this) return true;
         if (other == null) return false;
-        if (!VirtualPoint.class.isInstance(other)) return false; // if not VirtualPoint or child of VirtualPoint
+        if (!VirtualPoint.class.isInstance(other)) return false;
         VirtualPoint that = (VirtualPoint) other;
         return MathUtil.areEqual(this.x, that.x) && MathUtil.areEqual(this.y, that.y);
     }
@@ -173,6 +173,16 @@ public class VirtualPoint
         double newX = (this.x - anchor.x) * Math.cos(angle) - (this.y - anchor.y) * Math.sin(angle) + anchor.x;
         double newY = (this.x - anchor.x) * Math.sin(angle) + (this.y - anchor.y) * Math.cos(angle) + anchor.y;
         return new VirtualPoint(newX, newY);
+    }
+
+    /**
+     * Translates a point by a vector
+     * @param vector the vector to translate the point
+     * @return the translated point
+     */
+    public VirtualPoint translate(Vector vector)
+    {
+        return new VirtualPoint(this.X() + vector.X(), this.Y() + vector.Y());
     }
 
     /**

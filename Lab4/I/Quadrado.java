@@ -4,7 +4,7 @@
  * all the same length
  * 
  * @author Diogo Fonseca a79858
- * @version 17/03/2024
+ * @version 18/03/2024
  */
 public class Quadrado extends Retangulo
 {
@@ -94,5 +94,17 @@ public class Quadrado extends Retangulo
     public Quadrado rotateDegrees(double angle)
     {
         return new Quadrado(super.rotateDegrees(angle));
+    }
+
+    @Override
+    public Quadrado translate(Vector vector)
+    {
+        return new Quadrado(super.translate(vector));
+    }
+
+    @Override
+    public Quadrado moveCentroid(Point newCentroid)
+    {
+        return new Quadrado(super.moveCentroid(newCentroid));
     }
 }

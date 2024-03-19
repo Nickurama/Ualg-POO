@@ -76,7 +76,7 @@ public class VirtualPoint
     {
         if (other == this) return true;
         if (other == null) return false;
-        if (!VirtualPoint.class.isInstance(other)) return false; // if not VirtualPoint or child of VirtualPoint
+        if (!VirtualPoint.class.isInstance(other)) return false;
         VirtualPoint that = (VirtualPoint) other;
         return MathUtil.areEqual(this.x, that.x) && MathUtil.areEqual(this.y, that.y);
     }

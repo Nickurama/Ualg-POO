@@ -1,13 +1,11 @@
-
-
 /**
  * Represents an immutable simple polygon
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 18/03/2024
  *  
  * @inv sides are the sides of the polygon
- * @inv points are the vertices of the polygon
+ * @inv vertices are the vertices of the polygon
  */
 public class Poligono
 {
@@ -44,6 +42,11 @@ public class Poligono
     public Poligono(String str)
     {
         this(Point.parseToArray(str));
+    }
+
+    public Poligono(Poligono poly)
+    {
+        this(poly.vertices);
     }
 
     /**
@@ -191,5 +194,103 @@ public class Poligono
             if (vertice.equals(this.vertices[i]))
                 return i;
         return -1;
+    }
+
+    /**
+     * Rotates a polygon around a fixed point (anchor)
+     * @param angle the angle (in radians) to rotate the polygon by
+     * @param anchor the fixed point to rotate the polygon around
+     * @return a polygon with the rotation applied to it
+     */
+    public Poligono rotate(double angle, VirtualPoint anchor)
+    {
+        Point[] newVertices = new Point[this.vertices.length];
+        for (int i = 0; i < this.vertices.length; i++)
+            newVertices[i] = new Point(this.vertices[i].rotate(angle, anchor));
+        return new Poligono(newVertices);
+    }
+
+    /**
+     * Rotates a polygon around a fixed point(anchor)
+     * @param angle the angle in degrees to rotate the polygon by
+     * @param anchor the fixed point to rotate the polygon around
+     * @return a polygon with the rotation applied to it
+     */
+    public Poligono rotateDegrees(double angle, VirtualPoint anchor)
+    {
+        return this.rotate(Math.toRadians(angle), anchor);
+    }
+    
+    /**
+     * Rotates a polygon around it's centroid
+     * @param angle the angle (in radians) to rotate the polygon by
+     * @return a polygon with the rotation applied to it
+     */
+    public Poligono rotate(double angle)
+    {
+        return this.rotate(angle, getCentroid());
+    }
+
+    /**
+     * Rotates a polygon around it's centroid
+     * @param angle the angle in degrees to rotate the polygon by
+     * @return a polygon with the rotation applied to it
+     */
+    public Poligono rotateDegrees(double angle)
+    {
+        return this.rotate(Math.toRadians(angle));
+    }
+
+    /**
+     * Calculates the centroid of the polygon
+     * @return the centroid of the polygon
+     */
+    private Point getCentroid()
+    {
+        double x = 0;
+        double y = 0;
+
+        for (Point vertice : this.vertices)
+        {
+            x += vertice.X();
+            y += vertice.Y();
+        }
+
+        x /= this.vertices.length;
+        y /= this.vertices.length;
+        
+        return new Point(x, y);
+    }
+
+    /**
+     * Acessor method to get the number of sides the polygon has
+     * @return the number of sides the polygon has
+     */
+    public int getNumSides()
+    {
+        return this.vertices.length;
+    }
+
+    /**
+     * Translates a polygon by a vector
+     * @param vector the vector to translate the polygon
+     * @return the translated polygon
+     */
+    public Poligono translate(Vector vector)
+    {
+        Point[] newPoints = new Point[this.vertices.length];
+        for (int i = 0; i < this.vertices.length; i++)
+            newPoints[i] = this.vertices[i].translate(vector);
+        return new Poligono(newPoints);
+    }
+
+    /**
+     * Translates a polygon by moving it's centroid
+     * @param newCentroid the location where the centroid should be moved to
+     * @return the translated polygon
+     */
+    public Poligono moveCentroid(Point newCentroid)
+    {
+        return this.translate(new Vector(this.getCentroid(), newCentroid));
     }
 }

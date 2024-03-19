@@ -558,4 +558,123 @@ public class PoligonoTests
         // Arrange
         assertTrue(poly.equals(replica));
     }
+
+    @Test
+    public void ShouldTranslatePositionWithPositiveVector()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(3, 3),
+            new Point(3, 4),
+            new Point(4, 4),
+            new Point(4, 3),
+        });
+        Vector v = new Vector(1, 3);
+        Poligono expected = new Poligono(new Point[] {
+            new Point(4, 6),
+            new Point(4, 7),
+            new Point(5, 7),
+            new Point(5, 6),
+        });
+
+        // Act
+        Poligono translated = poly.translate(v);
+
+        // assert
+        assertTrue(translated.equals(expected));
+    }
+
+    @Test
+    public void ShouldTranslatePositionWithNegativeVector()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(3, 3),
+            new Point(3, 4),
+            new Point(4, 4),
+            new Point(4, 3),
+        });
+        Vector v = new Vector(-2, -1);
+        Poligono expected = new Poligono(new Point[] {
+            new Point(1,2),
+            new Point(1,3),
+            new Point(2,3),
+            new Point(2,2),
+        });
+
+        // Act
+        Poligono translated = poly.translate(v);
+
+        // assert
+        assertTrue(translated.equals(expected));
+    }
+
+    @Test
+    public void ShouldMoveCentroid()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(4, 4),
+            new Point(5, 3),
+            new Point(6, 4),
+            new Point(6, 6),
+            new Point(5, 7),
+            new Point(4, 6),
+        });
+        Point newCentroid0 = new Point(9, 6);
+        Point newCentroid1 = new Point(1, 2);
+        Poligono expected0 = new Poligono(new Point[] {
+            new Point(8, 5),
+            new Point(9, 4),
+            new Point(10, 5),
+            new Point(10, 7),
+            new Point(9, 8),
+            new Point(8, 7),
+        });
+        Poligono expected1 = new Poligono(new Point[] {
+            new Point(0, 1),
+            new Point(1, 0),
+            new Point(2, 1),
+            new Point(2, 3),
+            new Point(1, 4),
+            new Point(0, 3),
+        });
+
+        // Act
+        Poligono translated0 = poly.moveCentroid(newCentroid0);
+        Poligono translated1 = poly.moveCentroid(newCentroid1);
+
+        // Assert
+        assertTrue(translated0.equals(expected0));
+        assertTrue(translated1.equals(expected1));
+    }
+
+    @Test
+    public void ShouldBeImmutableWhenMovingCentroid()
+    {
+        // Arrange
+        Poligono poly = new Poligono(new Point[] {
+            new Point(4, 4),
+            new Point(5, 3),
+            new Point(6, 4),
+            new Point(6, 6),
+            new Point(5, 7),
+            new Point(5, 6),
+        });
+        Poligono replica = new Poligono(new Point[] {
+            new Point(4, 4),
+            new Point(5, 3),
+            new Point(6, 4),
+            new Point(6, 6),
+            new Point(5, 7),
+            new Point(5, 6),
+        });
+        Point newCentroid0 = new Point(9, 6);
+
+        // Act
+        poly.moveCentroid(newCentroid0);
+
+        // Assert
+        assertTrue(poly.equals(replica));
+    }
 }

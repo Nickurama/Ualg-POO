@@ -5,7 +5,7 @@ import java.io.IOException;
  * Represents an immutable point in two dimensional space
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 18/03/2024
  * 
  * @inv x the x coordinate
  * @inv y the y coordinate
@@ -71,17 +71,12 @@ public class VirtualPoint
         return Math.sqrt(dx * dx + dy * dy);
     }
 
-    /**
-     * Checks if the two points are equivalent (occupy the same coordinates)
-     * @param that the point to compare to
-     * @return if the two points are equivalent
-     */
     @Override
     public boolean equals(Object other)
     {
         if (other == this) return true;
         if (other == null) return false;
-        if (!VirtualPoint.class.isInstance(other)) return false; // if not VirtualPoint or child of VirtualPoint
+        if (!VirtualPoint.class.isInstance(other)) return false;
         VirtualPoint that = (VirtualPoint) other;
         return MathUtil.areEqual(this.x, that.x) && MathUtil.areEqual(this.y, that.y);
     }
@@ -95,7 +90,20 @@ public class VirtualPoint
     @Override
     public String toString()
     {
-        return "(" + (int)this.x + "," + (int)this.y + ")";
+        // this is done because the expected behaviour is to
+        // truncate the number, but sometimes the number will be
+        // a small infitesimal below the actual number which
+        // makes the truncation to be 1 below the actual
+        // number, which is unexpected behaviour
+        int printableX = (int)this.x;
+        int printableY = (int)this.y;
+        int roundedX = (int)Math.round(this.x);
+        int roundedY = (int)Math.round(this.y);
+        if (MathUtil.areEqual(this.x, roundedX))
+            printableX = roundedX;
+        if (MathUtil.areEqual(this.y, roundedY))
+            printableY = roundedY;
+        return "(" + printableX + "," + printableY + ")";
     }
 
     /**
@@ -152,6 +160,29 @@ public class VirtualPoint
     public static VirtualPoint[] parseToArray(String str, int numPoints)
     {
         return parseToArray(String.valueOf(numPoints) + " " + str);
+    }
+
+    /**
+     * Rotates a point around a fixed point (anchor)
+     * @param angle the angle (in radians) to rotate the point by
+     * @param anchor the fixed point to rotate the point around
+     * @return a point with the rotation applied to it
+     */
+    public VirtualPoint rotate(double angle, VirtualPoint anchor)
+    {
+        double newX = (this.x - anchor.x) * Math.cos(angle) - (this.y - anchor.y) * Math.sin(angle) + anchor.x;
+        double newY = (this.x - anchor.x) * Math.sin(angle) + (this.y - anchor.y) * Math.cos(angle) + anchor.y;
+        return new VirtualPoint(newX, newY);
+    }
+
+    /**
+     * Translates a point by a vector
+     * @param vector the vector to translate the point
+     * @return the translated point
+     */
+    public VirtualPoint translate(Vector vector)
+    {
+        return new VirtualPoint(this.X() + vector.X(), this.Y() + vector.Y());
     }
 
     /**

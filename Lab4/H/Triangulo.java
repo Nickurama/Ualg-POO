@@ -3,7 +3,7 @@
  * A triangle is a polygon with 3 sides
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 18/03/2024
  */
 public class Triangulo extends Poligono
 {
@@ -19,7 +19,26 @@ public class Triangulo extends Poligono
     public Triangulo(Point[] points)
     {
         super(points);
+        validateTriangle(this.sides.length);
+    }
 
+    /**
+     * Initializes a triangle from a polygon
+     * @param poly the polygon to initialize from
+     */
+    public Triangulo(Poligono poly)
+    {
+        super(poly);
+        validateTriangle(poly.getNumSides());
+    }
+
+    /**
+     * Validates the preconditions for the
+     * class to work. terminates the program if
+     * they aren't met
+     */
+    private void validateTriangle(int numSides)
+    {
         if (this.sides.length != NUM_SIDES)
             Error.terminateProgram(ERROR_MESSAGE);
     }
@@ -40,5 +59,41 @@ public class Triangulo extends Poligono
     public String toString()
     {
         return "Triangulo: " + VirtualPoint.arrayToString(this.vertices);
+    }
+
+    @Override
+    public Triangulo rotate(double angle, VirtualPoint anchor)
+    {
+        return new Triangulo(super.rotate(angle, anchor));
+    }
+
+    @Override
+    public Triangulo rotate(double angle)
+    {
+        return new Triangulo(super.rotate(angle));
+    }
+
+    @Override
+    public Triangulo rotateDegrees(double angle, VirtualPoint anchor)
+    {
+        return new Triangulo(super.rotateDegrees(angle, anchor));
+    }
+
+    @Override
+    public Triangulo rotateDegrees(double angle)
+    {
+        return new Triangulo(super.rotateDegrees(angle));
+    }
+
+    @Override
+    public Triangulo translate(Vector vector)
+    {
+        return new Triangulo(super.translate(vector));
+    }
+
+    @Override
+    public Triangulo moveCentroid(Point newCentroid)
+    {
+        return new Triangulo(super.moveCentroid(newCentroid));
     }
 }

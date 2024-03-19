@@ -3,7 +3,7 @@
  * A triangle is a polygon with 3 sides
  * 
  * @author Diogo Fonseca a79858
- * @version 17/03/2024
+ * @version 18/03/2024
  */
 public class Triangulo extends Poligono
 {
@@ -83,5 +83,17 @@ public class Triangulo extends Poligono
     public Triangulo rotateDegrees(double angle)
     {
         return new Triangulo(super.rotateDegrees(angle));
+    }
+
+    @Override
+    public Triangulo translate(Vector vector)
+    {
+        return new Triangulo(super.translate(vector));
+    }
+
+    @Override
+    public Triangulo moveCentroid(Point newCentroid)
+    {
+        return new Triangulo(super.moveCentroid(newCentroid));
     }
 }

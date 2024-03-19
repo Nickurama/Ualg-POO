@@ -4,7 +4,7 @@
  * all the same length
  * 
  * @author Diogo Fonseca a79858
- * @version 16/03/2024
+ * @version 18/03/2024
  */
 public class Quadrado extends Retangulo
 {
@@ -18,7 +18,26 @@ public class Quadrado extends Retangulo
     public Quadrado(Point[] points)
     {
         super(points);
+        validateSquare();
+    }
 
+    /**
+     * Initializes a square from a polygon
+     * @param poly the polygon to initialize from
+     */
+    public Quadrado(Poligono poly)
+    {
+        super(poly);
+        validateSquare();
+    }
+
+    /**
+     * Validates the preconditions for the
+     * class to work. terminates the program if
+     * they aren't met
+     */
+    public void validateSquare()
+    {
         if (!areAllSidesSameLength())
             Error.terminateProgram(ERROR_MESSAGE);
     }
@@ -51,5 +70,41 @@ public class Quadrado extends Retangulo
     public String toString()
     {
         return "Quadrado: " + VirtualPoint.arrayToString(this.vertices);
+    }
+
+    @Override
+    public Quadrado rotate(double angle, VirtualPoint anchor)
+    {
+        return new Quadrado(super.rotate(angle, anchor));
+    }
+
+    @Override
+    public Quadrado rotate(double angle)
+    {
+        return new Quadrado(super.rotate(angle));
+    }
+
+    @Override
+    public Quadrado rotateDegrees(double angle, VirtualPoint anchor)
+    {
+        return new Quadrado(super.rotateDegrees(angle, anchor));
+    }
+
+    @Override
+    public Quadrado rotateDegrees(double angle)
+    {
+        return new Quadrado(super.rotateDegrees(angle));
+    }
+
+    @Override
+    public Quadrado translate(Vector vector)
+    {
+        return new Quadrado(super.translate(vector));
+    }
+
+    @Override
+    public Quadrado moveCentroid(Point newCentroid)
+    {
+        return new Quadrado(super.moveCentroid(newCentroid));
     }
 }

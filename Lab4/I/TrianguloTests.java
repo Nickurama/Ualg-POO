@@ -38,7 +38,7 @@ public class TrianguloTests
     }
 
     @Test
-    public void ShouldRotateAndStayATriangle()
+    public void ShouldRotate()
     {
         // Arrange
         Triangulo tri = new Triangulo(new Point[] {
@@ -59,5 +59,50 @@ public class TrianguloTests
         // Assert
         assertTrue(rotated0.equals(expected));
         assertTrue(rotated1.equals(expected));
+    }
+
+    @Test
+    public void ShouldTranslate()
+    {
+        // Assert
+        Triangulo tri = new Triangulo(new Point[] {
+            new Point(1, 1),
+            new Point(2, 2),
+            new Point(3, 1),
+        });
+        Triangulo expected = new Triangulo(new Point[] {
+            new Point(0, 0),
+            new Point(1, 1),
+            new Point(2, 0),
+        });
+
+        // Act
+        Triangulo translated = tri.translate(new Vector(-1, -1));
+
+        // Arrange
+        assertTrue(translated.equals(expected));
+    }
+
+    @Test
+    public void ShouldMoveCentroid()
+    {
+        // Assert
+        Triangulo tri = new Triangulo(new Point[] {
+            new Point(1, 1),
+            new Point(2, 2),
+            new Point(3, 1),
+        });
+        Point newCentroid = new Point(2, 3.3333333333);
+        Triangulo expected = new Triangulo(new Point[] {
+            new Point(1, 3),
+            new Point(2, 4),
+            new Point(3, 3),
+        });
+
+        // Act
+        Triangulo moved = tri.moveCentroid(newCentroid);
+
+        // Arrange
+        assertTrue(moved.equals(expected));
     }
 }
