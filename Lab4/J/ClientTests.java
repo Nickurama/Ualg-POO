@@ -8,10 +8,10 @@ public class ClientTests
     public void ShouldTakePolygonAsInput()
     {
         // Arrange
-        String input0 = "Poligono 6 1 0 0 2 1 4 3 4 4 2 3 0\n";
-        String input1 = "8 3";
+        String input0 = "Poligono 4 1 2 5 6 8 7 12 14\n";
+        String input1 = "-1 3";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input0 + input1);
-        String expected = "Poligono de 6 vertices: [(7,1), (6,3), (7,5), (9,5), (10,3), (9,1)]";
+        String expected = "Poligono de 4 vertices: [(0,5), (4,9), (7,10), (11,17)]";
 
         // Act
         try
@@ -29,10 +29,10 @@ public class ClientTests
     public void ShouldTakeTrianglesAsInput()
     {
         // Arrange
-        String input0 = "Triangulo 1 0 3 0 2 3\n";
-        String input1 = "2 3\n";
+        String input0 = "Triangulo 2 1 4 1 3 4\n";
+        String input1 = "2 -1\n";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input0 + input1);
-        String expected = "Triangulo: [(1,2), (3,2), (2,5)]";
+        String expected = "Triangulo: [(4,0), (6,0), (5,3)]";
 
         // Act
         try
@@ -50,10 +50,10 @@ public class ClientTests
     public void ShouldTakeRectanglesAsInput()
     {
         // Arrange
-        String input0 = "Retangulo 1 1 5 1 5 3 1 3\n";
-        String input1 = "3 3\n";
+        String input0 = "Retangulo 1 1 3 1 3 5 1 5\n";
+        String input1 = "5 7\n";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input0 + input1);
-        String expected = "Retangulo: [(1,2), (5,2), (5,4), (1,4)]";
+        String expected = "Retangulo: [(6,8), (8,8), (8,12), (6,12)]";
 
         // Act
         try
@@ -71,10 +71,10 @@ public class ClientTests
     public void ShouldTakeSquareAsInput()
     {
         // Arrange
-        String input0 = "Quadrado 0 0 0 2 2 2 2 0\n";
-        String input1 = "1 4\n";
+        String input0 = "Quadrado 1 1 1 2 2 2 2 1\n";
+        String input1 = "10 10\n";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input0 + input1);
-        String expected = "Quadrado: [(0,3), (0,5), (2,5), (2,3)]";
+        String expected = "Quadrado: [(11,11), (11,12), (12,12), (12,11)]";
 
         // Act
         try
@@ -92,11 +92,10 @@ public class ClientTests
     public void ShouldBeCaseInsensitive()
     {
         // Arrange
-        String input0 = "QuAdRaDo 0 0 0 2 2 2 2 0\n";
-        String input1 = "1 4\n";
+        String input0 = "QuAdRaDo 1 1 1 2 2 2 2 1\n";
+        String input1 = "10 10\n";
         ByteArrayOutputStream os = TestUtil.setIOstreams(input0 + input1);
-        String expected = "Quadrado: [(0,3), (0,5), (2,5), (2,3)]";
-
+        String expected = "Quadrado: [(11,11), (11,12), (12,12), (12,11)]";
 
         // Act
         try

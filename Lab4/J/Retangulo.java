@@ -109,10 +109,4 @@ public class Retangulo extends Poligono
     {
         return new Retangulo(super.translate(vector));
     }
-
-    @Override
-    public Retangulo moveCentroid(Point newCentroid)
-    {
-        return new Retangulo(super.moveCentroid(newCentroid));
-    }
 }

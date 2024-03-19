@@ -16,7 +16,7 @@ public class Vector
      */
     public Vector(VirtualPoint p)
     {
-        this.point = new VirtualPoint(p);
+        this.point = p;
         this.length = (origin.dist(p));
     }
 
@@ -28,11 +28,6 @@ public class Vector
     public Vector(double x, double y)
     {
         this(new VirtualPoint(x, y));
-    }
-
-    public Vector(VirtualPoint p0, VirtualPoint p1)
-    {
-        this(p1.X() - p0.X(), p1.Y() - p0.Y());
     }
 
     /**
@@ -67,16 +62,6 @@ public class Vector
     public boolean hasRightAngle(Vector that)
     {
         return MathUtil.areEqual(this.dotProduct(that), 0);
-    }
-
-    @Override
-    public boolean equals(Object other)
-    {
-        if (other == this) return true;
-        if (other == null) return false;
-        if (!Vector.class.isInstance(other)) return false;
-        Vector that = (Vector) other;
-        return this.point.equals(that.point);
     }
 
     /**

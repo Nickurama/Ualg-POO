@@ -283,9 +283,4 @@ public class Poligono
             newPoints[i] = this.vertices[i].translate(vector);
         return new Poligono(newPoints);
     }
-
-    public Poligono moveCentroid(Point newCentroid)
-    {
-        return this.translate(new Vector(this.getCentroid(), newCentroid));
-    }
 }

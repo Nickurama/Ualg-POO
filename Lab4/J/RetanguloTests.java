@@ -38,7 +38,7 @@ public class RetanguloTests
     }
 
     @Test
-    public void ShouldRotate()
+    public void ShouldRotateAndStayARectangle()
     {
         // Arrange
         Retangulo rect = new Retangulo(new Point[] {
@@ -64,7 +64,7 @@ public class RetanguloTests
     }
 
     @Test
-    public void ShouldTranslate()
+    public void ShouldTranslateAsRectangle()
     {
         // Assert
         Retangulo rect = new Retangulo(new Point[] {
@@ -85,30 +85,5 @@ public class RetanguloTests
 
         // Arrange
         assertTrue(translated.equals(expected));
-    }
-
-    @Test
-    public void ShouldMoveCentroid()
-    {
-        // Assert
-        Retangulo rect = new Retangulo(new Point[] {
-            new Point(1, 1),
-            new Point(1, 3),
-            new Point(2, 3),
-            new Point(2, 1),
-        });
-        Point newCentroid = new Point(2, 2);
-        Retangulo expected = new Retangulo(new Point[] {
-            new Point(1.5, 1),
-            new Point(1.5, 3),
-            new Point(2.5, 3),
-            new Point(2.5, 1),
-        });
-
-        // Act
-        Retangulo moved = rect.moveCentroid(newCentroid);
-
-        // Arrange
-        assertTrue(moved.equals(expected));
     }
 }
