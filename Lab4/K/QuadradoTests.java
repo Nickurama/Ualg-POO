@@ -38,7 +38,7 @@ public class QuadradoTests
     }
 
     @Test
-    public void ShouldRotateAndStayASquare()
+    public void ShouldRotate()
     {
         // Arrange
         Quadrado sq = new Quadrado(new Point[] {
@@ -64,7 +64,7 @@ public class QuadradoTests
     }
 
     @Test
-    public void ShouldTranslateAsSquare()
+    public void ShouldTranslate()
     {
         // Assert
         Quadrado sq = new Quadrado(new Point[] {
@@ -85,5 +85,30 @@ public class QuadradoTests
 
         // Arrange
         assertTrue(translated.equals(expected));
+    }
+
+    @Test
+    public void ShouldMoveCentroid()
+    {
+        // Assert
+        Quadrado sq = new Quadrado(new Point[] {
+            new Point(1, 1),
+            new Point(1, 2),
+            new Point(2, 2),
+            new Point(2, 1),
+        });
+        Point newCentroid = new Point(4, 5);
+        Quadrado expected = new Quadrado(new Point[] {
+            new Point(3.5, 4.5),
+            new Point(4.5, 4.5),
+            new Point(4.5, 5.5),
+            new Point(3.5, 5.5),
+        });
+
+        // Act
+        Quadrado moved = sq.moveCentroid(newCentroid);
+
+        // Arrange
+        assertTrue(moved.equals(expected));
     }
 }

@@ -92,4 +92,52 @@ public class VectorTests
         assertTrue(right1);
         assertFalse(right2);
     }
+
+    @Test
+    public void ShouldGenerateVectorFromPoints()
+    {
+        // Arrange
+        VirtualPoint p0 = new VirtualPoint(1, 1);
+        VirtualPoint p1 = new VirtualPoint(3, 3);
+        VirtualPoint p2 = new VirtualPoint(0.5, 0);
+        VirtualPoint p3 = new VirtualPoint(1, 5);
+        Vector expected0 = new Vector(2, 2);
+        Vector expected1 = new Vector(-0.5, -1);
+        Vector expected2 = new Vector(0, 4);
+        Vector expected3 = new Vector(0, 0);
+
+        // Act
+        Vector v0 = new Vector(p0, p1);
+        Vector v1 = new Vector(p0, p2);
+        Vector v2 = new Vector(p0, p3);
+        Vector v3 = new Vector(p0, p0);
+
+        // Assert
+        assertTrue(v0.equals(expected0));
+        assertTrue(v1.equals(expected1));
+        assertTrue(v2.equals(expected2));
+        assertTrue(v3.equals(expected3));
+    }
+
+    @Test
+    public void ShouldEquals()
+    {
+        // Arrange
+        Vector v0 = new Vector(1, -3);
+        Vector v1 = new Vector(1, -3);
+        Vector v2 = new Vector(1, 3);
+        Vector v3 = new Vector(5, 8);
+
+        // Act
+        boolean equals0 = v0.equals(v1);
+        boolean equals1 = v0.equals(v2);
+        boolean equals2 = v0.equals(v3);
+        boolean equals3 = v0.equals(v0);
+
+        // Assert
+        assertTrue(equals0);
+        assertFalse(equals1);
+        assertFalse(equals2);
+        assertTrue(equals3);
+    }
 }

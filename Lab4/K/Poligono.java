@@ -283,4 +283,14 @@ public class Poligono
             newPoints[i] = this.vertices[i].translate(vector);
         return new Poligono(newPoints);
     }
+
+    /**
+     * Translates a polygon by moving it's centroid
+     * @param newCentroid the location where the centroid should be moved to
+     * @return the translated polygon
+     */
+    public Poligono moveCentroid(Point newCentroid)
+    {
+        return this.translate(new Vector(this.getCentroid(), newCentroid));
+    }
 }

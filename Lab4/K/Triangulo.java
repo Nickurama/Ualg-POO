@@ -90,4 +90,10 @@ public class Triangulo extends Poligono
     {
         return new Triangulo(super.translate(vector));
     }
+
+    @Override
+    public Triangulo moveCentroid(Point newCentroid)
+    {
+        return new Triangulo(super.moveCentroid(newCentroid));
+    }
 }
