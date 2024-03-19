@@ -84,6 +84,12 @@ public class Vector
         return this.point.equals(that.point);
     }
 
+    @Override
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     /**
      * Acessor method for x variable
      */
