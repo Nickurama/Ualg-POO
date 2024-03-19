@@ -17,17 +17,17 @@ public class Client
     {
         Scanner sc = new Scanner(System.in);
         String polyStr = sc.nextLine();
-        String vectorStr = sc.nextLine();
+        String centroidStr = sc.nextLine();
         String[] polyTokens = polyStr.split(" ", 2);
-        String[] vectorTokens = vectorStr.split(" ");
+        String[] centroidTokens = centroidStr.split(" ");
         
         try
         {
             Class<?> cl = Class.forName(capital(polyTokens[0]));
             Constructor<?> constructor = cl.getConstructor(String.class);
             Poligono poly = (Poligono) constructor.newInstance(polyTokens[1]);
-            Vector v = new Vector(Double.parseDouble(vectorTokens[0]), Double.parseDouble(vectorTokens[1]));
-            System.out.print(poly.translate(v).toString());
+            Point centroid = new Point(Double.parseDouble(centroidTokens[0]), Double.parseDouble(centroidTokens[1]));
+            System.out.print(poly.moveCentroid(centroid).toString());
         }
         catch (ClassNotFoundException cnfe)
         {
