@@ -21,7 +21,7 @@ public class PoligonoTests
         });
 
         // Act
-        boolean intercepts = poly1.intercepts(poly2);
+        boolean intercepts = poly1.intersects(poly2);
 
         // Assert
         assertFalse(intercepts);
@@ -44,7 +44,7 @@ public class PoligonoTests
         });
 
         // Act
-        boolean intercepts = poly1.intercepts(poly2);
+        boolean intercepts = poly1.intersects(poly2);
 
         // Assert
         assertFalse(intercepts);
@@ -66,7 +66,7 @@ public class PoligonoTests
         });
 
         // Act
-        boolean intercepts = poly1.intercepts(poly2);
+        boolean intercepts = poly1.intersects(poly2);
 
         // Assert
         assertFalse(intercepts);
@@ -90,7 +90,7 @@ public class PoligonoTests
         });
 
         // Act
-        boolean intercepts = poly1.intercepts(poly2);
+        boolean intercepts = poly1.intersects(poly2);
 
         // Assert
         assertTrue(intercepts);

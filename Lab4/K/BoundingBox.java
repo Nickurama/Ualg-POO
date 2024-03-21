@@ -4,14 +4,12 @@
  * @author Diogo Fonseca a79858
  * @version 04/03/2024
  * 
- * @inv minX the minimum x value of the box
- * @inv maxX the maximum x value of the box
- * @inv minY the minimum y value of the box
- * @inv maxY the maximum y value of the box
+ * @inv min is the lower (left) point of the bounding box
+ * @inv max is the upper (right) point of the bounding box
  */
 public class BoundingBox
 {
-    double minX, maxX, minY, maxY;
+    private Point min, max;
 
     /**
      * Initializes a bounding box
@@ -22,10 +20,8 @@ public class BoundingBox
         if (points.length == 0)
             Error.terminateProgram("BoundingBox::BoundingBox error: points should be greater than 0");
         
-        this.minX = points[0].X();
-        this.maxX = points[0].X();
-        this.minY = points[0].Y();
-        this.maxY = points[0].Y();
+        this.min = points[0];
+        this.max = points[0];
 
         for (Point p : points)
             addPoint(p);
@@ -37,10 +33,8 @@ public class BoundingBox
      */
     private void addPoint(Point p)
     {
-        this.minX = Math.min(this.minX, p.X());
-        this.maxX = Math.max(this.maxX, p.X());
-        this.minY = Math.min(this.minY, p.Y());
-        this.maxY = Math.max(this.maxY, p.Y());
+        this.min = new Point(Math.min(this.min.X(), p.X()), Math.min(this.min.Y(), p.Y()));
+        this.max = new Point(Math.max(this.max.X(), p.X()), Math.max(this.max.Y(), p.Y()));
     }
 
     /**
@@ -50,14 +44,8 @@ public class BoundingBox
      */
     public boolean intercepts(BoundingBox that)
     {
-        boolean interceptsX = true;
-        boolean interceptsY = true;
-
-        if (MathUtil.isLessOrEqualThan(this.maxX, that.minX) || MathUtil.isGreaterOrEqualThan(this.minX, that.maxX))
-            interceptsX = false;
-
-        if (MathUtil.isLessOrEqualThan(this.maxY, that.minY) || MathUtil.isGreaterOrEqualThan(this.minY, that.maxY))
-            interceptsY = false;
+        boolean interceptsX = MathUtil.isLessOrEqualThan(this.max.X(), that.min.X()) || MathUtil.isGreaterOrEqualThan(this.min.X(), that.max.X());
+        boolean interceptsY = MathUtil.isLessOrEqualThan(this.max.Y(), that.min.Y()) || MathUtil.isGreaterOrEqualThan(this.min.Y(), that.max.Y());
 
         return interceptsX && interceptsY;
     }
