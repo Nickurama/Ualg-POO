@@ -39,7 +39,7 @@ public class Quadrado extends Retangulo
     public void validateSquare()
     {
         if (!areAllSidesSameLength())
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
     }
 
     /**

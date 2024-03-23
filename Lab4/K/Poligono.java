@@ -21,13 +21,13 @@ public class Poligono {
    */
   public Poligono(Point[] points) {
     if (points.length < 3)
-      Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+      Error.terminateProgram(ERROR_MESSAGE);
 
     Point[] verticesGen = Point.copyArray(points);
     LineSegment[] segments = generateSegments(verticesGen);
 
     if (isAnyGeneratedPointCollinear(verticesGen, segments) || doSidesIntersect(segments))
-      Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+      Error.terminateProgram(ERROR_MESSAGE);
 
     this.vertices = verticesGen;
     this.sides = segments;

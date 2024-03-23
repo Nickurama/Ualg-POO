@@ -31,7 +31,7 @@ public class UniquePolygons
     public void add(Poligono poly)
     {
         if (contains(poly))
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
         polygons.add(poly);
     }
 

@@ -42,10 +42,10 @@ public class Retangulo extends Poligono
     private void validateRectangle(int numSides)
     {
         if (numSides != NUM_SIDES)
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
         
         if (!allAnglesAreRightAngles())
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
     }
 
     /**

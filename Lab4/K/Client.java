@@ -27,7 +27,7 @@ public class Client
             Constructor<?> constructor = cl.getConstructor(String.class);
             Poligono poly = (Poligono) constructor.newInstance(polyTokens[1]);
             Point centroid = new Point(Double.parseDouble(centroidTokens[0]), Double.parseDouble(centroidTokens[1]));
-            System.out.print(poly.moveCentroid(centroid).toString());
+            System.out.println(poly.moveCentroid(centroid).toString());
         }
         catch (ClassNotFoundException cnfe)
         {

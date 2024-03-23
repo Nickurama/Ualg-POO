@@ -40,7 +40,7 @@ public class Triangulo extends Poligono
     private void validateTriangle(int numSides)
     {
         if (this.sides.length != NUM_SIDES)
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
     }
 
     /**

@@ -21,7 +21,7 @@ public class Path
     public Path(Point[] points)
     {
         if (points.length < 2)
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
         this.points = Point.copyArray(points);
         segments = generateSegments(points);
     }

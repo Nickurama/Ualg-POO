@@ -50,7 +50,7 @@ public class Point extends VirtualPoint
     private void validatePoint()
     {
         if (x < 0 || y < 0)
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
     }
     
     /**

@@ -28,7 +28,7 @@ public class LineSegment
         this.point2 = new Point(b);
         this.line = new Line(this.point1, this.point2);
         if (a.equals(b))
-            Error.terminateProgramNoNewLine(ERROR_MESSAGE);
+            Error.terminateProgram(ERROR_MESSAGE);
     }
 
     /**
