@@ -44,8 +44,10 @@ public class BoundingBox
      */
     public boolean intercepts(BoundingBox that)
     {
-        boolean interceptsX = MathUtil.isLessOrEqualThan(this.max.X(), that.min.X()) || MathUtil.isGreaterOrEqualThan(this.min.X(), that.max.X());
-        boolean interceptsY = MathUtil.isLessOrEqualThan(this.max.Y(), that.min.Y()) || MathUtil.isGreaterOrEqualThan(this.min.Y(), that.max.Y());
+        boolean interceptsX = !(MathUtil.isLessOrEqualThan(this.max.X(), that.min.X()) ||
+                                MathUtil.isGreaterOrEqualThan(this.min.X(), that.max.X()));
+        boolean interceptsY = !(MathUtil.isLessOrEqualThan(this.max.Y(), that.min.Y()) ||
+                                MathUtil.isGreaterOrEqualThan(this.min.Y(), that.max.Y()));
 
         return interceptsX && interceptsY;
     }
